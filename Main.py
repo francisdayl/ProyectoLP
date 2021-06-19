@@ -9,7 +9,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import ply
+import ply.lex as lex
+import funciones as fc
 
 
 
@@ -79,7 +80,23 @@ class Ui_MainWindow(object):
         texto = self.Text_ent.toPlainText()
         self.ListWidget.clear()
         #for i in range(5):
-        self.ListWidget.addItems(["Es una variable","No es una palabra reservada","No es una palabra clave conceptual","No es un caracter especial"])
+        lexer = fc.lexer
+        lexer.input(texto)
+        results = fc.getTokens(lexer)
+        self.ListWidget.addItem("Total de tokens: "+str(len(results)))
+        for toquen in results:
+            desc_token = "Token N°: "+str(toquen[-1]+1)+" | "
+            desc_token+= "Token identificado: "+str(toquen[1])+" | "
+            desc_token += "Tipo Token: "
+            if toquen[0] in fc.reserved:
+                desc_token += "Palabra Reservada "
+            else:
+                desc_token += toquen[0] 
+            
+            self.ListWidget.addItem(desc_token)
+            
+            
+        #self.ListWidget.addItems(["Es una variable","No es una palabra reservada","No es una palabra clave conceptual","No es un caracter especial"])
 
 
 
