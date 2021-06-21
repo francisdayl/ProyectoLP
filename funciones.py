@@ -126,7 +126,7 @@ t_COMPASSIGDIVIDE= r'\/\='
 
 
 def t_VARIABLE(t):
-    r'[a-zA-Z_]\w+'
+    r'^([a-zA-Z]|\_)([a-zA-Z0-9]|\_)*'
     t.type = reserved.get(t.value, 'VARIABLE')  # Check for reserved words
     return t
 
