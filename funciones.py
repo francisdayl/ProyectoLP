@@ -78,7 +78,7 @@ reserved = {
     'volatile': 'VOLATILE',
     'while': 'WHILE',
     'false': 'FALSE',
-    'true': 'TRUE'
+    'true': 'TRUE',
 }
 tokens = (
              'NUMBER',
@@ -99,10 +99,9 @@ tokens = (
              'INCREMENT',
              'DECREMENT',
              'COMPASSIGPLUS',
-             'COMPASSIGMINUS'
+             'COMPASSIGMINUS',
              'COMPASSIGTIMES',
              'COMPASSIGDIVIDE'
-
          ) + tuple(reserved.values())
 # Regular expression rules for simple tokens
 t_PLUS = r'\+'
@@ -111,19 +110,19 @@ t_TIMES = r'\*'
 t_DIVIDE = r'/'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
-t_MOD = r'%'
-t_EQUAL = r'=='
-t_NOTEQUAL = r'!='
-t_GREATERTHAN = r'>'
-t_GREATERTHANEQUAL = r'>='
-t_LESSERTHAN = r'<'
-t_LESSERTHANEQUAL = r'<='
-t_INCREMENT = r'++'
-t_DECREMENT = r'--'
-t_COMPASSIGPLUS = r'+='
-t_COMPASSIGMINUS = r'-='
-t_COMPASSIGTIMES = r'*='
-t_COMPASSIGDIVIDE= r'/='
+t_MOD = r'\%'
+t_EQUAL = r'\=\='
+t_NOTEQUAL = r'\!\='
+t_GREATERTHAN = r'\>'
+t_GREATERTHANEQUAL = r'\>\='
+t_LESSERTHAN = r'\<'
+t_LESSERTHANEQUAL = r'\<\='
+t_INCREMENT = r'\+\+'
+t_DECREMENT = r'\-\-'
+t_COMPASSIGPLUS = r'\+\='
+t_COMPASSIGMINUS = r'\-\='
+t_COMPASSIGTIMES = r'\*\='
+t_COMPASSIGDIVIDE= r'\/\='
 
 
 def t_VARIABLE(t):
