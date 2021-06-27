@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'Proyecto_LP.ui'
+# Form implementation generated from reading ui file 'Main.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.2
 #
@@ -9,104 +9,97 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import ply.lex as lex
-import funciones as fc
+import Sintactico as st
+import Lexico as lx
 
 
-
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(450, 350)
-        MainWindow.setMinimumSize(QtCore.QSize(450, 350))
-        MainWindow.setMaximumSize(QtCore.QSize(1050, 950))
-        MainWindow.setStyleSheet("background-color:rgb(28, 105, 157);\n"
+class Main(QtWidgets.QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.resize(400, 115)
+        self.setMinimumSize(QtCore.QSize(400, 115))
+        self.setMaximumSize(QtCore.QSize(1050, 950))
+        self.setStyleSheet("background-color:rgb(28, 105, 157);\n"
 "color:white;\n"
 "")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget = QtWidgets.QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
-        self.Label_title = QtWidgets.QLabel(self.centralwidget)
+        self.label = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
-        font.setPointSize(15)
+        font.setPointSize(13)
         font.setBold(True)
         font.setWeight(75)
-        self.Label_title.setFont(font)
-        self.Label_title.setAlignment(QtCore.Qt.AlignCenter)
-        self.Label_title.setObjectName("Label_title")
-        self.verticalLayout.addWidget(self.Label_title)
+        self.label.setFont(font)
+        self.label.setCursor(QtGui.QCursor(QtCore.Qt.IBeamCursor))
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
+        self.verticalLayout.addWidget(self.label)
+        spacerItem = QtWidgets.QSpacerItem(20, 54, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout.addItem(spacerItem)
+        self.verticalLayout_2.addLayout(self.verticalLayout)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.Text_ent = QtWidgets.QPlainTextEdit(self.centralwidget)
-        self.Text_ent.setStyleSheet("background-color:white;\n"
-"color: black;")
-        self.Text_ent.setObjectName("Text_ent")
-        font.setPointSize(12)
-        font.setBold(False)
-        self.Text_ent.setFont(font)
-        self.horizontalLayout.addWidget(self.Text_ent)
-        self.Boton_analizar = QtWidgets.QPushButton(self.centralwidget)
-        self.Boton_analizar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.Boton_analizar.setObjectName("Boton_analizar")
-        self.horizontalLayout.addWidget(self.Boton_analizar)
-        self.verticalLayout.addLayout(self.horizontalLayout)
-        self.ListWidget = QtWidgets.QListWidget(self.centralwidget)
-        self.ListWidget.setStyleSheet("background-color:white;\n"
-"color: black;")
-        self.ListWidget.setObjectName("ListWidget")
-        self.verticalLayout.addWidget(self.ListWidget)
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        self.Button_Lex = QtWidgets.QPushButton(self.centralwidget)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.Button_Lex.setFont(font)
+        self.Button_Lex.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.Button_Lex.setObjectName("Button_Lex")
+        self.horizontalLayout.addWidget(self.Button_Lex)
+        self.Button_Sint = QtWidgets.QPushButton(self.centralwidget)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.Button_Sint.setFont(font)
+        self.Button_Sint.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.Button_Sint.setObjectName("Button_Sint")
+        self.horizontalLayout.addWidget(self.Button_Sint)
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
+        self.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi()
+        QtCore.QMetaObject.connectSlotsByName(self)
+        self.Button_Lex.clicked.connect(self.show_lex)
+        self.Button_Sint.clicked.connect(self.show_sint)
 
-        self.verticalLayout.setStretch(0,1)
-        self.verticalLayout.setStretch(1,1)
-        self.verticalLayout.setStretch(2,10)
-        self.Boton_analizar.clicked.connect(self.analizar)
-
-
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Proyecto - Samira Suárez|David Yánez"))
-        self.Label_title.setText(_translate("MainWindow", "Analizador Léxico"))
-        self.Boton_analizar.setText(_translate("MainWindow", "Analizar"))
+        self.setWindowTitle(_translate("self", "Proyecto - Samira Suárez|David Yánez"))
+        self.label.setText(_translate("self", "Proyecto Lenguajes de Programación: C#"))
+        self.Button_Lex.setText(_translate("self", "Analizador Léxico"))
+        self.Button_Sint.setText(_translate("self", "Analizador Sintáctico"))
 
-    def analizar(self):
-        texto = self.Text_ent.toPlainText()
-        self.ListWidget.clear()
-        #for i in range(5):
-        lexer = fc.lexer
-        lexer.input(texto)
-        results = fc.getTokens(lexer)
-        self.ListWidget.addItem("Total de tokens: "+str(len(results)))
-        for toquen in results:
-            desc_token = "Token N°: "+str(toquen[-1]+1)+" | "
-            desc_token+= "Token identificado: "+str(toquen[1])+" | "
-            desc_token += "Tipo Token: "
-            if toquen[0] in fc.reserved:
-                desc_token += "Palabra Reservada "
-            else:
-                desc_token += toquen[0] 
-            
-            self.ListWidget.addItem(desc_token)
-            
-            
-        #self.ListWidget.addItems(["Es una variable","No es una palabra reservada","No es una palabra clave conceptual","No es un caracter especial"])
+    def show_lex(self):
+        if not Sintact.isHidden():
+            Sintact.close()
+        Lexi.show()
 
+    def show_sint(self):
+        if not Lexi.isHidden():
+            Lexi.close()
+        Sintact.show()
 
-
+    def closeEvent(self,event):
+        if not Lexi.isHidden():
+            Lexi.close()
+        if not Sintact.isHidden():
+            Sintact.close()
+        
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    Principal = Main()
+    Lexi = lx.Lexico()
+    Sintact = st.Sintactico()
+
+    Principal.show()
     sys.exit(app.exec_())
