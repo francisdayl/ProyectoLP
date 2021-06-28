@@ -1,0 +1,397 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    BOOL
+    BYTE
+    CHAR
+    COMPASSIGDIVIDE
+    COMPASSIGMINUS
+    COMPASSIGPLUS
+    COMPASSIGTIMES
+    CONSOLE
+    DECIMAL
+    DECREMENT
+    DOUBLE
+    ELSE
+    ENUM
+    EVENT
+    FALSE
+    FLOAT
+    FOR
+    FOREACH
+    IF
+    IN
+    INCREMENT
+    INT
+    LONG
+    LPAREN
+    NEW
+    NULL
+    RPAREN
+    SBYTE
+    SHORT
+    SIZEOF
+    STRING
+    TRUE
+    TYPEOF
+    UINT
+    ULONG
+    USHORT
+    WHILE
+    WRITE
+    WRITELINE
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> expression opermat factor
+Rule 2     expression -> expression operlog factor
+Rule 3     expression -> term
+Rule 4     opermat -> PLUS
+Rule 5     opermat -> MINUS
+Rule 6     opermat -> TIMES
+Rule 7     opermat -> DIVIDE
+Rule 8     opermat -> MOD
+Rule 9     operlog -> EQUAL
+Rule 10    operlog -> NOTEQUAL
+Rule 11    operlog -> GREATERTHAN
+Rule 12    operlog -> GREATERTHANEQUAL
+Rule 13    operlog -> LESSERTHAN
+Rule 14    operlog -> LESSERTHANEQUAL
+Rule 15    term -> factor
+Rule 16    factor -> NUMBER
+Rule 17    factor -> VARIABLE
+
+Terminals, with rules where they appear
+
+BOOL                 : 
+BYTE                 : 
+CHAR                 : 
+COMPASSIGDIVIDE      : 
+COMPASSIGMINUS       : 
+COMPASSIGPLUS        : 
+COMPASSIGTIMES       : 
+CONSOLE              : 
+DECIMAL              : 
+DECREMENT            : 
+DIVIDE               : 7
+DOUBLE               : 
+ELSE                 : 
+ENUM                 : 
+EQUAL                : 9
+EVENT                : 
+FALSE                : 
+FLOAT                : 
+FOR                  : 
+FOREACH              : 
+GREATERTHAN          : 11
+GREATERTHANEQUAL     : 12
+IF                   : 
+IN                   : 
+INCREMENT            : 
+INT                  : 
+LESSERTHAN           : 13
+LESSERTHANEQUAL      : 14
+LONG                 : 
+LPAREN               : 
+MINUS                : 5
+MOD                  : 8
+NEW                  : 
+NOTEQUAL             : 10
+NULL                 : 
+NUMBER               : 16
+PLUS                 : 4
+RPAREN               : 
+SBYTE                : 
+SHORT                : 
+SIZEOF               : 
+STRING               : 
+TIMES                : 6
+TRUE                 : 
+TYPEOF               : 
+UINT                 : 
+ULONG                : 
+USHORT               : 
+VARIABLE             : 17
+WHILE                : 
+WRITE                : 
+WRITELINE            : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 1 2 0
+factor               : 1 2 15
+operlog              : 2
+opermat              : 1
+term                 : 3
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . expression opermat factor
+    (2) expression -> . expression operlog factor
+    (3) expression -> . term
+    (15) term -> . factor
+    (16) factor -> . NUMBER
+    (17) factor -> . VARIABLE
+
+    NUMBER          shift and go to state 4
+    VARIABLE        shift and go to state 5
+
+    expression                     shift and go to state 1
+    factor                         shift and go to state 2
+    term                           shift and go to state 3
+
+state 1
+
+    (0) S' -> expression .
+    (1) expression -> expression . opermat factor
+    (2) expression -> expression . operlog factor
+    (4) opermat -> . PLUS
+    (5) opermat -> . MINUS
+    (6) opermat -> . TIMES
+    (7) opermat -> . DIVIDE
+    (8) opermat -> . MOD
+    (9) operlog -> . EQUAL
+    (10) operlog -> . NOTEQUAL
+    (11) operlog -> . GREATERTHAN
+    (12) operlog -> . GREATERTHANEQUAL
+    (13) operlog -> . LESSERTHAN
+    (14) operlog -> . LESSERTHANEQUAL
+
+    PLUS            shift and go to state 8
+    MINUS           shift and go to state 9
+    TIMES           shift and go to state 10
+    DIVIDE          shift and go to state 11
+    MOD             shift and go to state 12
+    EQUAL           shift and go to state 13
+    NOTEQUAL        shift and go to state 14
+    GREATERTHAN     shift and go to state 15
+    GREATERTHANEQUAL shift and go to state 16
+    LESSERTHAN      shift and go to state 17
+    LESSERTHANEQUAL shift and go to state 18
+
+    opermat                        shift and go to state 6
+    operlog                        shift and go to state 7
+
+state 2
+
+    (15) term -> factor .
+
+    PLUS            reduce using rule 15 (term -> factor .)
+    MINUS           reduce using rule 15 (term -> factor .)
+    TIMES           reduce using rule 15 (term -> factor .)
+    DIVIDE          reduce using rule 15 (term -> factor .)
+    MOD             reduce using rule 15 (term -> factor .)
+    EQUAL           reduce using rule 15 (term -> factor .)
+    NOTEQUAL        reduce using rule 15 (term -> factor .)
+    GREATERTHAN     reduce using rule 15 (term -> factor .)
+    GREATERTHANEQUAL reduce using rule 15 (term -> factor .)
+    LESSERTHAN      reduce using rule 15 (term -> factor .)
+    LESSERTHANEQUAL reduce using rule 15 (term -> factor .)
+    $end            reduce using rule 15 (term -> factor .)
+
+
+state 3
+
+    (3) expression -> term .
+
+    PLUS            reduce using rule 3 (expression -> term .)
+    MINUS           reduce using rule 3 (expression -> term .)
+    TIMES           reduce using rule 3 (expression -> term .)
+    DIVIDE          reduce using rule 3 (expression -> term .)
+    MOD             reduce using rule 3 (expression -> term .)
+    EQUAL           reduce using rule 3 (expression -> term .)
+    NOTEQUAL        reduce using rule 3 (expression -> term .)
+    GREATERTHAN     reduce using rule 3 (expression -> term .)
+    GREATERTHANEQUAL reduce using rule 3 (expression -> term .)
+    LESSERTHAN      reduce using rule 3 (expression -> term .)
+    LESSERTHANEQUAL reduce using rule 3 (expression -> term .)
+    $end            reduce using rule 3 (expression -> term .)
+
+
+state 4
+
+    (16) factor -> NUMBER .
+
+    PLUS            reduce using rule 16 (factor -> NUMBER .)
+    MINUS           reduce using rule 16 (factor -> NUMBER .)
+    TIMES           reduce using rule 16 (factor -> NUMBER .)
+    DIVIDE          reduce using rule 16 (factor -> NUMBER .)
+    MOD             reduce using rule 16 (factor -> NUMBER .)
+    EQUAL           reduce using rule 16 (factor -> NUMBER .)
+    NOTEQUAL        reduce using rule 16 (factor -> NUMBER .)
+    GREATERTHAN     reduce using rule 16 (factor -> NUMBER .)
+    GREATERTHANEQUAL reduce using rule 16 (factor -> NUMBER .)
+    LESSERTHAN      reduce using rule 16 (factor -> NUMBER .)
+    LESSERTHANEQUAL reduce using rule 16 (factor -> NUMBER .)
+    $end            reduce using rule 16 (factor -> NUMBER .)
+
+
+state 5
+
+    (17) factor -> VARIABLE .
+
+    PLUS            reduce using rule 17 (factor -> VARIABLE .)
+    MINUS           reduce using rule 17 (factor -> VARIABLE .)
+    TIMES           reduce using rule 17 (factor -> VARIABLE .)
+    DIVIDE          reduce using rule 17 (factor -> VARIABLE .)
+    MOD             reduce using rule 17 (factor -> VARIABLE .)
+    EQUAL           reduce using rule 17 (factor -> VARIABLE .)
+    NOTEQUAL        reduce using rule 17 (factor -> VARIABLE .)
+    GREATERTHAN     reduce using rule 17 (factor -> VARIABLE .)
+    GREATERTHANEQUAL reduce using rule 17 (factor -> VARIABLE .)
+    LESSERTHAN      reduce using rule 17 (factor -> VARIABLE .)
+    LESSERTHANEQUAL reduce using rule 17 (factor -> VARIABLE .)
+    $end            reduce using rule 17 (factor -> VARIABLE .)
+
+
+state 6
+
+    (1) expression -> expression opermat . factor
+    (16) factor -> . NUMBER
+    (17) factor -> . VARIABLE
+
+    NUMBER          shift and go to state 4
+    VARIABLE        shift and go to state 5
+
+    factor                         shift and go to state 19
+
+state 7
+
+    (2) expression -> expression operlog . factor
+    (16) factor -> . NUMBER
+    (17) factor -> . VARIABLE
+
+    NUMBER          shift and go to state 4
+    VARIABLE        shift and go to state 5
+
+    factor                         shift and go to state 20
+
+state 8
+
+    (4) opermat -> PLUS .
+
+    NUMBER          reduce using rule 4 (opermat -> PLUS .)
+    VARIABLE        reduce using rule 4 (opermat -> PLUS .)
+
+
+state 9
+
+    (5) opermat -> MINUS .
+
+    NUMBER          reduce using rule 5 (opermat -> MINUS .)
+    VARIABLE        reduce using rule 5 (opermat -> MINUS .)
+
+
+state 10
+
+    (6) opermat -> TIMES .
+
+    NUMBER          reduce using rule 6 (opermat -> TIMES .)
+    VARIABLE        reduce using rule 6 (opermat -> TIMES .)
+
+
+state 11
+
+    (7) opermat -> DIVIDE .
+
+    NUMBER          reduce using rule 7 (opermat -> DIVIDE .)
+    VARIABLE        reduce using rule 7 (opermat -> DIVIDE .)
+
+
+state 12
+
+    (8) opermat -> MOD .
+
+    NUMBER          reduce using rule 8 (opermat -> MOD .)
+    VARIABLE        reduce using rule 8 (opermat -> MOD .)
+
+
+state 13
+
+    (9) operlog -> EQUAL .
+
+    NUMBER          reduce using rule 9 (operlog -> EQUAL .)
+    VARIABLE        reduce using rule 9 (operlog -> EQUAL .)
+
+
+state 14
+
+    (10) operlog -> NOTEQUAL .
+
+    NUMBER          reduce using rule 10 (operlog -> NOTEQUAL .)
+    VARIABLE        reduce using rule 10 (operlog -> NOTEQUAL .)
+
+
+state 15
+
+    (11) operlog -> GREATERTHAN .
+
+    NUMBER          reduce using rule 11 (operlog -> GREATERTHAN .)
+    VARIABLE        reduce using rule 11 (operlog -> GREATERTHAN .)
+
+
+state 16
+
+    (12) operlog -> GREATERTHANEQUAL .
+
+    NUMBER          reduce using rule 12 (operlog -> GREATERTHANEQUAL .)
+    VARIABLE        reduce using rule 12 (operlog -> GREATERTHANEQUAL .)
+
+
+state 17
+
+    (13) operlog -> LESSERTHAN .
+
+    NUMBER          reduce using rule 13 (operlog -> LESSERTHAN .)
+    VARIABLE        reduce using rule 13 (operlog -> LESSERTHAN .)
+
+
+state 18
+
+    (14) operlog -> LESSERTHANEQUAL .
+
+    NUMBER          reduce using rule 14 (operlog -> LESSERTHANEQUAL .)
+    VARIABLE        reduce using rule 14 (operlog -> LESSERTHANEQUAL .)
+
+
+state 19
+
+    (1) expression -> expression opermat factor .
+
+    PLUS            reduce using rule 1 (expression -> expression opermat factor .)
+    MINUS           reduce using rule 1 (expression -> expression opermat factor .)
+    TIMES           reduce using rule 1 (expression -> expression opermat factor .)
+    DIVIDE          reduce using rule 1 (expression -> expression opermat factor .)
+    MOD             reduce using rule 1 (expression -> expression opermat factor .)
+    EQUAL           reduce using rule 1 (expression -> expression opermat factor .)
+    NOTEQUAL        reduce using rule 1 (expression -> expression opermat factor .)
+    GREATERTHAN     reduce using rule 1 (expression -> expression opermat factor .)
+    GREATERTHANEQUAL reduce using rule 1 (expression -> expression opermat factor .)
+    LESSERTHAN      reduce using rule 1 (expression -> expression opermat factor .)
+    LESSERTHANEQUAL reduce using rule 1 (expression -> expression opermat factor .)
+    $end            reduce using rule 1 (expression -> expression opermat factor .)
+
+
+state 20
+
+    (2) expression -> expression operlog factor .
+
+    PLUS            reduce using rule 2 (expression -> expression operlog factor .)
+    MINUS           reduce using rule 2 (expression -> expression operlog factor .)
+    TIMES           reduce using rule 2 (expression -> expression operlog factor .)
+    DIVIDE          reduce using rule 2 (expression -> expression operlog factor .)
+    MOD             reduce using rule 2 (expression -> expression operlog factor .)
+    EQUAL           reduce using rule 2 (expression -> expression operlog factor .)
+    NOTEQUAL        reduce using rule 2 (expression -> expression operlog factor .)
+    GREATERTHAN     reduce using rule 2 (expression -> expression operlog factor .)
+    GREATERTHANEQUAL reduce using rule 2 (expression -> expression operlog factor .)
+    LESSERTHAN      reduce using rule 2 (expression -> expression operlog factor .)
+    LESSERTHANEQUAL reduce using rule 2 (expression -> expression operlog factor .)
+    $end            reduce using rule 2 (expression -> expression operlog factor .)
+

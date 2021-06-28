@@ -1,5 +1,4 @@
 import ply.lex as lex
-
 # List of token names.   This is always required
 reserved = {
     'bool': 'BOOL',
@@ -30,6 +29,9 @@ reserved = {
     'while': 'WHILE',
     'false': 'FALSE',
     'true': 'TRUE',
+    'console': 'CONSOLE',
+    'writeline': 'WRITELINE',
+    'write': 'WRITE',
 }
 tokens = (
              'NUMBER',
@@ -77,7 +79,7 @@ t_COMPASSIGDIVIDE= r'\/\='
 
 
 def t_VARIABLE(t):
-    r'^([a-zA-Z]|\_)([a-zA-Z0-9]|\_)*'
+    r'([a-zA-Z]|\_)([a-zA-Z0-9]|\_)*'
     t.type = reserved.get(t.value, 'VARIABLE')  # Check for reserved words
     return t
 
@@ -98,6 +100,10 @@ def t_newline(t):
 # A string containing ignored characters (spaces and tabs)
 t_ignore = ' \t'
 
+
+def t_comment(t):
+    r'/\*.*\*/'
+    pass
 
 # Error handling rule
 def t_error(t):
