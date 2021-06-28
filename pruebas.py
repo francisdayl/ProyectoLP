@@ -37,12 +37,19 @@ def p_expression_postop(p):
     'expression : assignacion VARIABLE SEMICOLON'
     p[0] = "Operacion de pre-incremento/decremento valida"
 
+def p_preop(p):
+    'oper : VARIABLE assignacion'
+
+def p_postop(p):
+    'oper : assignacion VARIABLE'
+
+
 def p_expression_while(p):
     'expression : WHILE condicional LBRACKET expression RBRACKET'
     p[0] = "BUCLE VALIDO"
 
 def p_expression_for(p):
-    'expression : FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET'
+    'expression : FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET'
     p[0] = "FOR Valido"
 
 def p_expression_if(p):

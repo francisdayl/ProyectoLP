@@ -41,129 +41,132 @@ Rule 9     expresionlogic -> TRUE
 Rule 10    expresionlogic -> FALSE
 Rule 11    expression -> VARIABLE assignacion SEMICOLON
 Rule 12    expression -> assignacion VARIABLE SEMICOLON
-Rule 13    expression -> WHILE condicional LBRACKET expression RBRACKET
-Rule 14    expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET
-Rule 15    expression -> IF condicional LBRACKET expression RBRACKET
-Rule 16    condicional -> LPAREN expresionlogic RPAREN
-Rule 17    declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON
-Rule 18    connectlog -> AND
-Rule 19    connectlog -> OR
-Rule 20    oplog -> EQUAL
-Rule 21    oplog -> NOTEQUAL
-Rule 22    oplog -> GREATERTHAN
-Rule 23    oplog -> GREATERTHANEQUAL
-Rule 24    oplog -> LESSERTHAN
-Rule 25    oplog -> LESSERTHANEQUAL
-Rule 26    opmat -> PLUS
-Rule 27    opmat -> MINUS
-Rule 28    opmat -> TIMES
-Rule 29    opmat -> DIVIDE
-Rule 30    opmat -> MOD
-Rule 31    assignacion -> INCREMENT
-Rule 32    assignacion -> DECREMENT
-Rule 33    assignacion -> COMPASSIGPLUS
-Rule 34    assignacion -> COMPASSIGMINUS
-Rule 35    assignacion -> COMPASSIGTIMES
-Rule 36    assignacion -> COMPASSIGDIVIDE
-Rule 37    term -> factor
-Rule 38    factor -> VARIABLE
-Rule 39    term -> NUMBER
-Rule 40    datos -> BOOL
-Rule 41    datos -> BYTE
-Rule 42    datos -> CHAR
-Rule 43    datos -> DECIMAL
-Rule 44    datos -> DOUBLE
-Rule 45    datos -> FLOAT
-Rule 46    datos -> INT
-Rule 47    datos -> LONG
-Rule 48    datos -> SBYTE
-Rule 49    datos -> SHORT
-Rule 50    datos -> UINT
-Rule 51    datos -> ULONG
-Rule 52    datos -> USHORT
+Rule 13    oper -> VARIABLE assignacion
+Rule 14    oper -> assignacion VARIABLE
+Rule 15    expression -> WHILE condicional LBRACKET expression RBRACKET
+Rule 16    expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET
+Rule 17    expression -> IF condicional LBRACKET expression RBRACKET
+Rule 18    condicional -> LPAREN expresionlogic RPAREN
+Rule 19    declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON
+Rule 20    connectlog -> AND
+Rule 21    connectlog -> OR
+Rule 22    oplog -> EQUAL
+Rule 23    oplog -> NOTEQUAL
+Rule 24    oplog -> GREATERTHAN
+Rule 25    oplog -> GREATERTHANEQUAL
+Rule 26    oplog -> LESSERTHAN
+Rule 27    oplog -> LESSERTHANEQUAL
+Rule 28    opmat -> PLUS
+Rule 29    opmat -> MINUS
+Rule 30    opmat -> TIMES
+Rule 31    opmat -> DIVIDE
+Rule 32    opmat -> MOD
+Rule 33    assignacion -> INCREMENT
+Rule 34    assignacion -> DECREMENT
+Rule 35    assignacion -> COMPASSIGPLUS
+Rule 36    assignacion -> COMPASSIGMINUS
+Rule 37    assignacion -> COMPASSIGTIMES
+Rule 38    assignacion -> COMPASSIGDIVIDE
+Rule 39    term -> factor
+Rule 40    factor -> VARIABLE
+Rule 41    term -> NUMBER
+Rule 42    datos -> BOOL
+Rule 43    datos -> BYTE
+Rule 44    datos -> CHAR
+Rule 45    datos -> DECIMAL
+Rule 46    datos -> DOUBLE
+Rule 47    datos -> FLOAT
+Rule 48    datos -> INT
+Rule 49    datos -> LONG
+Rule 50    datos -> SBYTE
+Rule 51    datos -> SHORT
+Rule 52    datos -> UINT
+Rule 53    datos -> ULONG
+Rule 54    datos -> USHORT
 
 Terminals, with rules where they appear
 
 ADD                  : 
-AND                  : 18
-ASSIGNMENT           : 17
-BOOL                 : 40
-BYTE                 : 41
-CHAR                 : 42
+AND                  : 20
+ASSIGNMENT           : 19
+BOOL                 : 42
+BYTE                 : 43
+CHAR                 : 44
 COMMA                : 
 COMPARETO            : 
-COMPASSIGDIVIDE      : 36
-COMPASSIGMINUS       : 34
-COMPASSIGPLUS        : 33
-COMPASSIGTIMES       : 35
+COMPASSIGDIVIDE      : 38
+COMPASSIGMINUS       : 36
+COMPASSIGPLUS        : 35
+COMPASSIGTIMES       : 37
 CONSOLE              : 
-DECIMAL              : 43
-DECREMENT            : 32
-DIVIDE               : 29
-DOUBLE               : 44
+DECIMAL              : 45
+DECREMENT            : 34
+DIVIDE               : 31
+DOUBLE               : 46
 ELSE                 : 
 ENUM                 : 
-EQUAL                : 20
+EQUAL                : 22
 EQUALS               : 
 EVENT                : 
 FALSE                : 10
-FLOAT                : 45
-FOR                  : 14
+FLOAT                : 47
+FOR                  : 16
 FOREACH              : 
-GREATERTHAN          : 22
-GREATERTHANEQUAL     : 23
-IF                   : 15
+GREATERTHAN          : 24
+GREATERTHANEQUAL     : 25
+IF                   : 17
 IN                   : 
-INCREMENT            : 31
-INT                  : 46
+INCREMENT            : 33
+INT                  : 48
 ITEM                 : 
-LBRACKET             : 13 14 15
-LESSERTHAN           : 24
-LESSERTHANEQUAL      : 25
+LBRACKET             : 15 16 17
+LESSERTHAN           : 26
+LESSERTHANEQUAL      : 27
 LIST                 : 
-LONG                 : 47
-LPAREN               : 14 16
-MINUS                : 27
-MOD                  : 30
+LONG                 : 49
+LPAREN               : 16 18
+MINUS                : 29
+MOD                  : 32
 NEW                  : 
-NOTEQUAL             : 21
+NOTEQUAL             : 23
 NULL                 : 
-NUMBER               : 39
-OR                   : 19
-PLUS                 : 26
+NUMBER               : 41
+OR                   : 21
+PLUS                 : 28
 POINT                : 
-RBRACKET             : 13 14 15
+RBRACKET             : 15 16 17
 REMOVE               : 
 REMOVEAT             : 
-RPAREN               : 14 16
-SBYTE                : 48
-SEMICOLON            : 11 12 14 17
-SHORT                : 49
+RPAREN               : 16 18
+SBYTE                : 50
+SEMICOLON            : 11 12 16 19
+SHORT                : 51
 SIZEOF               : 
 STRING               : 
-TIMES                : 28
+TIMES                : 30
 TRUE                 : 9
 TUPLE                : 
 TYPEOF               : 
-UINT                 : 50
-ULONG                : 51
-USHORT               : 52
-VARIABLE             : 11 12 17 38
-WHILE                : 13
+UINT                 : 52
+ULONG                : 53
+USHORT               : 54
+VARIABLE             : 11 12 13 14 19 40
+WHILE                : 15
 WRITE                : 
 WRITELINE            : 
 error                : 
 
 Nonterminals, with rules where they appear
 
-assignacion          : 11 12
-condicional          : 5 13 15
+assignacion          : 11 12 13 14
+condicional          : 5 15 17
 connectlog           : 7
-datos                : 2
-declaracion          : 2 3 14
-expresionlogic       : 6 7 7 14 16
-expression           : 4 13 14 14 15 17 0
-factor               : 37
+datos                : 2 16
+declaracion          : 2 3 16
+expresionlogic       : 6 7 7 16 18
+expression           : 4 15 16 17 19 0
+factor               : 39
+oper                 : 16
 oplog                : 8
 opmat                : 4
 term                 : 1 4 8 8
@@ -182,36 +185,36 @@ state 0
     (7) expression -> . expresionlogic connectlog expresionlogic
     (11) expression -> . VARIABLE assignacion SEMICOLON
     (12) expression -> . assignacion VARIABLE SEMICOLON
-    (13) expression -> . WHILE condicional LBRACKET expression RBRACKET
-    (14) expression -> . FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET
-    (15) expression -> . IF condicional LBRACKET expression RBRACKET
-    (37) term -> . factor
-    (39) term -> . NUMBER
-    (40) datos -> . BOOL
-    (41) datos -> . BYTE
-    (42) datos -> . CHAR
-    (43) datos -> . DECIMAL
-    (44) datos -> . DOUBLE
-    (45) datos -> . FLOAT
-    (46) datos -> . INT
-    (47) datos -> . LONG
-    (48) datos -> . SBYTE
-    (49) datos -> . SHORT
-    (50) datos -> . UINT
-    (51) datos -> . ULONG
-    (52) datos -> . USHORT
-    (17) declaracion -> . VARIABLE ASSIGNMENT expression SEMICOLON
-    (16) condicional -> . LPAREN expresionlogic RPAREN
+    (15) expression -> . WHILE condicional LBRACKET expression RBRACKET
+    (16) expression -> . FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET
+    (17) expression -> . IF condicional LBRACKET expression RBRACKET
+    (39) term -> . factor
+    (41) term -> . NUMBER
+    (42) datos -> . BOOL
+    (43) datos -> . BYTE
+    (44) datos -> . CHAR
+    (45) datos -> . DECIMAL
+    (46) datos -> . DOUBLE
+    (47) datos -> . FLOAT
+    (48) datos -> . INT
+    (49) datos -> . LONG
+    (50) datos -> . SBYTE
+    (51) datos -> . SHORT
+    (52) datos -> . UINT
+    (53) datos -> . ULONG
+    (54) datos -> . USHORT
+    (19) declaracion -> . VARIABLE ASSIGNMENT expression SEMICOLON
+    (18) condicional -> . LPAREN expresionlogic RPAREN
     (8) expresionlogic -> . term oplog term
     (9) expresionlogic -> . TRUE
     (10) expresionlogic -> . FALSE
-    (31) assignacion -> . INCREMENT
-    (32) assignacion -> . DECREMENT
-    (33) assignacion -> . COMPASSIGPLUS
-    (34) assignacion -> . COMPASSIGMINUS
-    (35) assignacion -> . COMPASSIGTIMES
-    (36) assignacion -> . COMPASSIGDIVIDE
-    (38) factor -> . VARIABLE
+    (33) assignacion -> . INCREMENT
+    (34) assignacion -> . DECREMENT
+    (35) assignacion -> . COMPASSIGPLUS
+    (36) assignacion -> . COMPASSIGMINUS
+    (37) assignacion -> . COMPASSIGTIMES
+    (38) assignacion -> . COMPASSIGDIVIDE
+    (40) factor -> . VARIABLE
 
     VARIABLE        shift and go to state 7
     WHILE           shift and go to state 9
@@ -254,11 +257,11 @@ state 1
 
     (0) S' -> expression .
     (4) expression -> expression . opmat term
-    (26) opmat -> . PLUS
-    (27) opmat -> . MINUS
-    (28) opmat -> . TIMES
-    (29) opmat -> . DIVIDE
-    (30) opmat -> . MOD
+    (28) opmat -> . PLUS
+    (29) opmat -> . MINUS
+    (30) opmat -> . TIMES
+    (31) opmat -> . DIVIDE
+    (32) opmat -> . MOD
 
     PLUS            shift and go to state 37
     MINUS           shift and go to state 38
@@ -272,12 +275,12 @@ state 2
 
     (1) expression -> term .
     (8) expresionlogic -> term . oplog term
-    (20) oplog -> . EQUAL
-    (21) oplog -> . NOTEQUAL
-    (22) oplog -> . GREATERTHAN
-    (23) oplog -> . GREATERTHANEQUAL
-    (24) oplog -> . LESSERTHAN
-    (25) oplog -> . LESSERTHANEQUAL
+    (22) oplog -> . EQUAL
+    (23) oplog -> . NOTEQUAL
+    (24) oplog -> . GREATERTHAN
+    (25) oplog -> . GREATERTHANEQUAL
+    (26) oplog -> . LESSERTHAN
+    (27) oplog -> . LESSERTHANEQUAL
 
     PLUS            reduce using rule 1 (expression -> term .)
     MINUS           reduce using rule 1 (expression -> term .)
@@ -287,7 +290,6 @@ state 2
     $end            reduce using rule 1 (expression -> term .)
     SEMICOLON       reduce using rule 1 (expression -> term .)
     RBRACKET        reduce using rule 1 (expression -> term .)
-    RPAREN          reduce using rule 1 (expression -> term .)
     EQUAL           shift and go to state 43
     NOTEQUAL        shift and go to state 44
     GREATERTHAN     shift and go to state 45
@@ -300,7 +302,7 @@ state 2
 state 3
 
     (2) expression -> datos . declaracion
-    (17) declaracion -> . VARIABLE ASSIGNMENT expression SEMICOLON
+    (19) declaracion -> . VARIABLE ASSIGNMENT expression SEMICOLON
 
     VARIABLE        shift and go to state 50
 
@@ -318,7 +320,6 @@ state 4
     $end            reduce using rule 3 (expression -> declaracion .)
     SEMICOLON       reduce using rule 3 (expression -> declaracion .)
     RBRACKET        reduce using rule 3 (expression -> declaracion .)
-    RPAREN          reduce using rule 3 (expression -> declaracion .)
 
 
 state 5
@@ -333,15 +334,14 @@ state 5
     $end            reduce using rule 5 (expression -> condicional .)
     SEMICOLON       reduce using rule 5 (expression -> condicional .)
     RBRACKET        reduce using rule 5 (expression -> condicional .)
-    RPAREN          reduce using rule 5 (expression -> condicional .)
 
 
 state 6
 
     (6) expression -> expresionlogic .
     (7) expression -> expresionlogic . connectlog expresionlogic
-    (18) connectlog -> . AND
-    (19) connectlog -> . OR
+    (20) connectlog -> . AND
+    (21) connectlog -> . OR
 
     PLUS            reduce using rule 6 (expression -> expresionlogic .)
     MINUS           reduce using rule 6 (expression -> expresionlogic .)
@@ -351,7 +351,6 @@ state 6
     $end            reduce using rule 6 (expression -> expresionlogic .)
     SEMICOLON       reduce using rule 6 (expression -> expresionlogic .)
     RBRACKET        reduce using rule 6 (expression -> expresionlogic .)
-    RPAREN          reduce using rule 6 (expression -> expresionlogic .)
     AND             shift and go to state 52
     OR              shift and go to state 53
 
@@ -360,31 +359,30 @@ state 6
 state 7
 
     (11) expression -> VARIABLE . assignacion SEMICOLON
-    (17) declaracion -> VARIABLE . ASSIGNMENT expression SEMICOLON
-    (38) factor -> VARIABLE .
-    (31) assignacion -> . INCREMENT
-    (32) assignacion -> . DECREMENT
-    (33) assignacion -> . COMPASSIGPLUS
-    (34) assignacion -> . COMPASSIGMINUS
-    (35) assignacion -> . COMPASSIGTIMES
-    (36) assignacion -> . COMPASSIGDIVIDE
+    (19) declaracion -> VARIABLE . ASSIGNMENT expression SEMICOLON
+    (40) factor -> VARIABLE .
+    (33) assignacion -> . INCREMENT
+    (34) assignacion -> . DECREMENT
+    (35) assignacion -> . COMPASSIGPLUS
+    (36) assignacion -> . COMPASSIGMINUS
+    (37) assignacion -> . COMPASSIGTIMES
+    (38) assignacion -> . COMPASSIGDIVIDE
 
     ASSIGNMENT      shift and go to state 55
-    EQUAL           reduce using rule 38 (factor -> VARIABLE .)
-    NOTEQUAL        reduce using rule 38 (factor -> VARIABLE .)
-    GREATERTHAN     reduce using rule 38 (factor -> VARIABLE .)
-    GREATERTHANEQUAL reduce using rule 38 (factor -> VARIABLE .)
-    LESSERTHAN      reduce using rule 38 (factor -> VARIABLE .)
-    LESSERTHANEQUAL reduce using rule 38 (factor -> VARIABLE .)
-    PLUS            reduce using rule 38 (factor -> VARIABLE .)
-    MINUS           reduce using rule 38 (factor -> VARIABLE .)
-    TIMES           reduce using rule 38 (factor -> VARIABLE .)
-    DIVIDE          reduce using rule 38 (factor -> VARIABLE .)
-    MOD             reduce using rule 38 (factor -> VARIABLE .)
-    $end            reduce using rule 38 (factor -> VARIABLE .)
-    SEMICOLON       reduce using rule 38 (factor -> VARIABLE .)
-    RBRACKET        reduce using rule 38 (factor -> VARIABLE .)
-    RPAREN          reduce using rule 38 (factor -> VARIABLE .)
+    EQUAL           reduce using rule 40 (factor -> VARIABLE .)
+    NOTEQUAL        reduce using rule 40 (factor -> VARIABLE .)
+    GREATERTHAN     reduce using rule 40 (factor -> VARIABLE .)
+    GREATERTHANEQUAL reduce using rule 40 (factor -> VARIABLE .)
+    LESSERTHAN      reduce using rule 40 (factor -> VARIABLE .)
+    LESSERTHANEQUAL reduce using rule 40 (factor -> VARIABLE .)
+    PLUS            reduce using rule 40 (factor -> VARIABLE .)
+    MINUS           reduce using rule 40 (factor -> VARIABLE .)
+    TIMES           reduce using rule 40 (factor -> VARIABLE .)
+    DIVIDE          reduce using rule 40 (factor -> VARIABLE .)
+    MOD             reduce using rule 40 (factor -> VARIABLE .)
+    $end            reduce using rule 40 (factor -> VARIABLE .)
+    SEMICOLON       reduce using rule 40 (factor -> VARIABLE .)
+    RBRACKET        reduce using rule 40 (factor -> VARIABLE .)
     INCREMENT       shift and go to state 30
     DECREMENT       shift and go to state 31
     COMPASSIGPLUS   shift and go to state 32
@@ -403,8 +401,8 @@ state 8
 
 state 9
 
-    (13) expression -> WHILE . condicional LBRACKET expression RBRACKET
-    (16) condicional -> . LPAREN expresionlogic RPAREN
+    (15) expression -> WHILE . condicional LBRACKET expression RBRACKET
+    (18) condicional -> . LPAREN expresionlogic RPAREN
 
     LPAREN          shift and go to state 11
 
@@ -412,20 +410,20 @@ state 9
 
 state 10
 
-    (14) expression -> FOR . LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET
+    (16) expression -> FOR . LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET
 
     LPAREN          shift and go to state 58
 
 
 state 11
 
-    (16) condicional -> LPAREN . expresionlogic RPAREN
+    (18) condicional -> LPAREN . expresionlogic RPAREN
     (8) expresionlogic -> . term oplog term
     (9) expresionlogic -> . TRUE
     (10) expresionlogic -> . FALSE
-    (37) term -> . factor
-    (39) term -> . NUMBER
-    (38) factor -> . VARIABLE
+    (39) term -> . factor
+    (41) term -> . NUMBER
+    (40) factor -> . VARIABLE
 
     TRUE            shift and go to state 28
     FALSE           shift and go to state 29
@@ -438,8 +436,8 @@ state 11
 
 state 12
 
-    (15) expression -> IF . condicional LBRACKET expression RBRACKET
-    (16) condicional -> . LPAREN expresionlogic RPAREN
+    (17) expression -> IF . condicional LBRACKET expression RBRACKET
+    (18) condicional -> . LPAREN expresionlogic RPAREN
 
     LPAREN          shift and go to state 11
 
@@ -447,139 +445,139 @@ state 12
 
 state 13
 
-    (37) term -> factor .
+    (39) term -> factor .
 
-    EQUAL           reduce using rule 37 (term -> factor .)
-    NOTEQUAL        reduce using rule 37 (term -> factor .)
-    GREATERTHAN     reduce using rule 37 (term -> factor .)
-    GREATERTHANEQUAL reduce using rule 37 (term -> factor .)
-    LESSERTHAN      reduce using rule 37 (term -> factor .)
-    LESSERTHANEQUAL reduce using rule 37 (term -> factor .)
-    PLUS            reduce using rule 37 (term -> factor .)
-    MINUS           reduce using rule 37 (term -> factor .)
-    TIMES           reduce using rule 37 (term -> factor .)
-    DIVIDE          reduce using rule 37 (term -> factor .)
-    MOD             reduce using rule 37 (term -> factor .)
-    $end            reduce using rule 37 (term -> factor .)
-    SEMICOLON       reduce using rule 37 (term -> factor .)
-    RBRACKET        reduce using rule 37 (term -> factor .)
-    RPAREN          reduce using rule 37 (term -> factor .)
-    AND             reduce using rule 37 (term -> factor .)
-    OR              reduce using rule 37 (term -> factor .)
+    EQUAL           reduce using rule 39 (term -> factor .)
+    NOTEQUAL        reduce using rule 39 (term -> factor .)
+    GREATERTHAN     reduce using rule 39 (term -> factor .)
+    GREATERTHANEQUAL reduce using rule 39 (term -> factor .)
+    LESSERTHAN      reduce using rule 39 (term -> factor .)
+    LESSERTHANEQUAL reduce using rule 39 (term -> factor .)
+    PLUS            reduce using rule 39 (term -> factor .)
+    MINUS           reduce using rule 39 (term -> factor .)
+    TIMES           reduce using rule 39 (term -> factor .)
+    DIVIDE          reduce using rule 39 (term -> factor .)
+    MOD             reduce using rule 39 (term -> factor .)
+    $end            reduce using rule 39 (term -> factor .)
+    SEMICOLON       reduce using rule 39 (term -> factor .)
+    RBRACKET        reduce using rule 39 (term -> factor .)
+    AND             reduce using rule 39 (term -> factor .)
+    OR              reduce using rule 39 (term -> factor .)
+    RPAREN          reduce using rule 39 (term -> factor .)
 
 
 state 14
 
-    (39) term -> NUMBER .
+    (41) term -> NUMBER .
 
-    EQUAL           reduce using rule 39 (term -> NUMBER .)
-    NOTEQUAL        reduce using rule 39 (term -> NUMBER .)
-    GREATERTHAN     reduce using rule 39 (term -> NUMBER .)
-    GREATERTHANEQUAL reduce using rule 39 (term -> NUMBER .)
-    LESSERTHAN      reduce using rule 39 (term -> NUMBER .)
-    LESSERTHANEQUAL reduce using rule 39 (term -> NUMBER .)
-    PLUS            reduce using rule 39 (term -> NUMBER .)
-    MINUS           reduce using rule 39 (term -> NUMBER .)
-    TIMES           reduce using rule 39 (term -> NUMBER .)
-    DIVIDE          reduce using rule 39 (term -> NUMBER .)
-    MOD             reduce using rule 39 (term -> NUMBER .)
-    $end            reduce using rule 39 (term -> NUMBER .)
-    SEMICOLON       reduce using rule 39 (term -> NUMBER .)
-    RBRACKET        reduce using rule 39 (term -> NUMBER .)
-    RPAREN          reduce using rule 39 (term -> NUMBER .)
-    AND             reduce using rule 39 (term -> NUMBER .)
-    OR              reduce using rule 39 (term -> NUMBER .)
+    EQUAL           reduce using rule 41 (term -> NUMBER .)
+    NOTEQUAL        reduce using rule 41 (term -> NUMBER .)
+    GREATERTHAN     reduce using rule 41 (term -> NUMBER .)
+    GREATERTHANEQUAL reduce using rule 41 (term -> NUMBER .)
+    LESSERTHAN      reduce using rule 41 (term -> NUMBER .)
+    LESSERTHANEQUAL reduce using rule 41 (term -> NUMBER .)
+    PLUS            reduce using rule 41 (term -> NUMBER .)
+    MINUS           reduce using rule 41 (term -> NUMBER .)
+    TIMES           reduce using rule 41 (term -> NUMBER .)
+    DIVIDE          reduce using rule 41 (term -> NUMBER .)
+    MOD             reduce using rule 41 (term -> NUMBER .)
+    $end            reduce using rule 41 (term -> NUMBER .)
+    SEMICOLON       reduce using rule 41 (term -> NUMBER .)
+    RBRACKET        reduce using rule 41 (term -> NUMBER .)
+    AND             reduce using rule 41 (term -> NUMBER .)
+    OR              reduce using rule 41 (term -> NUMBER .)
+    RPAREN          reduce using rule 41 (term -> NUMBER .)
 
 
 state 15
 
-    (40) datos -> BOOL .
+    (42) datos -> BOOL .
 
-    VARIABLE        reduce using rule 40 (datos -> BOOL .)
+    VARIABLE        reduce using rule 42 (datos -> BOOL .)
 
 
 state 16
 
-    (41) datos -> BYTE .
+    (43) datos -> BYTE .
 
-    VARIABLE        reduce using rule 41 (datos -> BYTE .)
+    VARIABLE        reduce using rule 43 (datos -> BYTE .)
 
 
 state 17
 
-    (42) datos -> CHAR .
+    (44) datos -> CHAR .
 
-    VARIABLE        reduce using rule 42 (datos -> CHAR .)
+    VARIABLE        reduce using rule 44 (datos -> CHAR .)
 
 
 state 18
 
-    (43) datos -> DECIMAL .
+    (45) datos -> DECIMAL .
 
-    VARIABLE        reduce using rule 43 (datos -> DECIMAL .)
+    VARIABLE        reduce using rule 45 (datos -> DECIMAL .)
 
 
 state 19
 
-    (44) datos -> DOUBLE .
+    (46) datos -> DOUBLE .
 
-    VARIABLE        reduce using rule 44 (datos -> DOUBLE .)
+    VARIABLE        reduce using rule 46 (datos -> DOUBLE .)
 
 
 state 20
 
-    (45) datos -> FLOAT .
+    (47) datos -> FLOAT .
 
-    VARIABLE        reduce using rule 45 (datos -> FLOAT .)
+    VARIABLE        reduce using rule 47 (datos -> FLOAT .)
 
 
 state 21
 
-    (46) datos -> INT .
+    (48) datos -> INT .
 
-    VARIABLE        reduce using rule 46 (datos -> INT .)
+    VARIABLE        reduce using rule 48 (datos -> INT .)
 
 
 state 22
 
-    (47) datos -> LONG .
+    (49) datos -> LONG .
 
-    VARIABLE        reduce using rule 47 (datos -> LONG .)
+    VARIABLE        reduce using rule 49 (datos -> LONG .)
 
 
 state 23
 
-    (48) datos -> SBYTE .
+    (50) datos -> SBYTE .
 
-    VARIABLE        reduce using rule 48 (datos -> SBYTE .)
+    VARIABLE        reduce using rule 50 (datos -> SBYTE .)
 
 
 state 24
 
-    (49) datos -> SHORT .
+    (51) datos -> SHORT .
 
-    VARIABLE        reduce using rule 49 (datos -> SHORT .)
+    VARIABLE        reduce using rule 51 (datos -> SHORT .)
 
 
 state 25
 
-    (50) datos -> UINT .
+    (52) datos -> UINT .
 
-    VARIABLE        reduce using rule 50 (datos -> UINT .)
+    VARIABLE        reduce using rule 52 (datos -> UINT .)
 
 
 state 26
 
-    (51) datos -> ULONG .
+    (53) datos -> ULONG .
 
-    VARIABLE        reduce using rule 51 (datos -> ULONG .)
+    VARIABLE        reduce using rule 53 (datos -> ULONG .)
 
 
 state 27
 
-    (52) datos -> USHORT .
+    (54) datos -> USHORT .
 
-    VARIABLE        reduce using rule 52 (datos -> USHORT .)
+    VARIABLE        reduce using rule 54 (datos -> USHORT .)
 
 
 state 28
@@ -618,58 +616,64 @@ state 29
 
 state 30
 
-    (31) assignacion -> INCREMENT .
+    (33) assignacion -> INCREMENT .
 
-    VARIABLE        reduce using rule 31 (assignacion -> INCREMENT .)
-    SEMICOLON       reduce using rule 31 (assignacion -> INCREMENT .)
+    VARIABLE        reduce using rule 33 (assignacion -> INCREMENT .)
+    SEMICOLON       reduce using rule 33 (assignacion -> INCREMENT .)
+    RPAREN          reduce using rule 33 (assignacion -> INCREMENT .)
 
 
 state 31
 
-    (32) assignacion -> DECREMENT .
+    (34) assignacion -> DECREMENT .
 
-    VARIABLE        reduce using rule 32 (assignacion -> DECREMENT .)
-    SEMICOLON       reduce using rule 32 (assignacion -> DECREMENT .)
+    VARIABLE        reduce using rule 34 (assignacion -> DECREMENT .)
+    SEMICOLON       reduce using rule 34 (assignacion -> DECREMENT .)
+    RPAREN          reduce using rule 34 (assignacion -> DECREMENT .)
 
 
 state 32
 
-    (33) assignacion -> COMPASSIGPLUS .
+    (35) assignacion -> COMPASSIGPLUS .
 
-    VARIABLE        reduce using rule 33 (assignacion -> COMPASSIGPLUS .)
-    SEMICOLON       reduce using rule 33 (assignacion -> COMPASSIGPLUS .)
+    VARIABLE        reduce using rule 35 (assignacion -> COMPASSIGPLUS .)
+    SEMICOLON       reduce using rule 35 (assignacion -> COMPASSIGPLUS .)
+    RPAREN          reduce using rule 35 (assignacion -> COMPASSIGPLUS .)
 
 
 state 33
 
-    (34) assignacion -> COMPASSIGMINUS .
+    (36) assignacion -> COMPASSIGMINUS .
 
-    VARIABLE        reduce using rule 34 (assignacion -> COMPASSIGMINUS .)
-    SEMICOLON       reduce using rule 34 (assignacion -> COMPASSIGMINUS .)
+    VARIABLE        reduce using rule 36 (assignacion -> COMPASSIGMINUS .)
+    SEMICOLON       reduce using rule 36 (assignacion -> COMPASSIGMINUS .)
+    RPAREN          reduce using rule 36 (assignacion -> COMPASSIGMINUS .)
 
 
 state 34
 
-    (35) assignacion -> COMPASSIGTIMES .
+    (37) assignacion -> COMPASSIGTIMES .
 
-    VARIABLE        reduce using rule 35 (assignacion -> COMPASSIGTIMES .)
-    SEMICOLON       reduce using rule 35 (assignacion -> COMPASSIGTIMES .)
+    VARIABLE        reduce using rule 37 (assignacion -> COMPASSIGTIMES .)
+    SEMICOLON       reduce using rule 37 (assignacion -> COMPASSIGTIMES .)
+    RPAREN          reduce using rule 37 (assignacion -> COMPASSIGTIMES .)
 
 
 state 35
 
-    (36) assignacion -> COMPASSIGDIVIDE .
+    (38) assignacion -> COMPASSIGDIVIDE .
 
-    VARIABLE        reduce using rule 36 (assignacion -> COMPASSIGDIVIDE .)
-    SEMICOLON       reduce using rule 36 (assignacion -> COMPASSIGDIVIDE .)
+    VARIABLE        reduce using rule 38 (assignacion -> COMPASSIGDIVIDE .)
+    SEMICOLON       reduce using rule 38 (assignacion -> COMPASSIGDIVIDE .)
+    RPAREN          reduce using rule 38 (assignacion -> COMPASSIGDIVIDE .)
 
 
 state 36
 
     (4) expression -> expression opmat . term
-    (37) term -> . factor
-    (39) term -> . NUMBER
-    (38) factor -> . VARIABLE
+    (39) term -> . factor
+    (41) term -> . NUMBER
+    (40) factor -> . VARIABLE
 
     NUMBER          shift and go to state 14
     VARIABLE        shift and go to state 61
@@ -679,50 +683,50 @@ state 36
 
 state 37
 
-    (26) opmat -> PLUS .
+    (28) opmat -> PLUS .
 
-    NUMBER          reduce using rule 26 (opmat -> PLUS .)
-    VARIABLE        reduce using rule 26 (opmat -> PLUS .)
+    NUMBER          reduce using rule 28 (opmat -> PLUS .)
+    VARIABLE        reduce using rule 28 (opmat -> PLUS .)
 
 
 state 38
 
-    (27) opmat -> MINUS .
+    (29) opmat -> MINUS .
 
-    NUMBER          reduce using rule 27 (opmat -> MINUS .)
-    VARIABLE        reduce using rule 27 (opmat -> MINUS .)
+    NUMBER          reduce using rule 29 (opmat -> MINUS .)
+    VARIABLE        reduce using rule 29 (opmat -> MINUS .)
 
 
 state 39
 
-    (28) opmat -> TIMES .
+    (30) opmat -> TIMES .
 
-    NUMBER          reduce using rule 28 (opmat -> TIMES .)
-    VARIABLE        reduce using rule 28 (opmat -> TIMES .)
+    NUMBER          reduce using rule 30 (opmat -> TIMES .)
+    VARIABLE        reduce using rule 30 (opmat -> TIMES .)
 
 
 state 40
 
-    (29) opmat -> DIVIDE .
+    (31) opmat -> DIVIDE .
 
-    NUMBER          reduce using rule 29 (opmat -> DIVIDE .)
-    VARIABLE        reduce using rule 29 (opmat -> DIVIDE .)
+    NUMBER          reduce using rule 31 (opmat -> DIVIDE .)
+    VARIABLE        reduce using rule 31 (opmat -> DIVIDE .)
 
 
 state 41
 
-    (30) opmat -> MOD .
+    (32) opmat -> MOD .
 
-    NUMBER          reduce using rule 30 (opmat -> MOD .)
-    VARIABLE        reduce using rule 30 (opmat -> MOD .)
+    NUMBER          reduce using rule 32 (opmat -> MOD .)
+    VARIABLE        reduce using rule 32 (opmat -> MOD .)
 
 
 state 42
 
     (8) expresionlogic -> term oplog . term
-    (37) term -> . factor
-    (39) term -> . NUMBER
-    (38) factor -> . VARIABLE
+    (39) term -> . factor
+    (41) term -> . NUMBER
+    (40) factor -> . VARIABLE
 
     NUMBER          shift and go to state 14
     VARIABLE        shift and go to state 61
@@ -732,50 +736,50 @@ state 42
 
 state 43
 
-    (20) oplog -> EQUAL .
+    (22) oplog -> EQUAL .
 
-    NUMBER          reduce using rule 20 (oplog -> EQUAL .)
-    VARIABLE        reduce using rule 20 (oplog -> EQUAL .)
+    NUMBER          reduce using rule 22 (oplog -> EQUAL .)
+    VARIABLE        reduce using rule 22 (oplog -> EQUAL .)
 
 
 state 44
 
-    (21) oplog -> NOTEQUAL .
+    (23) oplog -> NOTEQUAL .
 
-    NUMBER          reduce using rule 21 (oplog -> NOTEQUAL .)
-    VARIABLE        reduce using rule 21 (oplog -> NOTEQUAL .)
+    NUMBER          reduce using rule 23 (oplog -> NOTEQUAL .)
+    VARIABLE        reduce using rule 23 (oplog -> NOTEQUAL .)
 
 
 state 45
 
-    (22) oplog -> GREATERTHAN .
+    (24) oplog -> GREATERTHAN .
 
-    NUMBER          reduce using rule 22 (oplog -> GREATERTHAN .)
-    VARIABLE        reduce using rule 22 (oplog -> GREATERTHAN .)
+    NUMBER          reduce using rule 24 (oplog -> GREATERTHAN .)
+    VARIABLE        reduce using rule 24 (oplog -> GREATERTHAN .)
 
 
 state 46
 
-    (23) oplog -> GREATERTHANEQUAL .
+    (25) oplog -> GREATERTHANEQUAL .
 
-    NUMBER          reduce using rule 23 (oplog -> GREATERTHANEQUAL .)
-    VARIABLE        reduce using rule 23 (oplog -> GREATERTHANEQUAL .)
+    NUMBER          reduce using rule 25 (oplog -> GREATERTHANEQUAL .)
+    VARIABLE        reduce using rule 25 (oplog -> GREATERTHANEQUAL .)
 
 
 state 47
 
-    (24) oplog -> LESSERTHAN .
+    (26) oplog -> LESSERTHAN .
 
-    NUMBER          reduce using rule 24 (oplog -> LESSERTHAN .)
-    VARIABLE        reduce using rule 24 (oplog -> LESSERTHAN .)
+    NUMBER          reduce using rule 26 (oplog -> LESSERTHAN .)
+    VARIABLE        reduce using rule 26 (oplog -> LESSERTHAN .)
 
 
 state 48
 
-    (25) oplog -> LESSERTHANEQUAL .
+    (27) oplog -> LESSERTHANEQUAL .
 
-    NUMBER          reduce using rule 25 (oplog -> LESSERTHANEQUAL .)
-    VARIABLE        reduce using rule 25 (oplog -> LESSERTHANEQUAL .)
+    NUMBER          reduce using rule 27 (oplog -> LESSERTHANEQUAL .)
+    VARIABLE        reduce using rule 27 (oplog -> LESSERTHANEQUAL .)
 
 
 state 49
@@ -790,12 +794,11 @@ state 49
     $end            reduce using rule 2 (expression -> datos declaracion .)
     SEMICOLON       reduce using rule 2 (expression -> datos declaracion .)
     RBRACKET        reduce using rule 2 (expression -> datos declaracion .)
-    RPAREN          reduce using rule 2 (expression -> datos declaracion .)
 
 
 state 50
 
-    (17) declaracion -> VARIABLE . ASSIGNMENT expression SEMICOLON
+    (19) declaracion -> VARIABLE . ASSIGNMENT expression SEMICOLON
 
     ASSIGNMENT      shift and go to state 55
 
@@ -806,9 +809,9 @@ state 51
     (8) expresionlogic -> . term oplog term
     (9) expresionlogic -> . TRUE
     (10) expresionlogic -> . FALSE
-    (37) term -> . factor
-    (39) term -> . NUMBER
-    (38) factor -> . VARIABLE
+    (39) term -> . factor
+    (41) term -> . NUMBER
+    (40) factor -> . VARIABLE
 
     TRUE            shift and go to state 28
     FALSE           shift and go to state 29
@@ -821,22 +824,22 @@ state 51
 
 state 52
 
-    (18) connectlog -> AND .
+    (20) connectlog -> AND .
 
-    TRUE            reduce using rule 18 (connectlog -> AND .)
-    FALSE           reduce using rule 18 (connectlog -> AND .)
-    NUMBER          reduce using rule 18 (connectlog -> AND .)
-    VARIABLE        reduce using rule 18 (connectlog -> AND .)
+    TRUE            reduce using rule 20 (connectlog -> AND .)
+    FALSE           reduce using rule 20 (connectlog -> AND .)
+    NUMBER          reduce using rule 20 (connectlog -> AND .)
+    VARIABLE        reduce using rule 20 (connectlog -> AND .)
 
 
 state 53
 
-    (19) connectlog -> OR .
+    (21) connectlog -> OR .
 
-    TRUE            reduce using rule 19 (connectlog -> OR .)
-    FALSE           reduce using rule 19 (connectlog -> OR .)
-    NUMBER          reduce using rule 19 (connectlog -> OR .)
-    VARIABLE        reduce using rule 19 (connectlog -> OR .)
+    TRUE            reduce using rule 21 (connectlog -> OR .)
+    FALSE           reduce using rule 21 (connectlog -> OR .)
+    NUMBER          reduce using rule 21 (connectlog -> OR .)
+    VARIABLE        reduce using rule 21 (connectlog -> OR .)
 
 
 state 54
@@ -848,7 +851,7 @@ state 54
 
 state 55
 
-    (17) declaracion -> VARIABLE ASSIGNMENT . expression SEMICOLON
+    (19) declaracion -> VARIABLE ASSIGNMENT . expression SEMICOLON
     (1) expression -> . term
     (2) expression -> . datos declaracion
     (3) expression -> . declaracion
@@ -858,36 +861,36 @@ state 55
     (7) expression -> . expresionlogic connectlog expresionlogic
     (11) expression -> . VARIABLE assignacion SEMICOLON
     (12) expression -> . assignacion VARIABLE SEMICOLON
-    (13) expression -> . WHILE condicional LBRACKET expression RBRACKET
-    (14) expression -> . FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET
-    (15) expression -> . IF condicional LBRACKET expression RBRACKET
-    (37) term -> . factor
-    (39) term -> . NUMBER
-    (40) datos -> . BOOL
-    (41) datos -> . BYTE
-    (42) datos -> . CHAR
-    (43) datos -> . DECIMAL
-    (44) datos -> . DOUBLE
-    (45) datos -> . FLOAT
-    (46) datos -> . INT
-    (47) datos -> . LONG
-    (48) datos -> . SBYTE
-    (49) datos -> . SHORT
-    (50) datos -> . UINT
-    (51) datos -> . ULONG
-    (52) datos -> . USHORT
-    (17) declaracion -> . VARIABLE ASSIGNMENT expression SEMICOLON
-    (16) condicional -> . LPAREN expresionlogic RPAREN
+    (15) expression -> . WHILE condicional LBRACKET expression RBRACKET
+    (16) expression -> . FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET
+    (17) expression -> . IF condicional LBRACKET expression RBRACKET
+    (39) term -> . factor
+    (41) term -> . NUMBER
+    (42) datos -> . BOOL
+    (43) datos -> . BYTE
+    (44) datos -> . CHAR
+    (45) datos -> . DECIMAL
+    (46) datos -> . DOUBLE
+    (47) datos -> . FLOAT
+    (48) datos -> . INT
+    (49) datos -> . LONG
+    (50) datos -> . SBYTE
+    (51) datos -> . SHORT
+    (52) datos -> . UINT
+    (53) datos -> . ULONG
+    (54) datos -> . USHORT
+    (19) declaracion -> . VARIABLE ASSIGNMENT expression SEMICOLON
+    (18) condicional -> . LPAREN expresionlogic RPAREN
     (8) expresionlogic -> . term oplog term
     (9) expresionlogic -> . TRUE
     (10) expresionlogic -> . FALSE
-    (31) assignacion -> . INCREMENT
-    (32) assignacion -> . DECREMENT
-    (33) assignacion -> . COMPASSIGPLUS
-    (34) assignacion -> . COMPASSIGMINUS
-    (35) assignacion -> . COMPASSIGTIMES
-    (36) assignacion -> . COMPASSIGDIVIDE
-    (38) factor -> . VARIABLE
+    (33) assignacion -> . INCREMENT
+    (34) assignacion -> . DECREMENT
+    (35) assignacion -> . COMPASSIGPLUS
+    (36) assignacion -> . COMPASSIGMINUS
+    (37) assignacion -> . COMPASSIGTIMES
+    (38) assignacion -> . COMPASSIGDIVIDE
+    (40) factor -> . VARIABLE
 
     VARIABLE        shift and go to state 7
     WHILE           shift and go to state 9
@@ -935,23 +938,47 @@ state 56
 
 state 57
 
-    (13) expression -> WHILE condicional . LBRACKET expression RBRACKET
+    (15) expression -> WHILE condicional . LBRACKET expression RBRACKET
 
     LBRACKET        shift and go to state 69
 
 
 state 58
 
-    (14) expression -> FOR LPAREN . declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET
-    (17) declaracion -> . VARIABLE ASSIGNMENT expression SEMICOLON
+    (16) expression -> FOR LPAREN . datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET
+    (42) datos -> . BOOL
+    (43) datos -> . BYTE
+    (44) datos -> . CHAR
+    (45) datos -> . DECIMAL
+    (46) datos -> . DOUBLE
+    (47) datos -> . FLOAT
+    (48) datos -> . INT
+    (49) datos -> . LONG
+    (50) datos -> . SBYTE
+    (51) datos -> . SHORT
+    (52) datos -> . UINT
+    (53) datos -> . ULONG
+    (54) datos -> . USHORT
 
-    VARIABLE        shift and go to state 50
+    BOOL            shift and go to state 15
+    BYTE            shift and go to state 16
+    CHAR            shift and go to state 17
+    DECIMAL         shift and go to state 18
+    DOUBLE          shift and go to state 19
+    FLOAT           shift and go to state 20
+    INT             shift and go to state 21
+    LONG            shift and go to state 22
+    SBYTE           shift and go to state 23
+    SHORT           shift and go to state 24
+    UINT            shift and go to state 25
+    ULONG           shift and go to state 26
+    USHORT          shift and go to state 27
 
-    declaracion                    shift and go to state 70
+    datos                          shift and go to state 70
 
 state 59
 
-    (16) condicional -> LPAREN expresionlogic . RPAREN
+    (18) condicional -> LPAREN expresionlogic . RPAREN
 
     RPAREN          shift and go to state 71
 
@@ -959,12 +986,12 @@ state 59
 state 60
 
     (8) expresionlogic -> term . oplog term
-    (20) oplog -> . EQUAL
-    (21) oplog -> . NOTEQUAL
-    (22) oplog -> . GREATERTHAN
-    (23) oplog -> . GREATERTHANEQUAL
-    (24) oplog -> . LESSERTHAN
-    (25) oplog -> . LESSERTHANEQUAL
+    (22) oplog -> . EQUAL
+    (23) oplog -> . NOTEQUAL
+    (24) oplog -> . GREATERTHAN
+    (25) oplog -> . GREATERTHANEQUAL
+    (26) oplog -> . LESSERTHAN
+    (27) oplog -> . LESSERTHANEQUAL
 
     EQUAL           shift and go to state 43
     NOTEQUAL        shift and go to state 44
@@ -977,30 +1004,30 @@ state 60
 
 state 61
 
-    (38) factor -> VARIABLE .
+    (40) factor -> VARIABLE .
 
-    EQUAL           reduce using rule 38 (factor -> VARIABLE .)
-    NOTEQUAL        reduce using rule 38 (factor -> VARIABLE .)
-    GREATERTHAN     reduce using rule 38 (factor -> VARIABLE .)
-    GREATERTHANEQUAL reduce using rule 38 (factor -> VARIABLE .)
-    LESSERTHAN      reduce using rule 38 (factor -> VARIABLE .)
-    LESSERTHANEQUAL reduce using rule 38 (factor -> VARIABLE .)
-    PLUS            reduce using rule 38 (factor -> VARIABLE .)
-    MINUS           reduce using rule 38 (factor -> VARIABLE .)
-    TIMES           reduce using rule 38 (factor -> VARIABLE .)
-    DIVIDE          reduce using rule 38 (factor -> VARIABLE .)
-    MOD             reduce using rule 38 (factor -> VARIABLE .)
-    $end            reduce using rule 38 (factor -> VARIABLE .)
-    SEMICOLON       reduce using rule 38 (factor -> VARIABLE .)
-    RBRACKET        reduce using rule 38 (factor -> VARIABLE .)
-    RPAREN          reduce using rule 38 (factor -> VARIABLE .)
-    AND             reduce using rule 38 (factor -> VARIABLE .)
-    OR              reduce using rule 38 (factor -> VARIABLE .)
+    EQUAL           reduce using rule 40 (factor -> VARIABLE .)
+    NOTEQUAL        reduce using rule 40 (factor -> VARIABLE .)
+    GREATERTHAN     reduce using rule 40 (factor -> VARIABLE .)
+    GREATERTHANEQUAL reduce using rule 40 (factor -> VARIABLE .)
+    LESSERTHAN      reduce using rule 40 (factor -> VARIABLE .)
+    LESSERTHANEQUAL reduce using rule 40 (factor -> VARIABLE .)
+    PLUS            reduce using rule 40 (factor -> VARIABLE .)
+    MINUS           reduce using rule 40 (factor -> VARIABLE .)
+    TIMES           reduce using rule 40 (factor -> VARIABLE .)
+    DIVIDE          reduce using rule 40 (factor -> VARIABLE .)
+    MOD             reduce using rule 40 (factor -> VARIABLE .)
+    $end            reduce using rule 40 (factor -> VARIABLE .)
+    SEMICOLON       reduce using rule 40 (factor -> VARIABLE .)
+    RBRACKET        reduce using rule 40 (factor -> VARIABLE .)
+    AND             reduce using rule 40 (factor -> VARIABLE .)
+    OR              reduce using rule 40 (factor -> VARIABLE .)
+    RPAREN          reduce using rule 40 (factor -> VARIABLE .)
 
 
 state 62
 
-    (15) expression -> IF condicional . LBRACKET expression RBRACKET
+    (17) expression -> IF condicional . LBRACKET expression RBRACKET
 
     LBRACKET        shift and go to state 72
 
@@ -1017,7 +1044,6 @@ state 63
     $end            reduce using rule 4 (expression -> expression opmat term .)
     SEMICOLON       reduce using rule 4 (expression -> expression opmat term .)
     RBRACKET        reduce using rule 4 (expression -> expression opmat term .)
-    RPAREN          reduce using rule 4 (expression -> expression opmat term .)
 
 
 state 64
@@ -1049,7 +1075,6 @@ state 65
     $end            reduce using rule 7 (expression -> expresionlogic connectlog expresionlogic .)
     SEMICOLON       reduce using rule 7 (expression -> expresionlogic connectlog expresionlogic .)
     RBRACKET        reduce using rule 7 (expression -> expresionlogic connectlog expresionlogic .)
-    RPAREN          reduce using rule 7 (expression -> expresionlogic connectlog expresionlogic .)
 
 
 state 66
@@ -1064,18 +1089,17 @@ state 66
     $end            reduce using rule 11 (expression -> VARIABLE assignacion SEMICOLON .)
     SEMICOLON       reduce using rule 11 (expression -> VARIABLE assignacion SEMICOLON .)
     RBRACKET        reduce using rule 11 (expression -> VARIABLE assignacion SEMICOLON .)
-    RPAREN          reduce using rule 11 (expression -> VARIABLE assignacion SEMICOLON .)
 
 
 state 67
 
-    (17) declaracion -> VARIABLE ASSIGNMENT expression . SEMICOLON
+    (19) declaracion -> VARIABLE ASSIGNMENT expression . SEMICOLON
     (4) expression -> expression . opmat term
-    (26) opmat -> . PLUS
-    (27) opmat -> . MINUS
-    (28) opmat -> . TIMES
-    (29) opmat -> . DIVIDE
-    (30) opmat -> . MOD
+    (28) opmat -> . PLUS
+    (29) opmat -> . MINUS
+    (30) opmat -> . TIMES
+    (31) opmat -> . DIVIDE
+    (32) opmat -> . MOD
 
     SEMICOLON       shift and go to state 73
     PLUS            shift and go to state 37
@@ -1098,12 +1122,11 @@ state 68
     $end            reduce using rule 12 (expression -> assignacion VARIABLE SEMICOLON .)
     SEMICOLON       reduce using rule 12 (expression -> assignacion VARIABLE SEMICOLON .)
     RBRACKET        reduce using rule 12 (expression -> assignacion VARIABLE SEMICOLON .)
-    RPAREN          reduce using rule 12 (expression -> assignacion VARIABLE SEMICOLON .)
 
 
 state 69
 
-    (13) expression -> WHILE condicional LBRACKET . expression RBRACKET
+    (15) expression -> WHILE condicional LBRACKET . expression RBRACKET
     (1) expression -> . term
     (2) expression -> . datos declaracion
     (3) expression -> . declaracion
@@ -1113,36 +1136,36 @@ state 69
     (7) expression -> . expresionlogic connectlog expresionlogic
     (11) expression -> . VARIABLE assignacion SEMICOLON
     (12) expression -> . assignacion VARIABLE SEMICOLON
-    (13) expression -> . WHILE condicional LBRACKET expression RBRACKET
-    (14) expression -> . FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET
-    (15) expression -> . IF condicional LBRACKET expression RBRACKET
-    (37) term -> . factor
-    (39) term -> . NUMBER
-    (40) datos -> . BOOL
-    (41) datos -> . BYTE
-    (42) datos -> . CHAR
-    (43) datos -> . DECIMAL
-    (44) datos -> . DOUBLE
-    (45) datos -> . FLOAT
-    (46) datos -> . INT
-    (47) datos -> . LONG
-    (48) datos -> . SBYTE
-    (49) datos -> . SHORT
-    (50) datos -> . UINT
-    (51) datos -> . ULONG
-    (52) datos -> . USHORT
-    (17) declaracion -> . VARIABLE ASSIGNMENT expression SEMICOLON
-    (16) condicional -> . LPAREN expresionlogic RPAREN
+    (15) expression -> . WHILE condicional LBRACKET expression RBRACKET
+    (16) expression -> . FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET
+    (17) expression -> . IF condicional LBRACKET expression RBRACKET
+    (39) term -> . factor
+    (41) term -> . NUMBER
+    (42) datos -> . BOOL
+    (43) datos -> . BYTE
+    (44) datos -> . CHAR
+    (45) datos -> . DECIMAL
+    (46) datos -> . DOUBLE
+    (47) datos -> . FLOAT
+    (48) datos -> . INT
+    (49) datos -> . LONG
+    (50) datos -> . SBYTE
+    (51) datos -> . SHORT
+    (52) datos -> . UINT
+    (53) datos -> . ULONG
+    (54) datos -> . USHORT
+    (19) declaracion -> . VARIABLE ASSIGNMENT expression SEMICOLON
+    (18) condicional -> . LPAREN expresionlogic RPAREN
     (8) expresionlogic -> . term oplog term
     (9) expresionlogic -> . TRUE
     (10) expresionlogic -> . FALSE
-    (31) assignacion -> . INCREMENT
-    (32) assignacion -> . DECREMENT
-    (33) assignacion -> . COMPASSIGPLUS
-    (34) assignacion -> . COMPASSIGMINUS
-    (35) assignacion -> . COMPASSIGTIMES
-    (36) assignacion -> . COMPASSIGDIVIDE
-    (38) factor -> . VARIABLE
+    (33) assignacion -> . INCREMENT
+    (34) assignacion -> . DECREMENT
+    (35) assignacion -> . COMPASSIGPLUS
+    (36) assignacion -> . COMPASSIGMINUS
+    (37) assignacion -> . COMPASSIGTIMES
+    (38) assignacion -> . COMPASSIGDIVIDE
+    (40) factor -> . VARIABLE
 
     VARIABLE        shift and go to state 7
     WHILE           shift and go to state 9
@@ -1183,42 +1206,31 @@ state 69
 
 state 70
 
-    (14) expression -> FOR LPAREN declaracion . expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET
-    (8) expresionlogic -> . term oplog term
-    (9) expresionlogic -> . TRUE
-    (10) expresionlogic -> . FALSE
-    (37) term -> . factor
-    (39) term -> . NUMBER
-    (38) factor -> . VARIABLE
+    (16) expression -> FOR LPAREN datos . declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET
+    (19) declaracion -> . VARIABLE ASSIGNMENT expression SEMICOLON
 
-    TRUE            shift and go to state 28
-    FALSE           shift and go to state 29
-    NUMBER          shift and go to state 14
-    VARIABLE        shift and go to state 61
+    VARIABLE        shift and go to state 50
 
-    expresionlogic                 shift and go to state 75
-    term                           shift and go to state 60
-    factor                         shift and go to state 13
+    declaracion                    shift and go to state 75
 
 state 71
 
-    (16) condicional -> LPAREN expresionlogic RPAREN .
+    (18) condicional -> LPAREN expresionlogic RPAREN .
 
-    PLUS            reduce using rule 16 (condicional -> LPAREN expresionlogic RPAREN .)
-    MINUS           reduce using rule 16 (condicional -> LPAREN expresionlogic RPAREN .)
-    TIMES           reduce using rule 16 (condicional -> LPAREN expresionlogic RPAREN .)
-    DIVIDE          reduce using rule 16 (condicional -> LPAREN expresionlogic RPAREN .)
-    MOD             reduce using rule 16 (condicional -> LPAREN expresionlogic RPAREN .)
-    $end            reduce using rule 16 (condicional -> LPAREN expresionlogic RPAREN .)
-    LBRACKET        reduce using rule 16 (condicional -> LPAREN expresionlogic RPAREN .)
-    SEMICOLON       reduce using rule 16 (condicional -> LPAREN expresionlogic RPAREN .)
-    RBRACKET        reduce using rule 16 (condicional -> LPAREN expresionlogic RPAREN .)
-    RPAREN          reduce using rule 16 (condicional -> LPAREN expresionlogic RPAREN .)
+    PLUS            reduce using rule 18 (condicional -> LPAREN expresionlogic RPAREN .)
+    MINUS           reduce using rule 18 (condicional -> LPAREN expresionlogic RPAREN .)
+    TIMES           reduce using rule 18 (condicional -> LPAREN expresionlogic RPAREN .)
+    DIVIDE          reduce using rule 18 (condicional -> LPAREN expresionlogic RPAREN .)
+    MOD             reduce using rule 18 (condicional -> LPAREN expresionlogic RPAREN .)
+    $end            reduce using rule 18 (condicional -> LPAREN expresionlogic RPAREN .)
+    LBRACKET        reduce using rule 18 (condicional -> LPAREN expresionlogic RPAREN .)
+    SEMICOLON       reduce using rule 18 (condicional -> LPAREN expresionlogic RPAREN .)
+    RBRACKET        reduce using rule 18 (condicional -> LPAREN expresionlogic RPAREN .)
 
 
 state 72
 
-    (15) expression -> IF condicional LBRACKET . expression RBRACKET
+    (17) expression -> IF condicional LBRACKET . expression RBRACKET
     (1) expression -> . term
     (2) expression -> . datos declaracion
     (3) expression -> . declaracion
@@ -1228,36 +1240,36 @@ state 72
     (7) expression -> . expresionlogic connectlog expresionlogic
     (11) expression -> . VARIABLE assignacion SEMICOLON
     (12) expression -> . assignacion VARIABLE SEMICOLON
-    (13) expression -> . WHILE condicional LBRACKET expression RBRACKET
-    (14) expression -> . FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET
-    (15) expression -> . IF condicional LBRACKET expression RBRACKET
-    (37) term -> . factor
-    (39) term -> . NUMBER
-    (40) datos -> . BOOL
-    (41) datos -> . BYTE
-    (42) datos -> . CHAR
-    (43) datos -> . DECIMAL
-    (44) datos -> . DOUBLE
-    (45) datos -> . FLOAT
-    (46) datos -> . INT
-    (47) datos -> . LONG
-    (48) datos -> . SBYTE
-    (49) datos -> . SHORT
-    (50) datos -> . UINT
-    (51) datos -> . ULONG
-    (52) datos -> . USHORT
-    (17) declaracion -> . VARIABLE ASSIGNMENT expression SEMICOLON
-    (16) condicional -> . LPAREN expresionlogic RPAREN
+    (15) expression -> . WHILE condicional LBRACKET expression RBRACKET
+    (16) expression -> . FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET
+    (17) expression -> . IF condicional LBRACKET expression RBRACKET
+    (39) term -> . factor
+    (41) term -> . NUMBER
+    (42) datos -> . BOOL
+    (43) datos -> . BYTE
+    (44) datos -> . CHAR
+    (45) datos -> . DECIMAL
+    (46) datos -> . DOUBLE
+    (47) datos -> . FLOAT
+    (48) datos -> . INT
+    (49) datos -> . LONG
+    (50) datos -> . SBYTE
+    (51) datos -> . SHORT
+    (52) datos -> . UINT
+    (53) datos -> . ULONG
+    (54) datos -> . USHORT
+    (19) declaracion -> . VARIABLE ASSIGNMENT expression SEMICOLON
+    (18) condicional -> . LPAREN expresionlogic RPAREN
     (8) expresionlogic -> . term oplog term
     (9) expresionlogic -> . TRUE
     (10) expresionlogic -> . FALSE
-    (31) assignacion -> . INCREMENT
-    (32) assignacion -> . DECREMENT
-    (33) assignacion -> . COMPASSIGPLUS
-    (34) assignacion -> . COMPASSIGMINUS
-    (35) assignacion -> . COMPASSIGTIMES
-    (36) assignacion -> . COMPASSIGDIVIDE
-    (38) factor -> . VARIABLE
+    (33) assignacion -> . INCREMENT
+    (34) assignacion -> . DECREMENT
+    (35) assignacion -> . COMPASSIGPLUS
+    (36) assignacion -> . COMPASSIGMINUS
+    (37) assignacion -> . COMPASSIGTIMES
+    (38) assignacion -> . COMPASSIGDIVIDE
+    (40) factor -> . VARIABLE
 
     VARIABLE        shift and go to state 7
     WHILE           shift and go to state 9
@@ -1298,32 +1310,31 @@ state 72
 
 state 73
 
-    (17) declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .
+    (19) declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .
 
-    PLUS            reduce using rule 17 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
-    MINUS           reduce using rule 17 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
-    TIMES           reduce using rule 17 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
-    DIVIDE          reduce using rule 17 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
-    MOD             reduce using rule 17 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
-    $end            reduce using rule 17 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
-    SEMICOLON       reduce using rule 17 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
-    RBRACKET        reduce using rule 17 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
-    RPAREN          reduce using rule 17 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
-    TRUE            reduce using rule 17 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
-    FALSE           reduce using rule 17 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
-    NUMBER          reduce using rule 17 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
-    VARIABLE        reduce using rule 17 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
+    PLUS            reduce using rule 19 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
+    MINUS           reduce using rule 19 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
+    TIMES           reduce using rule 19 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
+    DIVIDE          reduce using rule 19 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
+    MOD             reduce using rule 19 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
+    $end            reduce using rule 19 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
+    SEMICOLON       reduce using rule 19 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
+    RBRACKET        reduce using rule 19 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
+    TRUE            reduce using rule 19 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
+    FALSE           reduce using rule 19 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
+    NUMBER          reduce using rule 19 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
+    VARIABLE        reduce using rule 19 (declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON .)
 
 
 state 74
 
-    (13) expression -> WHILE condicional LBRACKET expression . RBRACKET
+    (15) expression -> WHILE condicional LBRACKET expression . RBRACKET
     (4) expression -> expression . opmat term
-    (26) opmat -> . PLUS
-    (27) opmat -> . MINUS
-    (28) opmat -> . TIMES
-    (29) opmat -> . DIVIDE
-    (30) opmat -> . MOD
+    (28) opmat -> . PLUS
+    (29) opmat -> . MINUS
+    (30) opmat -> . TIMES
+    (31) opmat -> . DIVIDE
+    (32) opmat -> . MOD
 
     RBRACKET        shift and go to state 77
     PLUS            shift and go to state 37
@@ -1336,20 +1347,32 @@ state 74
 
 state 75
 
-    (14) expression -> FOR LPAREN declaracion expresionlogic . SEMICOLON expression RPAREN LBRACKET expression RBRACKET
+    (16) expression -> FOR LPAREN datos declaracion . expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET
+    (8) expresionlogic -> . term oplog term
+    (9) expresionlogic -> . TRUE
+    (10) expresionlogic -> . FALSE
+    (39) term -> . factor
+    (41) term -> . NUMBER
+    (40) factor -> . VARIABLE
 
-    SEMICOLON       shift and go to state 78
+    TRUE            shift and go to state 28
+    FALSE           shift and go to state 29
+    NUMBER          shift and go to state 14
+    VARIABLE        shift and go to state 61
 
+    expresionlogic                 shift and go to state 78
+    term                           shift and go to state 60
+    factor                         shift and go to state 13
 
 state 76
 
-    (15) expression -> IF condicional LBRACKET expression . RBRACKET
+    (17) expression -> IF condicional LBRACKET expression . RBRACKET
     (4) expression -> expression . opmat term
-    (26) opmat -> . PLUS
-    (27) opmat -> . MINUS
-    (28) opmat -> . TIMES
-    (29) opmat -> . DIVIDE
-    (30) opmat -> . MOD
+    (28) opmat -> . PLUS
+    (29) opmat -> . MINUS
+    (30) opmat -> . TIMES
+    (31) opmat -> . DIVIDE
+    (32) opmat -> . MOD
 
     RBRACKET        shift and go to state 79
     PLUS            shift and go to state 37
@@ -1362,143 +1385,119 @@ state 76
 
 state 77
 
-    (13) expression -> WHILE condicional LBRACKET expression RBRACKET .
+    (15) expression -> WHILE condicional LBRACKET expression RBRACKET .
 
-    PLUS            reduce using rule 13 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
-    MINUS           reduce using rule 13 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
-    TIMES           reduce using rule 13 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
-    DIVIDE          reduce using rule 13 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
-    MOD             reduce using rule 13 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
-    $end            reduce using rule 13 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
-    SEMICOLON       reduce using rule 13 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
-    RBRACKET        reduce using rule 13 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
-    RPAREN          reduce using rule 13 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
+    PLUS            reduce using rule 15 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
+    MINUS           reduce using rule 15 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
+    TIMES           reduce using rule 15 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
+    DIVIDE          reduce using rule 15 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
+    MOD             reduce using rule 15 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
+    $end            reduce using rule 15 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
+    SEMICOLON       reduce using rule 15 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
+    RBRACKET        reduce using rule 15 (expression -> WHILE condicional LBRACKET expression RBRACKET .)
 
 
 state 78
 
-    (14) expression -> FOR LPAREN declaracion expresionlogic SEMICOLON . expression RPAREN LBRACKET expression RBRACKET
-    (1) expression -> . term
-    (2) expression -> . datos declaracion
-    (3) expression -> . declaracion
-    (4) expression -> . expression opmat term
-    (5) expression -> . condicional
-    (6) expression -> . expresionlogic
-    (7) expression -> . expresionlogic connectlog expresionlogic
-    (11) expression -> . VARIABLE assignacion SEMICOLON
-    (12) expression -> . assignacion VARIABLE SEMICOLON
-    (13) expression -> . WHILE condicional LBRACKET expression RBRACKET
-    (14) expression -> . FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET
-    (15) expression -> . IF condicional LBRACKET expression RBRACKET
-    (37) term -> . factor
-    (39) term -> . NUMBER
-    (40) datos -> . BOOL
-    (41) datos -> . BYTE
-    (42) datos -> . CHAR
-    (43) datos -> . DECIMAL
-    (44) datos -> . DOUBLE
-    (45) datos -> . FLOAT
-    (46) datos -> . INT
-    (47) datos -> . LONG
-    (48) datos -> . SBYTE
-    (49) datos -> . SHORT
-    (50) datos -> . UINT
-    (51) datos -> . ULONG
-    (52) datos -> . USHORT
-    (17) declaracion -> . VARIABLE ASSIGNMENT expression SEMICOLON
-    (16) condicional -> . LPAREN expresionlogic RPAREN
-    (8) expresionlogic -> . term oplog term
-    (9) expresionlogic -> . TRUE
-    (10) expresionlogic -> . FALSE
-    (31) assignacion -> . INCREMENT
-    (32) assignacion -> . DECREMENT
-    (33) assignacion -> . COMPASSIGPLUS
-    (34) assignacion -> . COMPASSIGMINUS
-    (35) assignacion -> . COMPASSIGTIMES
-    (36) assignacion -> . COMPASSIGDIVIDE
-    (38) factor -> . VARIABLE
+    (16) expression -> FOR LPAREN datos declaracion expresionlogic . SEMICOLON oper RPAREN LBRACKET expression RBRACKET
 
-    VARIABLE        shift and go to state 7
-    WHILE           shift and go to state 9
-    FOR             shift and go to state 10
-    IF              shift and go to state 12
-    NUMBER          shift and go to state 14
-    BOOL            shift and go to state 15
-    BYTE            shift and go to state 16
-    CHAR            shift and go to state 17
-    DECIMAL         shift and go to state 18
-    DOUBLE          shift and go to state 19
-    FLOAT           shift and go to state 20
-    INT             shift and go to state 21
-    LONG            shift and go to state 22
-    SBYTE           shift and go to state 23
-    SHORT           shift and go to state 24
-    UINT            shift and go to state 25
-    ULONG           shift and go to state 26
-    USHORT          shift and go to state 27
-    LPAREN          shift and go to state 11
-    TRUE            shift and go to state 28
-    FALSE           shift and go to state 29
-    INCREMENT       shift and go to state 30
-    DECREMENT       shift and go to state 31
-    COMPASSIGPLUS   shift and go to state 32
-    COMPASSIGMINUS  shift and go to state 33
-    COMPASSIGTIMES  shift and go to state 34
-    COMPASSIGDIVIDE shift and go to state 35
+    SEMICOLON       shift and go to state 80
 
-    declaracion                    shift and go to state 4
-    expresionlogic                 shift and go to state 6
-    expression                     shift and go to state 80
-    term                           shift and go to state 2
-    datos                          shift and go to state 3
-    condicional                    shift and go to state 5
-    assignacion                    shift and go to state 8
-    factor                         shift and go to state 13
 
 state 79
 
-    (15) expression -> IF condicional LBRACKET expression RBRACKET .
+    (17) expression -> IF condicional LBRACKET expression RBRACKET .
 
-    PLUS            reduce using rule 15 (expression -> IF condicional LBRACKET expression RBRACKET .)
-    MINUS           reduce using rule 15 (expression -> IF condicional LBRACKET expression RBRACKET .)
-    TIMES           reduce using rule 15 (expression -> IF condicional LBRACKET expression RBRACKET .)
-    DIVIDE          reduce using rule 15 (expression -> IF condicional LBRACKET expression RBRACKET .)
-    MOD             reduce using rule 15 (expression -> IF condicional LBRACKET expression RBRACKET .)
-    $end            reduce using rule 15 (expression -> IF condicional LBRACKET expression RBRACKET .)
-    SEMICOLON       reduce using rule 15 (expression -> IF condicional LBRACKET expression RBRACKET .)
-    RBRACKET        reduce using rule 15 (expression -> IF condicional LBRACKET expression RBRACKET .)
-    RPAREN          reduce using rule 15 (expression -> IF condicional LBRACKET expression RBRACKET .)
+    PLUS            reduce using rule 17 (expression -> IF condicional LBRACKET expression RBRACKET .)
+    MINUS           reduce using rule 17 (expression -> IF condicional LBRACKET expression RBRACKET .)
+    TIMES           reduce using rule 17 (expression -> IF condicional LBRACKET expression RBRACKET .)
+    DIVIDE          reduce using rule 17 (expression -> IF condicional LBRACKET expression RBRACKET .)
+    MOD             reduce using rule 17 (expression -> IF condicional LBRACKET expression RBRACKET .)
+    $end            reduce using rule 17 (expression -> IF condicional LBRACKET expression RBRACKET .)
+    SEMICOLON       reduce using rule 17 (expression -> IF condicional LBRACKET expression RBRACKET .)
+    RBRACKET        reduce using rule 17 (expression -> IF condicional LBRACKET expression RBRACKET .)
 
 
 state 80
 
-    (14) expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression . RPAREN LBRACKET expression RBRACKET
-    (4) expression -> expression . opmat term
-    (26) opmat -> . PLUS
-    (27) opmat -> . MINUS
-    (28) opmat -> . TIMES
-    (29) opmat -> . DIVIDE
-    (30) opmat -> . MOD
+    (16) expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON . oper RPAREN LBRACKET expression RBRACKET
+    (13) oper -> . VARIABLE assignacion
+    (14) oper -> . assignacion VARIABLE
+    (33) assignacion -> . INCREMENT
+    (34) assignacion -> . DECREMENT
+    (35) assignacion -> . COMPASSIGPLUS
+    (36) assignacion -> . COMPASSIGMINUS
+    (37) assignacion -> . COMPASSIGTIMES
+    (38) assignacion -> . COMPASSIGDIVIDE
 
-    RPAREN          shift and go to state 81
-    PLUS            shift and go to state 37
-    MINUS           shift and go to state 38
-    TIMES           shift and go to state 39
-    DIVIDE          shift and go to state 40
-    MOD             shift and go to state 41
+    VARIABLE        shift and go to state 82
+    INCREMENT       shift and go to state 30
+    DECREMENT       shift and go to state 31
+    COMPASSIGPLUS   shift and go to state 32
+    COMPASSIGMINUS  shift and go to state 33
+    COMPASSIGTIMES  shift and go to state 34
+    COMPASSIGDIVIDE shift and go to state 35
 
-    opmat                          shift and go to state 36
+    oper                           shift and go to state 81
+    assignacion                    shift and go to state 83
 
 state 81
 
-    (14) expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN . LBRACKET expression RBRACKET
+    (16) expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON oper . RPAREN LBRACKET expression RBRACKET
 
-    LBRACKET        shift and go to state 82
+    RPAREN          shift and go to state 84
 
 
 state 82
 
-    (14) expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET . expression RBRACKET
+    (13) oper -> VARIABLE . assignacion
+    (33) assignacion -> . INCREMENT
+    (34) assignacion -> . DECREMENT
+    (35) assignacion -> . COMPASSIGPLUS
+    (36) assignacion -> . COMPASSIGMINUS
+    (37) assignacion -> . COMPASSIGTIMES
+    (38) assignacion -> . COMPASSIGDIVIDE
+
+    INCREMENT       shift and go to state 30
+    DECREMENT       shift and go to state 31
+    COMPASSIGPLUS   shift and go to state 32
+    COMPASSIGMINUS  shift and go to state 33
+    COMPASSIGTIMES  shift and go to state 34
+    COMPASSIGDIVIDE shift and go to state 35
+
+    assignacion                    shift and go to state 85
+
+state 83
+
+    (14) oper -> assignacion . VARIABLE
+
+    VARIABLE        shift and go to state 86
+
+
+state 84
+
+    (16) expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN . LBRACKET expression RBRACKET
+
+    LBRACKET        shift and go to state 87
+
+
+state 85
+
+    (13) oper -> VARIABLE assignacion .
+
+    RPAREN          reduce using rule 13 (oper -> VARIABLE assignacion .)
+
+
+state 86
+
+    (14) oper -> assignacion VARIABLE .
+
+    RPAREN          reduce using rule 14 (oper -> assignacion VARIABLE .)
+
+
+state 87
+
+    (16) expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET . expression RBRACKET
     (1) expression -> . term
     (2) expression -> . datos declaracion
     (3) expression -> . declaracion
@@ -1508,36 +1507,36 @@ state 82
     (7) expression -> . expresionlogic connectlog expresionlogic
     (11) expression -> . VARIABLE assignacion SEMICOLON
     (12) expression -> . assignacion VARIABLE SEMICOLON
-    (13) expression -> . WHILE condicional LBRACKET expression RBRACKET
-    (14) expression -> . FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET
-    (15) expression -> . IF condicional LBRACKET expression RBRACKET
-    (37) term -> . factor
-    (39) term -> . NUMBER
-    (40) datos -> . BOOL
-    (41) datos -> . BYTE
-    (42) datos -> . CHAR
-    (43) datos -> . DECIMAL
-    (44) datos -> . DOUBLE
-    (45) datos -> . FLOAT
-    (46) datos -> . INT
-    (47) datos -> . LONG
-    (48) datos -> . SBYTE
-    (49) datos -> . SHORT
-    (50) datos -> . UINT
-    (51) datos -> . ULONG
-    (52) datos -> . USHORT
-    (17) declaracion -> . VARIABLE ASSIGNMENT expression SEMICOLON
-    (16) condicional -> . LPAREN expresionlogic RPAREN
+    (15) expression -> . WHILE condicional LBRACKET expression RBRACKET
+    (16) expression -> . FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET
+    (17) expression -> . IF condicional LBRACKET expression RBRACKET
+    (39) term -> . factor
+    (41) term -> . NUMBER
+    (42) datos -> . BOOL
+    (43) datos -> . BYTE
+    (44) datos -> . CHAR
+    (45) datos -> . DECIMAL
+    (46) datos -> . DOUBLE
+    (47) datos -> . FLOAT
+    (48) datos -> . INT
+    (49) datos -> . LONG
+    (50) datos -> . SBYTE
+    (51) datos -> . SHORT
+    (52) datos -> . UINT
+    (53) datos -> . ULONG
+    (54) datos -> . USHORT
+    (19) declaracion -> . VARIABLE ASSIGNMENT expression SEMICOLON
+    (18) condicional -> . LPAREN expresionlogic RPAREN
     (8) expresionlogic -> . term oplog term
     (9) expresionlogic -> . TRUE
     (10) expresionlogic -> . FALSE
-    (31) assignacion -> . INCREMENT
-    (32) assignacion -> . DECREMENT
-    (33) assignacion -> . COMPASSIGPLUS
-    (34) assignacion -> . COMPASSIGMINUS
-    (35) assignacion -> . COMPASSIGTIMES
-    (36) assignacion -> . COMPASSIGDIVIDE
-    (38) factor -> . VARIABLE
+    (33) assignacion -> . INCREMENT
+    (34) assignacion -> . DECREMENT
+    (35) assignacion -> . COMPASSIGPLUS
+    (36) assignacion -> . COMPASSIGMINUS
+    (37) assignacion -> . COMPASSIGTIMES
+    (38) assignacion -> . COMPASSIGDIVIDE
+    (40) factor -> . VARIABLE
 
     VARIABLE        shift and go to state 7
     WHILE           shift and go to state 9
@@ -1567,26 +1566,26 @@ state 82
     COMPASSIGTIMES  shift and go to state 34
     COMPASSIGDIVIDE shift and go to state 35
 
+    datos                          shift and go to state 3
     declaracion                    shift and go to state 4
     expresionlogic                 shift and go to state 6
-    expression                     shift and go to state 83
+    expression                     shift and go to state 88
     term                           shift and go to state 2
-    datos                          shift and go to state 3
     condicional                    shift and go to state 5
     assignacion                    shift and go to state 8
     factor                         shift and go to state 13
 
-state 83
+state 88
 
-    (14) expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression . RBRACKET
+    (16) expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression . RBRACKET
     (4) expression -> expression . opmat term
-    (26) opmat -> . PLUS
-    (27) opmat -> . MINUS
-    (28) opmat -> . TIMES
-    (29) opmat -> . DIVIDE
-    (30) opmat -> . MOD
+    (28) opmat -> . PLUS
+    (29) opmat -> . MINUS
+    (30) opmat -> . TIMES
+    (31) opmat -> . DIVIDE
+    (32) opmat -> . MOD
 
-    RBRACKET        shift and go to state 84
+    RBRACKET        shift and go to state 89
     PLUS            shift and go to state 37
     MINUS           shift and go to state 38
     TIMES           shift and go to state 39
@@ -1595,17 +1594,16 @@ state 83
 
     opmat                          shift and go to state 36
 
-state 84
+state 89
 
-    (14) expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET .
+    (16) expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET .
 
-    PLUS            reduce using rule 14 (expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET .)
-    MINUS           reduce using rule 14 (expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET .)
-    TIMES           reduce using rule 14 (expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET .)
-    DIVIDE          reduce using rule 14 (expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET .)
-    MOD             reduce using rule 14 (expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET .)
-    $end            reduce using rule 14 (expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET .)
-    SEMICOLON       reduce using rule 14 (expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET .)
-    RBRACKET        reduce using rule 14 (expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET .)
-    RPAREN          reduce using rule 14 (expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET .)
+    PLUS            reduce using rule 16 (expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET .)
+    MINUS           reduce using rule 16 (expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET .)
+    TIMES           reduce using rule 16 (expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET .)
+    DIVIDE          reduce using rule 16 (expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET .)
+    MOD             reduce using rule 16 (expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET .)
+    $end            reduce using rule 16 (expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET .)
+    SEMICOLON       reduce using rule 16 (expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET .)
+    RBRACKET        reduce using rule 16 (expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET .)
 

@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ADD AND ASSIGNMENT BOOL BYTE CHAR COMMA COMPARETO COMPASSIGDIVIDE COMPASSIGMINUS COMPASSIGPLUS COMPASSIGTIMES CONSOLE DECIMAL DECREMENT DIVIDE DOUBLE ELSE ENUM EQUAL EQUALS EVENT FALSE FLOAT FOR FOREACH GREATERTHAN GREATERTHANEQUAL IF IN INCREMENT INT ITEM LBRACKET LESSERTHAN LESSERTHANEQUAL LIST LONG LPAREN MINUS MOD NEW NOTEQUAL NULL NUMBER OR PLUS POINT RBRACKET REMOVE REMOVEAT RPAREN SBYTE SEMICOLON SHORT SIZEOF STRING TIMES TRUE TUPLE TYPEOF UINT ULONG USHORT VARIABLE WHILE WRITE WRITELINEexpression : termexpression : datos declaracion \n    | declaracionexpression : expression opmat termexpression : condicionalexpression : expresionlogic\n    | expresionlogic connectlog expresionlogicexpresionlogic : term oplog termexpresionlogic : TRUE\n    | FALSEexpression : VARIABLE assignacion SEMICOLONexpression : assignacion VARIABLE SEMICOLONexpression : WHILE condicional LBRACKET expression RBRACKETexpression : FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKETexpression : IF condicional LBRACKET expression RBRACKETcondicional : LPAREN expresionlogic RPARENdeclaracion : VARIABLE ASSIGNMENT expression SEMICOLONconnectlog : AND\n    | ORoplog : EQUAL\n    | NOTEQUAL\n    | GREATERTHAN\n    | GREATERTHANEQUAL\n    | LESSERTHAN\n    | LESSERTHANEQUALopmat : PLUS\n    | MINUS\n    | TIMES\n    | DIVIDE\n    | MODassignacion : INCREMENT\n    | DECREMENT\n    | COMPASSIGPLUS\n    | COMPASSIGMINUS\n    | COMPASSIGTIMES\n    | COMPASSIGDIVIDEterm : factorfactor : VARIABLEterm : NUMBERdatos : BOOL\n    | BYTE\n    | CHAR\n    | DECIMAL\n    | DOUBLE\n    | FLOAT\n    | INT\n    | LONG\n    | SBYTE\n    | SHORT\n    | UINT\n    | ULONG\n    | USHORT'
+_lr_signature = 'ADD AND ASSIGNMENT BOOL BYTE CHAR COMMA COMPARETO COMPASSIGDIVIDE COMPASSIGMINUS COMPASSIGPLUS COMPASSIGTIMES CONSOLE DECIMAL DECREMENT DIVIDE DOUBLE ELSE ENUM EQUAL EQUALS EVENT FALSE FLOAT FOR FOREACH GREATERTHAN GREATERTHANEQUAL IF IN INCREMENT INT ITEM LBRACKET LESSERTHAN LESSERTHANEQUAL LIST LONG LPAREN MINUS MOD NEW NOTEQUAL NULL NUMBER OR PLUS POINT RBRACKET REMOVE REMOVEAT RPAREN SBYTE SEMICOLON SHORT SIZEOF STRING TIMES TRUE TUPLE TYPEOF UINT ULONG USHORT VARIABLE WHILE WRITE WRITELINEexpression : termexpression : datos declaracion \n    | declaracionexpression : expression opmat termexpression : condicionalexpression : expresionlogic\n    | expresionlogic connectlog expresionlogicexpresionlogic : term oplog termexpresionlogic : TRUE\n    | FALSEexpression : VARIABLE assignacion SEMICOLONexpression : assignacion VARIABLE SEMICOLONoper : VARIABLE assignacionoper : assignacion VARIABLEexpression : WHILE condicional LBRACKET expression RBRACKETexpression : FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKETexpression : IF condicional LBRACKET expression RBRACKETcondicional : LPAREN expresionlogic RPARENdeclaracion : VARIABLE ASSIGNMENT expression SEMICOLONconnectlog : AND\n    | ORoplog : EQUAL\n    | NOTEQUAL\n    | GREATERTHAN\n    | GREATERTHANEQUAL\n    | LESSERTHAN\n    | LESSERTHANEQUALopmat : PLUS\n    | MINUS\n    | TIMES\n    | DIVIDE\n    | MODassignacion : INCREMENT\n    | DECREMENT\n    | COMPASSIGPLUS\n    | COMPASSIGMINUS\n    | COMPASSIGTIMES\n    | COMPASSIGDIVIDEterm : factorfactor : VARIABLEterm : NUMBERdatos : BOOL\n    | BYTE\n    | CHAR\n    | DECIMAL\n    | DOUBLE\n    | FLOAT\n    | INT\n    | LONG\n    | SBYTE\n    | SHORT\n    | UINT\n    | ULONG\n    | USHORT'
     
-_lr_action_items = {'VARIABLE':([0,3,8,11,15,16,17,18,19,20,21,22,23,24,25,26,27,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,51,52,53,55,58,69,70,72,73,78,82,],[7,50,56,61,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-50,-51,-52,-31,-32,-33,-34,-35,-36,61,-26,-27,-28,-29,-30,61,-20,-21,-22,-23,-24,-25,61,-18,-19,7,50,7,61,7,-17,7,7,]),'WHILE':([0,55,69,72,78,82,],[9,9,9,9,9,9,]),'FOR':([0,55,69,72,78,82,],[10,10,10,10,10,10,]),'IF':([0,55,69,72,78,82,],[12,12,12,12,12,12,]),'NUMBER':([0,11,36,37,38,39,40,41,42,43,44,45,46,47,48,51,52,53,55,69,70,72,73,78,82,],[14,14,14,-26,-27,-28,-29,-30,14,-20,-21,-22,-23,-24,-25,14,-18,-19,14,14,14,14,-17,14,14,]),'BOOL':([0,55,69,72,78,82,],[15,15,15,15,15,15,]),'BYTE':([0,55,69,72,78,82,],[16,16,16,16,16,16,]),'CHAR':([0,55,69,72,78,82,],[17,17,17,17,17,17,]),'DECIMAL':([0,55,69,72,78,82,],[18,18,18,18,18,18,]),'DOUBLE':([0,55,69,72,78,82,],[19,19,19,19,19,19,]),'FLOAT':([0,55,69,72,78,82,],[20,20,20,20,20,20,]),'INT':([0,55,69,72,78,82,],[21,21,21,21,21,21,]),'LONG':([0,55,69,72,78,82,],[22,22,22,22,22,22,]),'SBYTE':([0,55,69,72,78,82,],[23,23,23,23,23,23,]),'SHORT':([0,55,69,72,78,82,],[24,24,24,24,24,24,]),'UINT':([0,55,69,72,78,82,],[25,25,25,25,25,25,]),'ULONG':([0,55,69,72,78,82,],[26,26,26,26,26,26,]),'USHORT':([0,55,69,72,78,82,],[27,27,27,27,27,27,]),'LPAREN':([0,9,10,12,55,69,72,78,82,],[11,11,58,11,11,11,11,11,11,]),'TRUE':([0,11,51,52,53,55,69,70,72,73,78,82,],[28,28,28,-18,-19,28,28,28,28,-17,28,28,]),'FALSE':([0,11,51,52,53,55,69,70,72,73,78,82,],[29,29,29,-18,-19,29,29,29,29,-17,29,29,]),'INCREMENT':([0,7,55,69,72,78,82,],[30,30,30,30,30,30,30,]),'DECREMENT':([0,7,55,69,72,78,82,],[31,31,31,31,31,31,31,]),'COMPASSIGPLUS':([0,7,55,69,72,78,82,],[32,32,32,32,32,32,32,]),'COMPASSIGMINUS':([0,7,55,69,72,78,82,],[33,33,33,33,33,33,33,]),'COMPASSIGTIMES':([0,7,55,69,72,78,82,],[34,34,34,34,34,34,34,]),'COMPASSIGDIVIDE':([0,7,55,69,72,78,82,],[35,35,35,35,35,35,35,]),'$end':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,68,71,73,77,79,84,],[0,-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,-38,-4,-8,-7,-11,-12,-16,-17,-13,-15,-14,]),'PLUS':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,67,68,71,73,74,76,77,79,80,83,84,],[37,-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,-38,-4,-8,-7,-11,37,-12,-16,-17,37,37,-13,-15,37,37,-14,]),'MINUS':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,67,68,71,73,74,76,77,79,80,83,84,],[38,-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,-38,-4,-8,-7,-11,38,-12,-16,-17,38,38,-13,-15,38,38,-14,]),'TIMES':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,67,68,71,73,74,76,77,79,80,83,84,],[39,-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,-38,-4,-8,-7,-11,39,-12,-16,-17,39,39,-13,-15,39,39,-14,]),'DIVIDE':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,67,68,71,73,74,76,77,79,80,83,84,],[40,-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,-38,-4,-8,-7,-11,40,-12,-16,-17,40,40,-13,-15,40,40,-14,]),'MOD':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,67,68,71,73,74,76,77,79,80,83,84,],[41,-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,-38,-4,-8,-7,-11,41,-12,-16,-17,41,41,-13,-15,41,41,-14,]),'SEMICOLON':([2,4,5,6,7,13,14,28,29,30,31,32,33,34,35,49,54,56,61,63,64,65,66,67,68,71,73,75,77,79,84,],[-1,-3,-5,-6,-38,-37,-39,-9,-10,-31,-32,-33,-34,-35,-36,-2,66,68,-38,-4,-8,-7,-11,73,-12,-16,-17,78,-13,-15,-14,]),'RBRACKET':([2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,68,71,73,74,76,77,79,83,84,],[-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,-38,-4,-8,-7,-11,-12,-16,-17,77,79,-13,-15,84,-14,]),'RPAREN':([2,4,5,6,7,13,14,28,29,49,59,61,63,64,65,66,68,71,73,77,79,80,84,],[-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,71,-38,-4,-8,-7,-11,-12,-16,-17,-13,-15,81,-14,]),'EQUAL':([2,7,13,14,60,61,],[43,-38,-37,-39,43,-38,]),'NOTEQUAL':([2,7,13,14,60,61,],[44,-38,-37,-39,44,-38,]),'GREATERTHAN':([2,7,13,14,60,61,],[45,-38,-37,-39,45,-38,]),'GREATERTHANEQUAL':([2,7,13,14,60,61,],[46,-38,-37,-39,46,-38,]),'LESSERTHAN':([2,7,13,14,60,61,],[47,-38,-37,-39,47,-38,]),'LESSERTHANEQUAL':([2,7,13,14,60,61,],[48,-38,-37,-39,48,-38,]),'AND':([6,13,14,28,29,61,64,],[52,-37,-39,-9,-10,-38,-8,]),'OR':([6,13,14,28,29,61,64,],[53,-37,-39,-9,-10,-38,-8,]),'ASSIGNMENT':([7,50,],[55,55,]),'LBRACKET':([57,62,71,81,],[69,72,-16,82,]),}
+_lr_action_items = {'VARIABLE':([0,3,8,11,15,16,17,18,19,20,21,22,23,24,25,26,27,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,51,52,53,55,69,70,72,73,75,80,83,87,],[7,50,56,61,-42,-43,-44,-45,-46,-47,-48,-49,-50,-51,-52,-53,-54,-33,-34,-35,-36,-37,-38,61,-28,-29,-30,-31,-32,61,-22,-23,-24,-25,-26,-27,61,-20,-21,7,7,50,7,-19,61,82,86,7,]),'WHILE':([0,55,69,72,87,],[9,9,9,9,9,]),'FOR':([0,55,69,72,87,],[10,10,10,10,10,]),'IF':([0,55,69,72,87,],[12,12,12,12,12,]),'NUMBER':([0,11,36,37,38,39,40,41,42,43,44,45,46,47,48,51,52,53,55,69,72,73,75,87,],[14,14,14,-28,-29,-30,-31,-32,14,-22,-23,-24,-25,-26,-27,14,-20,-21,14,14,14,-19,14,14,]),'BOOL':([0,55,58,69,72,87,],[15,15,15,15,15,15,]),'BYTE':([0,55,58,69,72,87,],[16,16,16,16,16,16,]),'CHAR':([0,55,58,69,72,87,],[17,17,17,17,17,17,]),'DECIMAL':([0,55,58,69,72,87,],[18,18,18,18,18,18,]),'DOUBLE':([0,55,58,69,72,87,],[19,19,19,19,19,19,]),'FLOAT':([0,55,58,69,72,87,],[20,20,20,20,20,20,]),'INT':([0,55,58,69,72,87,],[21,21,21,21,21,21,]),'LONG':([0,55,58,69,72,87,],[22,22,22,22,22,22,]),'SBYTE':([0,55,58,69,72,87,],[23,23,23,23,23,23,]),'SHORT':([0,55,58,69,72,87,],[24,24,24,24,24,24,]),'UINT':([0,55,58,69,72,87,],[25,25,25,25,25,25,]),'ULONG':([0,55,58,69,72,87,],[26,26,26,26,26,26,]),'USHORT':([0,55,58,69,72,87,],[27,27,27,27,27,27,]),'LPAREN':([0,9,10,12,55,69,72,87,],[11,11,58,11,11,11,11,11,]),'TRUE':([0,11,51,52,53,55,69,72,73,75,87,],[28,28,28,-20,-21,28,28,28,-19,28,28,]),'FALSE':([0,11,51,52,53,55,69,72,73,75,87,],[29,29,29,-20,-21,29,29,29,-19,29,29,]),'INCREMENT':([0,7,55,69,72,80,82,87,],[30,30,30,30,30,30,30,30,]),'DECREMENT':([0,7,55,69,72,80,82,87,],[31,31,31,31,31,31,31,31,]),'COMPASSIGPLUS':([0,7,55,69,72,80,82,87,],[32,32,32,32,32,32,32,32,]),'COMPASSIGMINUS':([0,7,55,69,72,80,82,87,],[33,33,33,33,33,33,33,33,]),'COMPASSIGTIMES':([0,7,55,69,72,80,82,87,],[34,34,34,34,34,34,34,34,]),'COMPASSIGDIVIDE':([0,7,55,69,72,80,82,87,],[35,35,35,35,35,35,35,35,]),'$end':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,68,71,73,77,79,89,],[0,-1,-3,-5,-6,-40,-39,-41,-9,-10,-2,-40,-4,-8,-7,-11,-12,-18,-19,-15,-17,-16,]),'PLUS':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,67,68,71,73,74,76,77,79,88,89,],[37,-1,-3,-5,-6,-40,-39,-41,-9,-10,-2,-40,-4,-8,-7,-11,37,-12,-18,-19,37,37,-15,-17,37,-16,]),'MINUS':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,67,68,71,73,74,76,77,79,88,89,],[38,-1,-3,-5,-6,-40,-39,-41,-9,-10,-2,-40,-4,-8,-7,-11,38,-12,-18,-19,38,38,-15,-17,38,-16,]),'TIMES':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,67,68,71,73,74,76,77,79,88,89,],[39,-1,-3,-5,-6,-40,-39,-41,-9,-10,-2,-40,-4,-8,-7,-11,39,-12,-18,-19,39,39,-15,-17,39,-16,]),'DIVIDE':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,67,68,71,73,74,76,77,79,88,89,],[40,-1,-3,-5,-6,-40,-39,-41,-9,-10,-2,-40,-4,-8,-7,-11,40,-12,-18,-19,40,40,-15,-17,40,-16,]),'MOD':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,67,68,71,73,74,76,77,79,88,89,],[41,-1,-3,-5,-6,-40,-39,-41,-9,-10,-2,-40,-4,-8,-7,-11,41,-12,-18,-19,41,41,-15,-17,41,-16,]),'SEMICOLON':([2,4,5,6,7,13,14,28,29,30,31,32,33,34,35,49,54,56,61,63,64,65,66,67,68,71,73,77,78,79,89,],[-1,-3,-5,-6,-40,-39,-41,-9,-10,-33,-34,-35,-36,-37,-38,-2,66,68,-40,-4,-8,-7,-11,73,-12,-18,-19,-15,80,-17,-16,]),'RBRACKET':([2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,68,71,73,74,76,77,79,88,89,],[-1,-3,-5,-6,-40,-39,-41,-9,-10,-2,-40,-4,-8,-7,-11,-12,-18,-19,77,79,-15,-17,89,-16,]),'EQUAL':([2,7,13,14,60,61,],[43,-40,-39,-41,43,-40,]),'NOTEQUAL':([2,7,13,14,60,61,],[44,-40,-39,-41,44,-40,]),'GREATERTHAN':([2,7,13,14,60,61,],[45,-40,-39,-41,45,-40,]),'GREATERTHANEQUAL':([2,7,13,14,60,61,],[46,-40,-39,-41,46,-40,]),'LESSERTHAN':([2,7,13,14,60,61,],[47,-40,-39,-41,47,-40,]),'LESSERTHANEQUAL':([2,7,13,14,60,61,],[48,-40,-39,-41,48,-40,]),'AND':([6,13,14,28,29,61,64,],[52,-39,-41,-9,-10,-40,-8,]),'OR':([6,13,14,28,29,61,64,],[53,-39,-41,-9,-10,-40,-8,]),'ASSIGNMENT':([7,50,],[55,55,]),'RPAREN':([13,14,28,29,30,31,32,33,34,35,59,61,64,81,85,86,],[-39,-41,-9,-10,-33,-34,-35,-36,-37,-38,71,-40,-8,84,-13,-14,]),'LBRACKET':([57,62,71,84,],[69,72,-18,87,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'expression':([0,55,69,72,78,82,],[1,67,74,76,80,83,]),'term':([0,11,36,42,51,55,69,70,72,78,82,],[2,60,63,64,60,2,2,60,2,2,2,]),'datos':([0,55,69,72,78,82,],[3,3,3,3,3,3,]),'declaracion':([0,3,55,58,69,72,78,82,],[4,49,4,70,4,4,4,4,]),'condicional':([0,9,12,55,69,72,78,82,],[5,57,62,5,5,5,5,5,]),'expresionlogic':([0,11,51,55,69,70,72,78,82,],[6,59,65,6,6,75,6,6,6,]),'assignacion':([0,7,55,69,72,78,82,],[8,54,8,8,8,8,8,]),'factor':([0,11,36,42,51,55,69,70,72,78,82,],[13,13,13,13,13,13,13,13,13,13,13,]),'opmat':([1,67,74,76,80,83,],[36,36,36,36,36,36,]),'oplog':([2,60,],[42,42,]),'connectlog':([6,],[51,]),}
+_lr_goto_items = {'expression':([0,55,69,72,87,],[1,67,74,76,88,]),'term':([0,11,36,42,51,55,69,72,75,87,],[2,60,63,64,60,2,2,2,60,2,]),'datos':([0,55,58,69,72,87,],[3,3,70,3,3,3,]),'declaracion':([0,3,55,69,70,72,87,],[4,49,4,4,75,4,4,]),'condicional':([0,9,12,55,69,72,87,],[5,57,62,5,5,5,5,]),'expresionlogic':([0,11,51,55,69,72,75,87,],[6,59,65,6,6,6,78,6,]),'assignacion':([0,7,55,69,72,80,82,87,],[8,54,8,8,8,83,85,8,]),'factor':([0,11,36,42,51,55,69,72,75,87,],[13,13,13,13,13,13,13,13,13,13,]),'opmat':([1,67,74,76,88,],[36,36,36,36,36,]),'oplog':([2,60,],[42,42,]),'connectlog':([6,],[51,]),'oper':([80,],[81,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -39,44 +39,46 @@ _lr_productions = [
   ('expresionlogic -> FALSE','expresionlogic',1,'p_expresionlogic_bool','pruebas.py',30),
   ('expression -> VARIABLE assignacion SEMICOLON','expression',3,'p_expression_preop','pruebas.py',33),
   ('expression -> assignacion VARIABLE SEMICOLON','expression',3,'p_expression_postop','pruebas.py',37),
-  ('expression -> WHILE condicional LBRACKET expression RBRACKET','expression',5,'p_expression_while','pruebas.py',41),
-  ('expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET','expression',10,'p_expression_for','pruebas.py',45),
-  ('expression -> IF condicional LBRACKET expression RBRACKET','expression',5,'p_expression_if','pruebas.py',49),
-  ('condicional -> LPAREN expresionlogic RPAREN','condicional',3,'p_condicional','pruebas.py',53),
-  ('declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON','declaracion',4,'p_declaracion','pruebas.py',56),
-  ('connectlog -> AND','connectlog',1,'p_connectlog','pruebas.py',59),
-  ('connectlog -> OR','connectlog',1,'p_connectlog','pruebas.py',60),
-  ('oplog -> EQUAL','oplog',1,'p_oplog','pruebas.py',63),
-  ('oplog -> NOTEQUAL','oplog',1,'p_oplog','pruebas.py',64),
-  ('oplog -> GREATERTHAN','oplog',1,'p_oplog','pruebas.py',65),
-  ('oplog -> GREATERTHANEQUAL','oplog',1,'p_oplog','pruebas.py',66),
-  ('oplog -> LESSERTHAN','oplog',1,'p_oplog','pruebas.py',67),
-  ('oplog -> LESSERTHANEQUAL','oplog',1,'p_oplog','pruebas.py',68),
-  ('opmat -> PLUS','opmat',1,'p_opmat','pruebas.py',71),
-  ('opmat -> MINUS','opmat',1,'p_opmat','pruebas.py',72),
-  ('opmat -> TIMES','opmat',1,'p_opmat','pruebas.py',73),
-  ('opmat -> DIVIDE','opmat',1,'p_opmat','pruebas.py',74),
-  ('opmat -> MOD','opmat',1,'p_opmat','pruebas.py',75),
-  ('assignacion -> INCREMENT','assignacion',1,'p_assignacion','pruebas.py',78),
-  ('assignacion -> DECREMENT','assignacion',1,'p_assignacion','pruebas.py',79),
-  ('assignacion -> COMPASSIGPLUS','assignacion',1,'p_assignacion','pruebas.py',80),
-  ('assignacion -> COMPASSIGMINUS','assignacion',1,'p_assignacion','pruebas.py',81),
-  ('assignacion -> COMPASSIGTIMES','assignacion',1,'p_assignacion','pruebas.py',82),
-  ('assignacion -> COMPASSIGDIVIDE','assignacion',1,'p_assignacion','pruebas.py',83),
-  ('term -> factor','term',1,'p_term_factor','pruebas.py',86),
-  ('factor -> VARIABLE','factor',1,'p_factor_var','pruebas.py',89),
-  ('term -> NUMBER','term',1,'p_term_numero','pruebas.py',92),
-  ('datos -> BOOL','datos',1,'p_datos','pruebas.py',101),
-  ('datos -> BYTE','datos',1,'p_datos','pruebas.py',102),
-  ('datos -> CHAR','datos',1,'p_datos','pruebas.py',103),
-  ('datos -> DECIMAL','datos',1,'p_datos','pruebas.py',104),
-  ('datos -> DOUBLE','datos',1,'p_datos','pruebas.py',105),
-  ('datos -> FLOAT','datos',1,'p_datos','pruebas.py',106),
-  ('datos -> INT','datos',1,'p_datos','pruebas.py',107),
-  ('datos -> LONG','datos',1,'p_datos','pruebas.py',108),
-  ('datos -> SBYTE','datos',1,'p_datos','pruebas.py',109),
-  ('datos -> SHORT','datos',1,'p_datos','pruebas.py',110),
-  ('datos -> UINT','datos',1,'p_datos','pruebas.py',111),
-  ('datos -> ULONG','datos',1,'p_datos','pruebas.py',112),
-  ('datos -> USHORT','datos',1,'p_datos','pruebas.py',113),
+  ('oper -> VARIABLE assignacion','oper',2,'p_preop','pruebas.py',41),
+  ('oper -> assignacion VARIABLE','oper',2,'p_postop','pruebas.py',44),
+  ('expression -> WHILE condicional LBRACKET expression RBRACKET','expression',5,'p_expression_while','pruebas.py',48),
+  ('expression -> FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET','expression',11,'p_expression_for','pruebas.py',52),
+  ('expression -> IF condicional LBRACKET expression RBRACKET','expression',5,'p_expression_if','pruebas.py',56),
+  ('condicional -> LPAREN expresionlogic RPAREN','condicional',3,'p_condicional','pruebas.py',61),
+  ('declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON','declaracion',4,'p_declaracion','pruebas.py',64),
+  ('connectlog -> AND','connectlog',1,'p_connectlog','pruebas.py',67),
+  ('connectlog -> OR','connectlog',1,'p_connectlog','pruebas.py',68),
+  ('oplog -> EQUAL','oplog',1,'p_oplog','pruebas.py',71),
+  ('oplog -> NOTEQUAL','oplog',1,'p_oplog','pruebas.py',72),
+  ('oplog -> GREATERTHAN','oplog',1,'p_oplog','pruebas.py',73),
+  ('oplog -> GREATERTHANEQUAL','oplog',1,'p_oplog','pruebas.py',74),
+  ('oplog -> LESSERTHAN','oplog',1,'p_oplog','pruebas.py',75),
+  ('oplog -> LESSERTHANEQUAL','oplog',1,'p_oplog','pruebas.py',76),
+  ('opmat -> PLUS','opmat',1,'p_opmat','pruebas.py',79),
+  ('opmat -> MINUS','opmat',1,'p_opmat','pruebas.py',80),
+  ('opmat -> TIMES','opmat',1,'p_opmat','pruebas.py',81),
+  ('opmat -> DIVIDE','opmat',1,'p_opmat','pruebas.py',82),
+  ('opmat -> MOD','opmat',1,'p_opmat','pruebas.py',83),
+  ('assignacion -> INCREMENT','assignacion',1,'p_assignacion','pruebas.py',86),
+  ('assignacion -> DECREMENT','assignacion',1,'p_assignacion','pruebas.py',87),
+  ('assignacion -> COMPASSIGPLUS','assignacion',1,'p_assignacion','pruebas.py',88),
+  ('assignacion -> COMPASSIGMINUS','assignacion',1,'p_assignacion','pruebas.py',89),
+  ('assignacion -> COMPASSIGTIMES','assignacion',1,'p_assignacion','pruebas.py',90),
+  ('assignacion -> COMPASSIGDIVIDE','assignacion',1,'p_assignacion','pruebas.py',91),
+  ('term -> factor','term',1,'p_term_factor','pruebas.py',94),
+  ('factor -> VARIABLE','factor',1,'p_factor_var','pruebas.py',97),
+  ('term -> NUMBER','term',1,'p_term_numero','pruebas.py',100),
+  ('datos -> BOOL','datos',1,'p_datos','pruebas.py',109),
+  ('datos -> BYTE','datos',1,'p_datos','pruebas.py',110),
+  ('datos -> CHAR','datos',1,'p_datos','pruebas.py',111),
+  ('datos -> DECIMAL','datos',1,'p_datos','pruebas.py',112),
+  ('datos -> DOUBLE','datos',1,'p_datos','pruebas.py',113),
+  ('datos -> FLOAT','datos',1,'p_datos','pruebas.py',114),
+  ('datos -> INT','datos',1,'p_datos','pruebas.py',115),
+  ('datos -> LONG','datos',1,'p_datos','pruebas.py',116),
+  ('datos -> SBYTE','datos',1,'p_datos','pruebas.py',117),
+  ('datos -> SHORT','datos',1,'p_datos','pruebas.py',118),
+  ('datos -> UINT','datos',1,'p_datos','pruebas.py',119),
+  ('datos -> ULONG','datos',1,'p_datos','pruebas.py',120),
+  ('datos -> USHORT','datos',1,'p_datos','pruebas.py',121),
 ]
