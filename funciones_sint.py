@@ -197,6 +197,30 @@ def p_for(p):
     'expression : FOR LPAREN expression SEMICOLON expression SEMICOLON RPAREN LBRACKET expression RBRACKET'
 
 
+def p_listas(p):
+    'expression: LIST LESSERTHAN datos BIGGERTHAN term ASSIGMENT NEW LIST LESSERTHAN datos BIGGERTHAN LPAREN RPAREN LBRACKET expression RBRACKET SEMICOLON'
+
+def p_listas_add(p):
+    'expression: term POINT ADD LPAREN factor RPAREN SEMICOLON'
+
+def p_listas_remove(p):
+    'expression: term POINT REMOVE LPAREN factor RPAREN SEMICOLON'
+
+def p_listas_removeAt(p):
+    'expression: term POINT REMOVEAT LPAREN NUMBER RPAREN SEMICOLON'
+
+def p_tuplas(p):
+    'expression: TUPLE LESSERTHAN LPAREN datos COMMA datos RPAREN BIGGERTHAN term ASSIGMENT NEW TUPLE LPAREN datos COMMA datos RPAREN LPAREN factor COMMA factor RPAREN SEMICOLON'
+
+def p_tuplas_equals(p):
+    'expression: term POINT EQUALS LPAREN expression RPAREN SEMICOLON'
+
+def p_tuplas_compareTo(p):
+    'expression: term POINT COMPARETO LPAREN expression RPAREN SEMICOLON'
+
+def p_tuplas_item(p):
+    'expression: term POINT ITEM SEMICOLON'
+
 def p_error(p):
     if p:
         print("Syntax error at token", p.type)

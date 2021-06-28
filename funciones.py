@@ -32,9 +32,20 @@ reserved = {
     'console': 'CONSOLE',
     'writeline': 'WRITELINE',
     'write': 'WRITE',
+    'list': 'LIST',
+    'Tuple': 'TUPLE',
+    'new': 'NEW',
+    'add': 'ADD',
+    'remove': 'REMOVE',
+    'removeAt': 'REMOVEAT',
+    'Equals': 'EQUALS',
+    'CompareTo': 'COMPARETO',
+    'Item': 'ITEM'
 }
 tokens = (
              'SEMICOLON',
+             'COMMA',
+             'POINT',
              'ASSIGNMENT',
              'NUMBER',
              'PLUS',
@@ -62,6 +73,8 @@ tokens = (
          ) + tuple(reserved.values())
 # Regular expression rules for simple tokens
 t_SEMICOLON = r'\;'
+t_COMMA = r'\,'
+t_POINT = r'\.'
 t_ASSIGNMENT = r'\='
 t_PLUS = r'\+'
 t_MINUS = r'-'
