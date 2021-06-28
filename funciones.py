@@ -34,6 +34,8 @@ reserved = {
     'write': 'WRITE',
 }
 tokens = (
+             'SEMICOLON',
+             'ASSIGNMENT',
              'NUMBER',
              'PLUS',
              'MINUS',
@@ -41,6 +43,8 @@ tokens = (
              'DIVIDE',
              'LPAREN',
              'RPAREN',
+             'LBRACKET',
+             'RBRACKET',
              'MOD',
              'VARIABLE',
              'EQUAL',
@@ -57,6 +61,8 @@ tokens = (
              'COMPASSIGDIVIDE'
          ) + tuple(reserved.values())
 # Regular expression rules for simple tokens
+t_SEMICOLON = r'\;'
+t_ASSIGNMENT = r'\='
 t_PLUS = r'\+'
 t_MINUS = r'-'
 t_TIMES = r'\*'
@@ -76,6 +82,9 @@ t_COMPASSIGPLUS = r'\+\='
 t_COMPASSIGMINUS = r'\-\='
 t_COMPASSIGTIMES = r'\*\='
 t_COMPASSIGDIVIDE= r'\/\='
+t_LBRACKET= r'\{'
+t_RBRACKET= r'\}'
+
 
 
 def t_VARIABLE(t):

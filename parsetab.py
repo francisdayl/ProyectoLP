@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'BOOL BYTE CHAR COMPASSIGDIVIDE COMPASSIGMINUS COMPASSIGPLUS COMPASSIGTIMES CONSOLE DECIMAL DECREMENT DIVIDE DOUBLE ELSE ENUM EQUAL EVENT FALSE FLOAT FOR FOREACH GREATERTHAN GREATERTHANEQUAL IF IN INCREMENT INT LESSERTHAN LESSERTHANEQUAL LONG LPAREN MINUS MOD NEW NOTEQUAL NULL NUMBER PLUS RPAREN SBYTE SHORT SIZEOF STRING TIMES TRUE TYPEOF UINT ULONG USHORT VARIABLE WHILE WRITE WRITELINEexpression : expression opermat factorexpression : expression operlog factorexpression : termopermat : PLUS \n    | MINUS\n    | TIMES\n    | DIVIDE\n    | MODoperlog : EQUAL\n    | NOTEQUAL\n    | GREATERTHAN\n    | GREATERTHANEQUAL\n    | LESSERTHAN\n    | LESSERTHANEQUALterm : factorfactor : NUMBER\n    | VARIABLE'
+_lr_signature = 'ASSIGNMENT BOOL BYTE CHAR COMPASSIGDIVIDE COMPASSIGMINUS COMPASSIGPLUS COMPASSIGTIMES CONSOLE DECIMAL DECREMENT DIVIDE DOUBLE ELSE ENUM EQUAL EVENT FALSE FLOAT FOR FOREACH GREATERTHAN GREATERTHANEQUAL IF IN INCREMENT INT LESSERTHAN LESSERTHANEQUAL LONG LPAREN MINUS MOD NEW NOTEQUAL NULL NUMBER PLUS RPAREN SBYTE SEMICOLON SHORT SIZEOF STRING TIMES TRUE TYPEOF UINT ULONG USHORT VARIABLE WHILE WRITE WRITELINElazo : WHILE LPAREN expressionLog RPARENlazo : FOR LPAREN expression SEMICOLON expression SEMICOLON expression RPARENexpressionMat : expression opermat factorexpressionLog : expression operlog factorexpression : termopermat : PLUS\n    | MINUS\n    | TIMES\n    | DIVIDE\n    | MOD\n    | INCREMENT\n    | DECREMENT\n    | COMPASSIGPLUS\n    | COMPASSIGMINUS\n    | COMPASSIGTIMES\n    | COMPASSIGDIVIDEoperlog : EQUAL\n    | NOTEQUAL\n    | GREATERTHAN\n    | GREATERTHANEQUAL\n    | LESSERTHAN\n    | LESSERTHANEQUALterm : factorfactor : NUMBER\n    | VARIABLE'
     
-_lr_action_items = {'NUMBER':([0,6,7,8,9,10,11,12,13,14,15,16,17,18,],[4,4,4,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-14,]),'VARIABLE':([0,6,7,8,9,10,11,12,13,14,15,16,17,18,],[5,5,5,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-14,]),'$end':([1,2,3,4,5,19,20,],[0,-15,-3,-16,-17,-1,-2,]),'PLUS':([1,2,3,4,5,19,20,],[8,-15,-3,-16,-17,-1,-2,]),'MINUS':([1,2,3,4,5,19,20,],[9,-15,-3,-16,-17,-1,-2,]),'TIMES':([1,2,3,4,5,19,20,],[10,-15,-3,-16,-17,-1,-2,]),'DIVIDE':([1,2,3,4,5,19,20,],[11,-15,-3,-16,-17,-1,-2,]),'MOD':([1,2,3,4,5,19,20,],[12,-15,-3,-16,-17,-1,-2,]),'EQUAL':([1,2,3,4,5,19,20,],[13,-15,-3,-16,-17,-1,-2,]),'NOTEQUAL':([1,2,3,4,5,19,20,],[14,-15,-3,-16,-17,-1,-2,]),'GREATERTHAN':([1,2,3,4,5,19,20,],[15,-15,-3,-16,-17,-1,-2,]),'GREATERTHANEQUAL':([1,2,3,4,5,19,20,],[16,-15,-3,-16,-17,-1,-2,]),'LESSERTHAN':([1,2,3,4,5,19,20,],[17,-15,-3,-16,-17,-1,-2,]),'LESSERTHANEQUAL':([1,2,3,4,5,19,20,],[18,-15,-3,-16,-17,-1,-2,]),}
+_lr_action_items = {'WHILE':([0,],[2,]),'FOR':([0,],[3,]),'$end':([1,13,26,],[0,-1,-2,]),'LPAREN':([2,3,],[4,5,]),'NUMBER':([4,5,14,15,16,17,18,19,20,21,24,],[10,10,10,-17,-18,-19,-20,-21,-22,10,10,]),'VARIABLE':([4,5,14,15,16,17,18,19,20,21,24,],[11,11,11,-17,-18,-19,-20,-21,-22,11,11,]),'RPAREN':([6,8,9,10,11,22,25,],[13,-23,-5,-24,-25,-4,26,]),'EQUAL':([7,8,9,10,11,],[15,-23,-5,-24,-25,]),'NOTEQUAL':([7,8,9,10,11,],[16,-23,-5,-24,-25,]),'GREATERTHAN':([7,8,9,10,11,],[17,-23,-5,-24,-25,]),'GREATERTHANEQUAL':([7,8,9,10,11,],[18,-23,-5,-24,-25,]),'LESSERTHAN':([7,8,9,10,11,],[19,-23,-5,-24,-25,]),'LESSERTHANEQUAL':([7,8,9,10,11,],[20,-23,-5,-24,-25,]),'SEMICOLON':([8,9,10,11,12,23,],[-23,-5,-24,-25,21,24,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'expression':([0,],[1,]),'factor':([0,6,7,],[2,19,20,]),'term':([0,],[3,]),'opermat':([1,],[6,]),'operlog':([1,],[7,]),}
+_lr_goto_items = {'lazo':([0,],[1,]),'expressionLog':([4,],[6,]),'expression':([4,5,21,24,],[7,12,23,25,]),'factor':([4,5,14,21,24,],[8,8,22,8,8,]),'term':([4,5,21,24,],[9,9,9,9,]),'operlog':([7,],[14,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,22 +26,30 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> expression","S'",1,None,None,None),
-  ('expression -> expression opermat factor','expression',3,'p_expression_mate','funciones_sint.py',6),
-  ('expression -> expression operlog factor','expression',3,'p_expression_logic','funciones_sint.py',10),
-  ('expression -> term','expression',1,'p_expression_term','funciones_sint.py',14),
-  ('opermat -> PLUS','opermat',1,'p_opermat_mate','funciones_sint.py',17),
-  ('opermat -> MINUS','opermat',1,'p_opermat_mate','funciones_sint.py',18),
-  ('opermat -> TIMES','opermat',1,'p_opermat_mate','funciones_sint.py',19),
-  ('opermat -> DIVIDE','opermat',1,'p_opermat_mate','funciones_sint.py',20),
-  ('opermat -> MOD','opermat',1,'p_opermat_mate','funciones_sint.py',21),
-  ('operlog -> EQUAL','operlog',1,'p_operlog_logico','funciones_sint.py',24),
-  ('operlog -> NOTEQUAL','operlog',1,'p_operlog_logico','funciones_sint.py',25),
-  ('operlog -> GREATERTHAN','operlog',1,'p_operlog_logico','funciones_sint.py',26),
-  ('operlog -> GREATERTHANEQUAL','operlog',1,'p_operlog_logico','funciones_sint.py',27),
-  ('operlog -> LESSERTHAN','operlog',1,'p_operlog_logico','funciones_sint.py',28),
-  ('operlog -> LESSERTHANEQUAL','operlog',1,'p_operlog_logico','funciones_sint.py',29),
-  ('term -> factor','term',1,'p_term_factor','funciones_sint.py',32),
-  ('factor -> NUMBER','factor',1,'p_factor_num','funciones_sint.py',35),
-  ('factor -> VARIABLE','factor',1,'p_factor_num','funciones_sint.py',36),
+  ("S' -> lazo","S'",1,None,None,None),
+  ('lazo -> WHILE LPAREN expressionLog RPAREN','lazo',4,'p_lazo_while','funciones_sint.py',6),
+  ('lazo -> FOR LPAREN expression SEMICOLON expression SEMICOLON expression RPAREN','lazo',8,'p_lazo_for','funciones_sint.py',11),
+  ('expressionMat -> expression opermat factor','expressionMat',3,'p_expression_mate','funciones_sint.py',16),
+  ('expressionLog -> expression operlog factor','expressionLog',3,'p_expression_logic','funciones_sint.py',21),
+  ('expression -> term','expression',1,'p_expression_term','funciones_sint.py',26),
+  ('opermat -> PLUS','opermat',1,'p_opermat_mate','funciones_sint.py',30),
+  ('opermat -> MINUS','opermat',1,'p_opermat_mate','funciones_sint.py',31),
+  ('opermat -> TIMES','opermat',1,'p_opermat_mate','funciones_sint.py',32),
+  ('opermat -> DIVIDE','opermat',1,'p_opermat_mate','funciones_sint.py',33),
+  ('opermat -> MOD','opermat',1,'p_opermat_mate','funciones_sint.py',34),
+  ('opermat -> INCREMENT','opermat',1,'p_opermat_mate','funciones_sint.py',35),
+  ('opermat -> DECREMENT','opermat',1,'p_opermat_mate','funciones_sint.py',36),
+  ('opermat -> COMPASSIGPLUS','opermat',1,'p_opermat_mate','funciones_sint.py',37),
+  ('opermat -> COMPASSIGMINUS','opermat',1,'p_opermat_mate','funciones_sint.py',38),
+  ('opermat -> COMPASSIGTIMES','opermat',1,'p_opermat_mate','funciones_sint.py',39),
+  ('opermat -> COMPASSIGDIVIDE','opermat',1,'p_opermat_mate','funciones_sint.py',40),
+  ('operlog -> EQUAL','operlog',1,'p_operlog_logico','funciones_sint.py',44),
+  ('operlog -> NOTEQUAL','operlog',1,'p_operlog_logico','funciones_sint.py',45),
+  ('operlog -> GREATERTHAN','operlog',1,'p_operlog_logico','funciones_sint.py',46),
+  ('operlog -> GREATERTHANEQUAL','operlog',1,'p_operlog_logico','funciones_sint.py',47),
+  ('operlog -> LESSERTHAN','operlog',1,'p_operlog_logico','funciones_sint.py',48),
+  ('operlog -> LESSERTHANEQUAL','operlog',1,'p_operlog_logico','funciones_sint.py',49),
+  ('term -> factor','term',1,'p_term_factor','funciones_sint.py',53),
+  ('factor -> NUMBER','factor',1,'p_factor_num','funciones_sint.py',57),
+  ('factor -> VARIABLE','factor',1,'p_factor_num','funciones_sint.py',58),
 ]
