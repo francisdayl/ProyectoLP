@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ASSIGNMENT BOOL BYTE CHAR COMPASSIGDIVIDE COMPASSIGMINUS COMPASSIGPLUS COMPASSIGTIMES CONSOLE DECIMAL DECREMENT DIVIDE DOUBLE ELSE ENUM EQUAL EVENT FALSE FLOAT FOR FOREACH GREATERTHAN GREATERTHANEQUAL IF IN INCREMENT INT LESSERTHAN LESSERTHANEQUAL LONG LPAREN MINUS MOD NEW NOTEQUAL NULL NUMBER PLUS RPAREN SBYTE SEMICOLON SHORT SIZEOF STRING TIMES TRUE TYPEOF UINT ULONG USHORT VARIABLE WHILE WRITE WRITELINElazo : WHILE LPAREN expressionLog RPARENlazo : FOR LPAREN expression SEMICOLON expression SEMICOLON expression RPARENexpressionMat : expression opermat factorexpressionLog : expression operlog factorexpression : termopermat : PLUS\n    | MINUS\n    | TIMES\n    | DIVIDE\n    | MOD\n    | INCREMENT\n    | DECREMENT\n    | COMPASSIGPLUS\n    | COMPASSIGMINUS\n    | COMPASSIGTIMES\n    | COMPASSIGDIVIDEoperlog : EQUAL\n    | NOTEQUAL\n    | GREATERTHAN\n    | GREATERTHANEQUAL\n    | LESSERTHAN\n    | LESSERTHANEQUALterm : factorfactor : NUMBER\n    | VARIABLE'
+_lr_signature = 'ADD AND ASSIGNMENT BOOL BYTE CHAR COMMA COMPARETO COMPASSIGDIVIDE COMPASSIGMINUS COMPASSIGPLUS COMPASSIGTIMES CONSOLE DECIMAL DECREMENT DIVIDE DOUBLE ELSE ENUM EQUAL EQUALS EVENT FALSE FLOAT FOR FOREACH GREATERTHAN GREATERTHANEQUAL IF IN INCREMENT INT ITEM LBRACKET LESSERTHAN LESSERTHANEQUAL LIST LONG LPAREN MINUS MOD NEW NOTEQUAL NULL NUMBER OR PLUS POINT RBRACKET REMOVE REMOVEAT RPAREN SBYTE SEMICOLON SHORT SIZEOF STRING TIMES TRUE TUPLE TYPEOF UINT ULONG USHORT VARIABLE WHILE WRITE WRITELINEexpression : termexpression : datos declaracion \n    | declaracionexpression : expression opmat termexpression : condicionalexpression : expresionlogic\n    | expresionlogic connectlog expresionlogicexpresionlogic : term oplog termexpresionlogic : TRUE\n    | FALSEexpression : VARIABLE assignacion SEMICOLONexpression : assignacion VARIABLE SEMICOLONexpression : WHILE condicional LBRACKET expression RBRACKETexpression : FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKETexpression : IF condicional LBRACKET expression RBRACKETcondicional : LPAREN expresionlogic RPARENdeclaracion : VARIABLE ASSIGNMENT expression SEMICOLONconnectlog : AND\n    | ORoplog : EQUAL\n    | NOTEQUAL\n    | GREATERTHAN\n    | GREATERTHANEQUAL\n    | LESSERTHAN\n    | LESSERTHANEQUALopmat : PLUS\n    | MINUS\n    | TIMES\n    | DIVIDE\n    | MODassignacion : INCREMENT\n    | DECREMENT\n    | COMPASSIGPLUS\n    | COMPASSIGMINUS\n    | COMPASSIGTIMES\n    | COMPASSIGDIVIDEterm : factorfactor : VARIABLEterm : NUMBERdatos : BOOL\n    | BYTE\n    | CHAR\n    | DECIMAL\n    | DOUBLE\n    | FLOAT\n    | INT\n    | LONG\n    | SBYTE\n    | SHORT\n    | UINT\n    | ULONG\n    | USHORT'
     
-_lr_action_items = {'WHILE':([0,],[2,]),'FOR':([0,],[3,]),'$end':([1,13,26,],[0,-1,-2,]),'LPAREN':([2,3,],[4,5,]),'NUMBER':([4,5,14,15,16,17,18,19,20,21,24,],[10,10,10,-17,-18,-19,-20,-21,-22,10,10,]),'VARIABLE':([4,5,14,15,16,17,18,19,20,21,24,],[11,11,11,-17,-18,-19,-20,-21,-22,11,11,]),'RPAREN':([6,8,9,10,11,22,25,],[13,-23,-5,-24,-25,-4,26,]),'EQUAL':([7,8,9,10,11,],[15,-23,-5,-24,-25,]),'NOTEQUAL':([7,8,9,10,11,],[16,-23,-5,-24,-25,]),'GREATERTHAN':([7,8,9,10,11,],[17,-23,-5,-24,-25,]),'GREATERTHANEQUAL':([7,8,9,10,11,],[18,-23,-5,-24,-25,]),'LESSERTHAN':([7,8,9,10,11,],[19,-23,-5,-24,-25,]),'LESSERTHANEQUAL':([7,8,9,10,11,],[20,-23,-5,-24,-25,]),'SEMICOLON':([8,9,10,11,12,23,],[-23,-5,-24,-25,21,24,]),}
+_lr_action_items = {'VARIABLE':([0,3,8,11,15,16,17,18,19,20,21,22,23,24,25,26,27,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,51,52,53,55,58,69,70,72,73,78,82,],[7,50,56,61,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-50,-51,-52,-31,-32,-33,-34,-35,-36,61,-26,-27,-28,-29,-30,61,-20,-21,-22,-23,-24,-25,61,-18,-19,7,50,7,61,7,-17,7,7,]),'WHILE':([0,55,69,72,78,82,],[9,9,9,9,9,9,]),'FOR':([0,55,69,72,78,82,],[10,10,10,10,10,10,]),'IF':([0,55,69,72,78,82,],[12,12,12,12,12,12,]),'NUMBER':([0,11,36,37,38,39,40,41,42,43,44,45,46,47,48,51,52,53,55,69,70,72,73,78,82,],[14,14,14,-26,-27,-28,-29,-30,14,-20,-21,-22,-23,-24,-25,14,-18,-19,14,14,14,14,-17,14,14,]),'BOOL':([0,55,69,72,78,82,],[15,15,15,15,15,15,]),'BYTE':([0,55,69,72,78,82,],[16,16,16,16,16,16,]),'CHAR':([0,55,69,72,78,82,],[17,17,17,17,17,17,]),'DECIMAL':([0,55,69,72,78,82,],[18,18,18,18,18,18,]),'DOUBLE':([0,55,69,72,78,82,],[19,19,19,19,19,19,]),'FLOAT':([0,55,69,72,78,82,],[20,20,20,20,20,20,]),'INT':([0,55,69,72,78,82,],[21,21,21,21,21,21,]),'LONG':([0,55,69,72,78,82,],[22,22,22,22,22,22,]),'SBYTE':([0,55,69,72,78,82,],[23,23,23,23,23,23,]),'SHORT':([0,55,69,72,78,82,],[24,24,24,24,24,24,]),'UINT':([0,55,69,72,78,82,],[25,25,25,25,25,25,]),'ULONG':([0,55,69,72,78,82,],[26,26,26,26,26,26,]),'USHORT':([0,55,69,72,78,82,],[27,27,27,27,27,27,]),'LPAREN':([0,9,10,12,55,69,72,78,82,],[11,11,58,11,11,11,11,11,11,]),'TRUE':([0,11,51,52,53,55,69,70,72,73,78,82,],[28,28,28,-18,-19,28,28,28,28,-17,28,28,]),'FALSE':([0,11,51,52,53,55,69,70,72,73,78,82,],[29,29,29,-18,-19,29,29,29,29,-17,29,29,]),'INCREMENT':([0,7,55,69,72,78,82,],[30,30,30,30,30,30,30,]),'DECREMENT':([0,7,55,69,72,78,82,],[31,31,31,31,31,31,31,]),'COMPASSIGPLUS':([0,7,55,69,72,78,82,],[32,32,32,32,32,32,32,]),'COMPASSIGMINUS':([0,7,55,69,72,78,82,],[33,33,33,33,33,33,33,]),'COMPASSIGTIMES':([0,7,55,69,72,78,82,],[34,34,34,34,34,34,34,]),'COMPASSIGDIVIDE':([0,7,55,69,72,78,82,],[35,35,35,35,35,35,35,]),'$end':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,68,71,73,77,79,84,],[0,-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,-38,-4,-8,-7,-11,-12,-16,-17,-13,-15,-14,]),'PLUS':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,67,68,71,73,74,76,77,79,80,83,84,],[37,-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,-38,-4,-8,-7,-11,37,-12,-16,-17,37,37,-13,-15,37,37,-14,]),'MINUS':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,67,68,71,73,74,76,77,79,80,83,84,],[38,-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,-38,-4,-8,-7,-11,38,-12,-16,-17,38,38,-13,-15,38,38,-14,]),'TIMES':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,67,68,71,73,74,76,77,79,80,83,84,],[39,-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,-38,-4,-8,-7,-11,39,-12,-16,-17,39,39,-13,-15,39,39,-14,]),'DIVIDE':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,67,68,71,73,74,76,77,79,80,83,84,],[40,-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,-38,-4,-8,-7,-11,40,-12,-16,-17,40,40,-13,-15,40,40,-14,]),'MOD':([1,2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,67,68,71,73,74,76,77,79,80,83,84,],[41,-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,-38,-4,-8,-7,-11,41,-12,-16,-17,41,41,-13,-15,41,41,-14,]),'SEMICOLON':([2,4,5,6,7,13,14,28,29,30,31,32,33,34,35,49,54,56,61,63,64,65,66,67,68,71,73,75,77,79,84,],[-1,-3,-5,-6,-38,-37,-39,-9,-10,-31,-32,-33,-34,-35,-36,-2,66,68,-38,-4,-8,-7,-11,73,-12,-16,-17,78,-13,-15,-14,]),'RBRACKET':([2,4,5,6,7,13,14,28,29,49,61,63,64,65,66,68,71,73,74,76,77,79,83,84,],[-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,-38,-4,-8,-7,-11,-12,-16,-17,77,79,-13,-15,84,-14,]),'RPAREN':([2,4,5,6,7,13,14,28,29,49,59,61,63,64,65,66,68,71,73,77,79,80,84,],[-1,-3,-5,-6,-38,-37,-39,-9,-10,-2,71,-38,-4,-8,-7,-11,-12,-16,-17,-13,-15,81,-14,]),'EQUAL':([2,7,13,14,60,61,],[43,-38,-37,-39,43,-38,]),'NOTEQUAL':([2,7,13,14,60,61,],[44,-38,-37,-39,44,-38,]),'GREATERTHAN':([2,7,13,14,60,61,],[45,-38,-37,-39,45,-38,]),'GREATERTHANEQUAL':([2,7,13,14,60,61,],[46,-38,-37,-39,46,-38,]),'LESSERTHAN':([2,7,13,14,60,61,],[47,-38,-37,-39,47,-38,]),'LESSERTHANEQUAL':([2,7,13,14,60,61,],[48,-38,-37,-39,48,-38,]),'AND':([6,13,14,28,29,61,64,],[52,-37,-39,-9,-10,-38,-8,]),'OR':([6,13,14,28,29,61,64,],[53,-37,-39,-9,-10,-38,-8,]),'ASSIGNMENT':([7,50,],[55,55,]),'LBRACKET':([57,62,71,81,],[69,72,-16,82,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'lazo':([0,],[1,]),'expressionLog':([4,],[6,]),'expression':([4,5,21,24,],[7,12,23,25,]),'factor':([4,5,14,21,24,],[8,8,22,8,8,]),'term':([4,5,21,24,],[9,9,9,9,]),'operlog':([7,],[14,]),}
+_lr_goto_items = {'expression':([0,55,69,72,78,82,],[1,67,74,76,80,83,]),'term':([0,11,36,42,51,55,69,70,72,78,82,],[2,60,63,64,60,2,2,60,2,2,2,]),'datos':([0,55,69,72,78,82,],[3,3,3,3,3,3,]),'declaracion':([0,3,55,58,69,72,78,82,],[4,49,4,70,4,4,4,4,]),'condicional':([0,9,12,55,69,72,78,82,],[5,57,62,5,5,5,5,5,]),'expresionlogic':([0,11,51,55,69,70,72,78,82,],[6,59,65,6,6,75,6,6,6,]),'assignacion':([0,7,55,69,72,78,82,],[8,54,8,8,8,8,8,]),'factor':([0,11,36,42,51,55,69,70,72,78,82,],[13,13,13,13,13,13,13,13,13,13,13,]),'opmat':([1,67,74,76,80,83,],[36,36,36,36,36,36,]),'oplog':([2,60,],[42,42,]),'connectlog':([6,],[51,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,30 +26,57 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> lazo","S'",1,None,None,None),
-  ('lazo -> WHILE LPAREN expressionLog RPAREN','lazo',4,'p_lazo_while','funciones_sint.py',6),
-  ('lazo -> FOR LPAREN expression SEMICOLON expression SEMICOLON expression RPAREN','lazo',8,'p_lazo_for','funciones_sint.py',11),
-  ('expressionMat -> expression opermat factor','expressionMat',3,'p_expression_mate','funciones_sint.py',16),
-  ('expressionLog -> expression operlog factor','expressionLog',3,'p_expression_logic','funciones_sint.py',21),
-  ('expression -> term','expression',1,'p_expression_term','funciones_sint.py',26),
-  ('opermat -> PLUS','opermat',1,'p_opermat_mate','funciones_sint.py',30),
-  ('opermat -> MINUS','opermat',1,'p_opermat_mate','funciones_sint.py',31),
-  ('opermat -> TIMES','opermat',1,'p_opermat_mate','funciones_sint.py',32),
-  ('opermat -> DIVIDE','opermat',1,'p_opermat_mate','funciones_sint.py',33),
-  ('opermat -> MOD','opermat',1,'p_opermat_mate','funciones_sint.py',34),
-  ('opermat -> INCREMENT','opermat',1,'p_opermat_mate','funciones_sint.py',35),
-  ('opermat -> DECREMENT','opermat',1,'p_opermat_mate','funciones_sint.py',36),
-  ('opermat -> COMPASSIGPLUS','opermat',1,'p_opermat_mate','funciones_sint.py',37),
-  ('opermat -> COMPASSIGMINUS','opermat',1,'p_opermat_mate','funciones_sint.py',38),
-  ('opermat -> COMPASSIGTIMES','opermat',1,'p_opermat_mate','funciones_sint.py',39),
-  ('opermat -> COMPASSIGDIVIDE','opermat',1,'p_opermat_mate','funciones_sint.py',40),
-  ('operlog -> EQUAL','operlog',1,'p_operlog_logico','funciones_sint.py',44),
-  ('operlog -> NOTEQUAL','operlog',1,'p_operlog_logico','funciones_sint.py',45),
-  ('operlog -> GREATERTHAN','operlog',1,'p_operlog_logico','funciones_sint.py',46),
-  ('operlog -> GREATERTHANEQUAL','operlog',1,'p_operlog_logico','funciones_sint.py',47),
-  ('operlog -> LESSERTHAN','operlog',1,'p_operlog_logico','funciones_sint.py',48),
-  ('operlog -> LESSERTHANEQUAL','operlog',1,'p_operlog_logico','funciones_sint.py',49),
-  ('term -> factor','term',1,'p_term_factor','funciones_sint.py',53),
-  ('factor -> NUMBER','factor',1,'p_factor_num','funciones_sint.py',57),
-  ('factor -> VARIABLE','factor',1,'p_factor_num','funciones_sint.py',58),
+  ("S' -> expression","S'",1,None,None,None),
+  ('expression -> term','expression',1,'p_expression_term','pruebas.py',5),
+  ('expression -> datos declaracion','expression',2,'p_expression_decl','pruebas.py',8),
+  ('expression -> declaracion','expression',1,'p_expression_decl','pruebas.py',9),
+  ('expression -> expression opmat term','expression',3,'p_expression_opermat','pruebas.py',13),
+  ('expression -> condicional','expression',1,'p_expression_condicion','pruebas.py',17),
+  ('expression -> expresionlogic','expression',1,'p_expression_logic','pruebas.py',21),
+  ('expression -> expresionlogic connectlog expresionlogic','expression',3,'p_expression_logic','pruebas.py',22),
+  ('expresionlogic -> term oplog term','expresionlogic',3,'p_expresionlogic_rel','pruebas.py',26),
+  ('expresionlogic -> TRUE','expresionlogic',1,'p_expresionlogic_bool','pruebas.py',29),
+  ('expresionlogic -> FALSE','expresionlogic',1,'p_expresionlogic_bool','pruebas.py',30),
+  ('expression -> VARIABLE assignacion SEMICOLON','expression',3,'p_expression_preop','pruebas.py',33),
+  ('expression -> assignacion VARIABLE SEMICOLON','expression',3,'p_expression_postop','pruebas.py',37),
+  ('expression -> WHILE condicional LBRACKET expression RBRACKET','expression',5,'p_expression_while','pruebas.py',41),
+  ('expression -> FOR LPAREN declaracion expresionlogic SEMICOLON expression RPAREN LBRACKET expression RBRACKET','expression',10,'p_expression_for','pruebas.py',45),
+  ('expression -> IF condicional LBRACKET expression RBRACKET','expression',5,'p_expression_if','pruebas.py',49),
+  ('condicional -> LPAREN expresionlogic RPAREN','condicional',3,'p_condicional','pruebas.py',53),
+  ('declaracion -> VARIABLE ASSIGNMENT expression SEMICOLON','declaracion',4,'p_declaracion','pruebas.py',56),
+  ('connectlog -> AND','connectlog',1,'p_connectlog','pruebas.py',59),
+  ('connectlog -> OR','connectlog',1,'p_connectlog','pruebas.py',60),
+  ('oplog -> EQUAL','oplog',1,'p_oplog','pruebas.py',63),
+  ('oplog -> NOTEQUAL','oplog',1,'p_oplog','pruebas.py',64),
+  ('oplog -> GREATERTHAN','oplog',1,'p_oplog','pruebas.py',65),
+  ('oplog -> GREATERTHANEQUAL','oplog',1,'p_oplog','pruebas.py',66),
+  ('oplog -> LESSERTHAN','oplog',1,'p_oplog','pruebas.py',67),
+  ('oplog -> LESSERTHANEQUAL','oplog',1,'p_oplog','pruebas.py',68),
+  ('opmat -> PLUS','opmat',1,'p_opmat','pruebas.py',71),
+  ('opmat -> MINUS','opmat',1,'p_opmat','pruebas.py',72),
+  ('opmat -> TIMES','opmat',1,'p_opmat','pruebas.py',73),
+  ('opmat -> DIVIDE','opmat',1,'p_opmat','pruebas.py',74),
+  ('opmat -> MOD','opmat',1,'p_opmat','pruebas.py',75),
+  ('assignacion -> INCREMENT','assignacion',1,'p_assignacion','pruebas.py',78),
+  ('assignacion -> DECREMENT','assignacion',1,'p_assignacion','pruebas.py',79),
+  ('assignacion -> COMPASSIGPLUS','assignacion',1,'p_assignacion','pruebas.py',80),
+  ('assignacion -> COMPASSIGMINUS','assignacion',1,'p_assignacion','pruebas.py',81),
+  ('assignacion -> COMPASSIGTIMES','assignacion',1,'p_assignacion','pruebas.py',82),
+  ('assignacion -> COMPASSIGDIVIDE','assignacion',1,'p_assignacion','pruebas.py',83),
+  ('term -> factor','term',1,'p_term_factor','pruebas.py',86),
+  ('factor -> VARIABLE','factor',1,'p_factor_var','pruebas.py',89),
+  ('term -> NUMBER','term',1,'p_term_numero','pruebas.py',92),
+  ('datos -> BOOL','datos',1,'p_datos','pruebas.py',101),
+  ('datos -> BYTE','datos',1,'p_datos','pruebas.py',102),
+  ('datos -> CHAR','datos',1,'p_datos','pruebas.py',103),
+  ('datos -> DECIMAL','datos',1,'p_datos','pruebas.py',104),
+  ('datos -> DOUBLE','datos',1,'p_datos','pruebas.py',105),
+  ('datos -> FLOAT','datos',1,'p_datos','pruebas.py',106),
+  ('datos -> INT','datos',1,'p_datos','pruebas.py',107),
+  ('datos -> LONG','datos',1,'p_datos','pruebas.py',108),
+  ('datos -> SBYTE','datos',1,'p_datos','pruebas.py',109),
+  ('datos -> SHORT','datos',1,'p_datos','pruebas.py',110),
+  ('datos -> UINT','datos',1,'p_datos','pruebas.py',111),
+  ('datos -> ULONG','datos',1,'p_datos','pruebas.py',112),
+  ('datos -> USHORT','datos',1,'p_datos','pruebas.py',113),
 ]

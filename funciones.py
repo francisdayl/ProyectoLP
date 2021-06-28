@@ -54,8 +54,6 @@ tokens = (
              'DIVIDE',
              'LPAREN',
              'RPAREN',
-             'LBRACKET',
-             'RBRACKET',
              'MOD',
              'VARIABLE',
              'EQUAL',
@@ -69,7 +67,11 @@ tokens = (
              'COMPASSIGPLUS',
              'COMPASSIGMINUS',
              'COMPASSIGTIMES',
-             'COMPASSIGDIVIDE'
+             'COMPASSIGDIVIDE',
+             'LBRACKET',
+             'RBRACKET',
+             'AND',
+             'OR',
          ) + tuple(reserved.values())
 # Regular expression rules for simple tokens
 t_SEMICOLON = r'\;'
