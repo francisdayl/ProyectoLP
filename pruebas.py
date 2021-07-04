@@ -1,13 +1,15 @@
 from funciones import tokens
 import ply.yacc as yacc
 
+list_tok = []
+
 def p_expression_term(p):
     'expression : term'
 
 def p_expression_decl(p):
     '''expression : datos declaracion 
     | declaracion'''
-    p[0] = "Declaracion valida"
+    p[0] = ["Declaracion valida"]
 
 def p_expression_opermat(p):
     'expression : expression opmat term'
@@ -74,6 +76,9 @@ def p_oplog(p):
     | GREATERTHANEQUAL
     | LESSERTHAN
     | LESSERTHANEQUAL'''
+    list_tok.append(p[1])
+    #p[0] = p[1]
+    #print("XDDD")
 
 def p_opmat(p):
     '''opmat : PLUS
@@ -130,12 +135,14 @@ def p_error(p):
 
 # Build the parser
 parser = yacc.yacc()
-"""
+
 while True:
+    list_tok.clear()
     try:
         s = input('calc > ')
     except EOFError:
         break
     if not s: continue
     result = parser.parse(s)
-    print(result)"""
+    print(list_tok)
+    print(result)
