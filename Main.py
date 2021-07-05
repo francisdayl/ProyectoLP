@@ -1,7 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import Sintactico as st
 import Lexico as lx
-
+import Semantico as smt
 
 class Main(QtWidgets.QMainWindow):
     def __init__(self):
@@ -52,12 +52,21 @@ class Main(QtWidgets.QMainWindow):
         self.Button_Sint.setObjectName("Button_Sint")
         self.horizontalLayout.addWidget(self.Button_Sint)
         self.verticalLayout_2.addLayout(self.horizontalLayout)
+        self.Button_semant = QtWidgets.QPushButton()
+        self.Button_semant.setFont(font)
+        self.Button_semant.setText("Analizador Semántico")
+        self.Button_semant.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.verticalLayout.addWidget(self.Button_semant)
+
+        
         self.setCentralWidget(self.centralwidget)
 
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
+        
         self.Button_Lex.clicked.connect(self.show_lex)
         self.Button_Sint.clicked.connect(self.show_sint)
+        self.Button_semant.clicked.connect(self.show_sem)
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
@@ -65,6 +74,9 @@ class Main(QtWidgets.QMainWindow):
         self.label.setText(_translate("self", "Proyecto Lenguajes de Programación: C#"))
         self.Button_Lex.setText(_translate("self", "Analizador Léxico"))
         self.Button_Sint.setText(_translate("self", "Analizador Sintáctico"))
+
+    def show_sem(self):
+        Semant.show()
 
     def show_lex(self):
         if not Sintact.isHidden():
@@ -90,6 +102,7 @@ if __name__ == "__main__":
     Principal = Main()
     Lexi = lx.Lexico()
     Sintact = st.Sintactico()
+    Semant = smt.Semantico()
 
     Principal.show()
     sys.exit(app.exec_())
