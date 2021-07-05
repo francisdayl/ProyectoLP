@@ -1,7 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import funciones as fc
-import prbs as pr
+import funciones_sintact as pr
 import random as rd
+
 class Semantico(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
@@ -345,10 +346,8 @@ class Semantico(QtWidgets.QMainWindow):
         self.verticalLayout.setStretch(3, 3)
         self.setCentralWidget(self.centralwidget)
         self.retranslateUi()
-        self.Button_desc = QtWidgets.QPushButton()
-        self.Button_desc.clicked.connect(self.cleargrid)
 
-        self.Button_Regresar.clicked.connect(self.cleargrid)
+        self.Button_Regresar.clicked.connect(self.close)
         self.Button_Analizar.clicked.connect(self.analizar)
         self.Button_Demo.clicked.connect(self.demo)
 
@@ -385,7 +384,7 @@ class Semantico(QtWidgets.QMainWindow):
         self.Grid.addWidget(label_3,0,1)
 
     def analizar(self):
-        self.Button_Regresar.click()
+        self.cleargrid()
         texto = self.Text_Sem.toPlainText()
         if len(texto)>0:
             lexer = fc.lexer
@@ -393,8 +392,7 @@ class Semantico(QtWidgets.QMainWindow):
             results = fc.getTokens(lexer)
             for i in range(len(results)):
                 toquen = results[i]
-                desc_token = "Token N°: "+str(toquen[-1]+1)+" | "
-                desc_token+= "Token identificado: "+str(toquen[1])+" | "
+                desc_token = "Token identificado: "+str(toquen[1])+" | "
                 desc_token += "Tipo Token: "
                 if toquen[0] in fc.reserved:
                     desc_token += "Palabra Reservada "

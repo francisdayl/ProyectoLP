@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-import pruebas as pr
+import funciones_sintact as pr
 import time
 import random as rd
 
@@ -121,7 +121,10 @@ class Sintactico(QtWidgets.QMainWindow):
         if len(self.Text_Sem.toPlainText().strip())>0:
             result = pr.parser.parse(self.Text_Sem.toPlainText())
             if result is not None:
-                self.ListWidget.addItem(result)
+                if type(result) == list:
+                    self.ListWidget.addItem(result[0])
+                else:
+                    self.ListWidget.addItem(result)
             else:
                 self.ListWidget.addItem("Sintaxis invalida e irreconocible")
 
@@ -131,8 +134,6 @@ class Sintactico(QtWidgets.QMainWindow):
             self.ejemplos.remove(ejemplo)
             self.Text_Sem.setPlainText(ejemplo)
             self.Button_Analizar.click()
-        
-        print("Demostrado")
 
     def closeEvent(self,event):
         self.Text_Sem.clear()
