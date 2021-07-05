@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
-
+import funciones as fc
+import prbs as pr
+import random as rd
 class Semantico(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
@@ -9,6 +10,10 @@ class Semantico(QtWidgets.QMainWindow):
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.sizePolicy().hasHeightForWidth())
+
+        self.ejemplos = ["i++;","if(a==b){a++;}","while(cont>0){if(cont==0){--cont;}}",
+        "for(int i=0;i<n;i++){suma++;}"]
+
         self.setSizePolicy(sizePolicy)
         self.setMinimumSize(QtCore.QSize(500, 250))
         self.setMaximumSize(QtCore.QSize(800, 1000))
@@ -294,7 +299,7 @@ class Semantico(QtWidgets.QMainWindow):
         self.Grid = QtWidgets.QGridLayout()
         self.Form_elementos.addLayout(self.Grid, 0, 0, 1, 1)
 
-        self.label_4 = QtWidgets.QLabel()
+        """self.label_4 = QtWidgets.QLabel()
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -311,7 +316,7 @@ class Semantico(QtWidgets.QMainWindow):
         self.label_3.setFont(font)
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
         self.label_3.setObjectName("label_3")
-        self.Grid.addWidget(self.label_3,0,1)       
+        self.Grid.addWidget(self.label_3,0,1)  """     
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout.addWidget(self.scrollArea)
         self.ListWidget = QtWidgets.QListWidget(self.centralwidget)
@@ -340,9 +345,14 @@ class Semantico(QtWidgets.QMainWindow):
         self.verticalLayout.setStretch(3, 3)
         self.setCentralWidget(self.centralwidget)
         self.retranslateUi()
-        self.Button_Regresar.clicked.connect(self.close)
+        self.Button_desc = QtWidgets.QPushButton()
+        self.Button_desc.clicked.connect(self.cleargrid)
+
+        self.Button_Regresar.clicked.connect(self.cleargrid)
         self.Button_Analizar.clicked.connect(self.analizar)
         self.Button_Demo.clicked.connect(self.demo)
+
+        
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
@@ -352,24 +362,64 @@ class Semantico(QtWidgets.QMainWindow):
         self.Button_Analizar.setText(_translate("self", "Analizar"))
         self.Button_Analizar.setShortcut(_translate("self", "Return"))
         self.Button_Demo.setText(_translate("self", "Ejecutar Demo"))
-        self.label_4.setText(_translate("self", "Tokens"))
-        self.label_3.setText(_translate("self", "Sintaxis"))
         self.Button_Regresar.setText(_translate("self", "Regresar"))
-
-    def analizar(self):
-        self.cleargrid()
-        print("analizando")
-
-    def demo(self):
-        print("demostrando")
-
+    
     def cleargrid(self):
-        while(self.Grid.count()>2): 
-            child = self.Grid.takeAt(self.Grid.count()-1)    
+        pr.list_sintax.clear()
+        self.ListWidget.clear()
+        while self.Grid.count():
+            child = self.Grid.takeAt(0)                        
             if child.widget():
                 child.widget().deleteLater()
+        label_4 = QtWidgets.QLabel("Token")
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        label_4.setFont(font)
+        label_4.setAlignment(QtCore.Qt.AlignCenter)
+        self.Grid.addWidget(label_4,0,0)
+        label_3 = QtWidgets.QLabel("Sintaxis")
+        label_3.setFont(font)
+        label_3.setAlignment(QtCore.Qt.AlignCenter)
+        self.Grid.addWidget(label_3,0,1)
+
+    def analizar(self):
+        self.Button_Regresar.click()
+        texto = self.Text_Sem.toPlainText()
+        if len(texto)>0:
+            lexer = fc.lexer
+            lexer.input(texto)
+            results = fc.getTokens(lexer)
+            for i in range(len(results)):
+                toquen = results[i]
+                desc_token = "Token N°: "+str(toquen[-1]+1)+" | "
+                desc_token+= "Token identificado: "+str(toquen[1])+" | "
+                desc_token += "Tipo Token: "
+                if toquen[0] in fc.reserved:
+                    desc_token += "Palabra Reservada "
+                else:
+                    desc_token += toquen[0] 
+                self.Grid.addWidget(QtWidgets.QLabel(desc_token),i+1,0)
+            result = pr.parser.parse(self.Text_Sem.toPlainText())
+            for i in range(len(pr.list_sintax)):
+                self.Grid.addWidget(QtWidgets.QLabel(pr.list_sintax[len(pr.list_sintax)-i-1]),i+1,1)
+            if result is not None:
+                self.ListWidget.addItem(result)
+            else:
+                self.ListWidget.addItem("Sintaxis invalida e irreconocible")
+
+    def demo(self):
+        if len(self.ejemplos)>0:
+            ejemplo = rd.choice(self.ejemplos)
+            self.Text_Sem.setPlainText(ejemplo)
+            self.ejemplos.remove(ejemplo)
+            self.Button_Analizar.click()
+
+    
 
     def closeEvent(self,event):
+        pr.list_sintax.clear()
         self.Text_Sem.clear()
         self.ListWidget.clear()
         self.cleargrid()

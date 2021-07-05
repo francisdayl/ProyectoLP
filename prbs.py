@@ -4,31 +4,32 @@ from funciones import tokens
 import ply.yacc as yacc
 
 list_tok = []
+list_sintax = []
 
-<<<<<<< HEAD
 def p_expression_term(p):
     'expression : term'
-=======
-L = [["IF",["(",["a"],")"],[]]]
->>>>>>> eacaffd849e1f91eb408bf734a03ca9c7adac7bb
 
 def p_expression_decl(p):
     '''expression : datos declaracion 
     | declaracion'''
     p[0] = ["Declaracion valida"]
+    list_sintax.append("Declaracion de variable")
 
 def p_expression_opermat(p):
     'expression : expression opmat term'
     p[0] = "Operacion Matematica Valida"
+    list_sintax.append("Operacion Matematica")
 
 def p_expression_condicion(p):
     'expression : condicional'
     p[0] = "Condicion Valida"
+    list_sintax.append("Condicion")
 
 def p_expression_logic(p):
     '''expression : expresionlogic
     | expresionlogic connectlog expresionlogic'''
     p[0] = "Operacion logica Valida"
+    list_sintax.append("Operacion Logica")
 
 def p_expresionlogic_rel(p):
     '''expresionlogic : term oplog term'''
@@ -40,10 +41,12 @@ def p_expresionlogic_bool(p):
 def p_expression_preop(p):
     'expression : VARIABLE assignacion SEMICOLON'
     p[0] = "Operacion de post-incremento/decremento valida"
+    list_sintax.append("Operacion de post-incremento/decremento")
 
 def p_expression_postop(p):
     'expression : assignacion VARIABLE SEMICOLON'
     p[0] = "Operacion de pre-incremento/decremento valida"
+    list_sintax.append("Operacion de pre-incremento/decremento")
 
 def p_preop(p):
     'oper : VARIABLE assignacion'
@@ -55,14 +58,17 @@ def p_postop(p):
 def p_expression_while(p):
     'expression : WHILE condicional LBRACKET expression RBRACKET'
     p[0] = "BUCLE VALIDO"
+    list_sintax.append("Bucle While")
 
 def p_expression_for(p):
     'expression : FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET'
     p[0] = "FOR Valido"
+    list_sintax.append("Bucle FOR")
 
 def p_expression_if(p):
     'expression : IF condicional LBRACKET expression RBRACKET'
     p[0] = "IF VALIDO"
+    list_sintax.append("Sentencia IF")
 
 
 def p_condicional(p):
@@ -74,6 +80,7 @@ def p_declaracion(p):
 def p_connectlog(p):
     '''connectlog : AND
     | OR'''
+    list_tok.append(p[1])
 
 def p_oplog(p):
     '''oplog : EQUAL
@@ -83,8 +90,6 @@ def p_oplog(p):
     | LESSERTHAN
     | LESSERTHANEQUAL'''
     list_tok.append(p[1])
-    #p[0] = p[1]
-    #print("XDDD")
 
 def p_opmat(p):
     '''opmat : PLUS
@@ -92,6 +97,7 @@ def p_opmat(p):
     | TIMES
     | DIVIDE
     | MOD'''
+    list_tok.append(p[1])
 
 def p_assignacion(p):
     '''assignacion : INCREMENT
@@ -100,15 +106,18 @@ def p_assignacion(p):
     | COMPASSIGMINUS
     | COMPASSIGTIMES
     | COMPASSIGDIVIDE'''
+    list_tok.append(p[1])
 
 def p_term_factor(p):
     'term : factor'
 
 def p_factor_var(p):
     'factor : VARIABLE'
+    list_tok.append(p[1])
 
 def p_term_numero(p):
     'term : NUMBER'
+    list_tok.append(p[1])
 
 
 #def p_while(p):
@@ -130,6 +139,7 @@ def p_datos(p):
     | UINT
     | ULONG
     | USHORT'''
+    list_tok.append(p[1])
 
 def p_error(p):
     if p:
@@ -142,7 +152,7 @@ def p_error(p):
 # Build the parser
 parser = yacc.yacc()
 
-while True:
+"""while True:
     list_tok.clear()
     try:
         s = input('calc > ')
@@ -151,4 +161,4 @@ while True:
     if not s: continue
     result = parser.parse(s)
     print(list_tok)
-    print(result)
+    print(result)"""

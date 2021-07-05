@@ -237,7 +237,7 @@ def p_boolean_operations(p):
 
 # Build the parser
 parser = yacc.yacc()
-while True:
+"""while True:
     list_tok.clear()
     try:
         s = input('calc > ')
@@ -246,4 +246,4 @@ while True:
     if not s: continue
     result = parser.parse(s)
     print(list_tok)
-    print(result)
+    print(result)"""

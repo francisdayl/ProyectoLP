@@ -82,7 +82,6 @@ class Lexico(QtWidgets.QMainWindow):
     def analizar(self):
         texto = self.Text_ent.toPlainText()
         self.ListWidget.clear()
-        #for i in range(5):
         lexer = fc.lexer
         lexer.input(texto)
         results = fc.getTokens(lexer)
@@ -101,12 +100,6 @@ class Lexico(QtWidgets.QMainWindow):
     def closeEvent(self,event):
         self.Text_ent.clear()
         self.ListWidget.clear()
-            
-            
-        #self.ListWidget.addItems(["Es una variable","No es una palabra reservada","No es una palabra clave conceptual","No es un caracter especial"])
-
-
-
 
 
 if __name__ == "__main__":
