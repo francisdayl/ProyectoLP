@@ -230,7 +230,7 @@ def p_boolean_operations(p):
         else:
             p[0] = False
 
-    if (not isinstance(p[1], bool) and not isinstance(p[3], bool)) or (not isinstance(p[1], int) and not isinstance(p[3], int)) :
+    if (not isinstance(p[1], bool) or not isinstance(p[3], bool)) and (not isinstance(p[1], int) or not isinstance(p[3], int)) :
         print("Semantic error in input!")
 
 
