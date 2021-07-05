@@ -81,11 +81,15 @@ class Main(QtWidgets.QMainWindow):
     def show_lex(self):
         if not Sintact.isHidden():
             Sintact.close()
+        if not Semant.isHidden():
+            Semant.close()
         Lexi.show()
 
     def show_sint(self):
         if not Lexi.isHidden():
             Lexi.close()
+        if not Semant.isHidden():
+            Semant.close()
         Sintact.show()
 
     def closeEvent(self,event):

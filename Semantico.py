@@ -289,10 +289,12 @@ class Semantico(QtWidgets.QMainWindow):
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 505, 138))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.Form_elementos = QtWidgets.QFormLayout(self.scrollAreaWidgetContents)
-        self.Form_elementos.setLabelAlignment(QtCore.Qt.AlignCenter)
+        self.Form_elementos = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.Form_elementos.setObjectName("Form_elementos")
-        self.label_4 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.Grid = QtWidgets.QGridLayout()
+        self.Form_elementos.addLayout(self.Grid, 0, 0, 1, 1)
+
+        self.label_4 = QtWidgets.QLabel()
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -300,8 +302,8 @@ class Semantico(QtWidgets.QMainWindow):
         self.label_4.setFont(font)
         self.label_4.setAlignment(QtCore.Qt.AlignCenter)
         self.label_4.setObjectName("label_4")
-        self.Form_elementos.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_4)
-        self.label_3 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.Grid.addWidget(self.label_4,0,0)
+        self.label_3 = QtWidgets.QLabel()
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -309,12 +311,7 @@ class Semantico(QtWidgets.QMainWindow):
         self.label_3.setFont(font)
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
         self.label_3.setObjectName("label_3")
-        self.Form_elementos.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.label_3)
-        self.Form_elems = QtWidgets.QFormLayout()
-        self.Form_elems.setRowWrapPolicy(QtWidgets.QFormLayout.WrapAllRows)
-        self.Form_elems.setContentsMargins(-1, 10, -1, 5)
-        self.Form_elems.setObjectName("Form_elems")
-        self.Form_elementos.setLayout(1, QtWidgets.QFormLayout.LabelRole, self.Form_elems)
+        self.Grid.addWidget(self.label_3,0,1)       
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout.addWidget(self.scrollArea)
         self.ListWidget = QtWidgets.QListWidget(self.centralwidget)
@@ -360,21 +357,17 @@ class Semantico(QtWidgets.QMainWindow):
         self.Button_Regresar.setText(_translate("self", "Regresar"))
 
     def analizar(self):
-        #self.cleargrid()
-        print( self.Form_elementos.takeAt(self.Form_elementos.count()-1) )
-        print(self.Form_elems.takeAt(self.Form_elemens.count()-1)  )
+        self.cleargrid()
         print("analizando")
 
     def demo(self):
         print("demostrando")
 
     def cleargrid(self):
-        for i in range(1):
-                #child = self.Form_elementos.takeAt(self.Form_elementos.count())    
-                print( self.Form_elementos.takeAt(self.Form_elementos.count()-1) )
-                print(self.Form_elems.takeAt(self.Form_elemens.count()-1)  )
-                #if child.widget():
-                        #child.widget().deleteLater()
+        while(self.Grid.count()>2): 
+            child = self.Grid.takeAt(self.Grid.count()-1)    
+            if child.widget():
+                child.widget().deleteLater()
 
     def closeEvent(self,event):
         self.Text_Sem.clear()

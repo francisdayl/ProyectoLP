@@ -230,15 +230,14 @@ def p_boolean_operations(p):
         else:
             p[0] = False
 
-    if (not isinstance(p[1], bool) and not isinstance(p[2], bool)) or (not isinstance(p[1], int) and not isinstance(p[2], int)) :
+    if (not isinstance(p[1], bool) and not isinstance(p[3], bool)) or (not isinstance(p[1], int) and not isinstance(p[3], int)) :
         print("Semantic error in input!")
 
 
 
 # Build the parser
 parser = yacc.yacc()
-
-"""while True:
+while True:
     list_tok.clear()
     try:
         s = input('calc > ')
@@ -247,4 +246,4 @@ parser = yacc.yacc()
     if not s: continue
     result = parser.parse(s)
     print(list_tok)
-    print(result)"""
+    print(result)
