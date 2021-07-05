@@ -7,12 +7,12 @@ def p_expression_term(p):
     'expression : term'
 
 def p_expression_decl(p):
-    '''expression : datos declaracion 
+    '''expression : datos declaracion
     | declaracion'''
     p[0] = ["Declaracion valida"]
 
 def p_expression_opermat(p):
-    'expression : expression opmat term'
+    'expression : term opmat expression'
     p[0] = "Operacion Matematica Valida"
 
 def p_expression_condicion(p):
@@ -65,6 +65,9 @@ def p_condicional(p):
 def p_declaracion(p):
     'declaracion : VARIABLE ASSIGNMENT expression SEMICOLON'
 
+def p_logcon(p):
+    'expression : LPAREN condicional connectlog expression RPAREN'
+
 def p_connectlog(p):
     '''connectlog : AND
     | OR'''
@@ -104,11 +107,13 @@ def p_factor_var(p):
 def p_term_numero(p):
     'term : NUMBER'
 
+def p_true(p):
+    'term : TRUE'
+    p[0]= True
 
-#def p_while(p):
-##    'while : WHILE LPAREN NUMBER RPAREN'
-#    p[0] = "Sentencia WHile valida"
-
+def p_false(p):
+    'term : FALSE'
+    p[0]= False
 
 def p_datos(p):
     '''datos : BOOL
@@ -125,12 +130,109 @@ def p_datos(p):
     | ULONG
     | USHORT'''
 
+def p_semant_MatOper(p):
+    '''factor : NUMBER PLUS NUMBER
+    | NUMBER MINUS NUMBER
+    | NUMBER TIMES NUMBER
+    | NUMBER DIVIDE NUMBER
+    | NUMBER MOD NUMBER'''
+
+    if p[2] == 'PLUS' :
+        p[0] = p[1] + p[3]
+
+    elif p[2] == 'MINUS' :
+        p[0] = p[1] - p[3]
+
+    elif p[2] == 'TIMES' :
+        p[0] = p[1] * p[3]
+
+    elif p[2] == 'DIVIDE' :
+        p[0] = p[1] / p[3]
+
+    elif p[2] == 'MOD':
+        p[0] = p[1] % p[3]
+
+
+    if not isinstance(p[1], int) and not isinstance(p[2], int):
+        print("Semantic error in input!")
+
+
+
+
 def p_error(p):
     if p:
         print("Syntax error at token", p.type)
         # Just discard the token and tell the parser it's okay.
     else:
         print("Syntax error at EOF")
+
+def p_boolean_operations(p):
+    '''expression : NUMBER EQUAL NUMBER
+    | NUMBER NOTEQUAL NUMBER
+    | NUMBER GREATERTHAN NUMBER
+    | NUMBER GREATERTHANEQUAL NUMBER
+    | NUMBER LESSERTHAN NUMBER
+    | NUMBER LESSERTHANEQUAL NUMBER
+    | TRUE AND TRUE
+    | TRUE OR TRUE
+    | TRUE AND FALSE
+    | TRUE OR FALSE
+    | FALSE AND FALSE
+    | FALSE OR FALSE
+    | TRUE EQUAL TRUE
+    | TRUE EQUAL FALSE
+    | FALSE EQUAL FALSE
+    | FALSE EQUAL TRUE
+    | TRUE NOTEQUAL TRUE
+    | TRUE NOTEQUAL FALSE
+    | FALSE NOTEQUAL FALSE
+    | FALSE NOTEQUAL TRUE'''
+    # Semantic (prueba semantica)
+
+    if p[1]=='true' or p[3]=='true' or p[1]=='false' or p[3]=='false':
+        p[1]= bool(p[1]=='true')
+        p[3]= bool(p[3]=='true')
+
+
+    if p[2] == 'AND':
+        p[0] = p[1] and p[3]
+
+    elif p[2] == 'OR':
+        p[0] = p[1] or p[3]
+    elif p[2] == 'EQUAL':
+        if p[1] == p[3]:
+            p[0] = True
+        else:
+            p[0] = False
+    elif p[2] == 'NOTEQUAL':
+        if p[1] != p[3]:
+            p[0] = True
+        else:
+            p[0] = False
+    elif p[2] == 'GREATERTHAN':
+        if p[1] > p[3]:
+            p[0] = True
+        else:
+            p[0] = False
+    elif p[2] == 'GREATERTHANEQUAL':
+        if p[1] >= p[3]:
+            p[0] = True
+        else:
+            p[0] = False
+    elif p[2] == 'LESSERTHAN':
+        if p[1] < p[3]:
+            p[0] = True
+        else:
+            p[0] = False
+    elif p[2] == 'LESSERTHANEQUAL':
+        if p[1] <= p[3]:
+            p[0] = True
+        else:
+            p[0] = False
+
+    if (not isinstance(p[1], bool) and not isinstance(p[2], bool)) or (not isinstance(p[1], int) and not isinstance(p[2], int)) :
+        print("Semantic error in input!")
+
 
 
 # Build the parser

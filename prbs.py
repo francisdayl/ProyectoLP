@@ -5,8 +5,12 @@ import ply.yacc as yacc
 
 list_tok = []
 
+<<<<<<< HEAD
 def p_expression_term(p):
     'expression : term'
+=======
+L = [["IF",["(",["a"],")"],[]]]
+>>>>>>> eacaffd849e1f91eb408bf734a03ca9c7adac7bb
 
 def p_expression_decl(p):
     '''expression : datos declaracion 

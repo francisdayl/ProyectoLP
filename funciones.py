@@ -32,9 +32,8 @@ reserved = {
     'console': 'CONSOLE',
     'writeline': 'WRITELINE',
     'write': 'WRITE',
-    'list': 'LIST',
+    'List': 'LIST',
     'Tuple': 'TUPLE',
-    'new': 'NEW',
     'add': 'ADD',
     'remove': 'REMOVE',
     'removeAt': 'REMOVEAT',
@@ -99,7 +98,8 @@ t_COMPASSIGTIMES = r'\*\='
 t_COMPASSIGDIVIDE= r'\/\='
 t_LBRACKET= r'\{'
 t_RBRACKET= r'\}'
-
+t_AND=r'\&'
+t_OR=r'\^'
 
 
 def t_VARIABLE(t):

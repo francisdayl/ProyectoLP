@@ -171,9 +171,9 @@ def p_datos(p):
     | USHORT'''
 
 def p_factor_num(p):
-    '''factor : datos VARIABLE
-    | datos VARIABLE ASSIGNMENT VARIABLE
-    | VARIABLE ASSIGNMENT VARIABLE
+    '''factor : datos VARIABLE SEMICOLON
+    | datos VARIABLE ASSIGNMENT VARIABLE SEMICOLON
+    | VARIABLE ASSIGNMENT VARIABLE SEMICOLON
     | NUMBER'''
 
 
@@ -227,6 +227,7 @@ def p_error(p):
         # Just discard the token and tell the parser it's okay.
     else:
         print("Syntax error at EOF")
+
 
 
 # Build the parser
