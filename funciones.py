@@ -7,31 +7,21 @@ reserved = {
     'decimal': 'DECIMAL',
     'double': 'DOUBLE',
     'else': 'ELSE',
-    'enum': 'ENUM',
-    'event': 'EVENT',
     'float': 'FLOAT',
     'for': 'FOR',
-    'foreach': 'FOREACH',
     'if': 'IF',
-    'in': 'IN',
     'int': 'INT',
     'long': 'LONG',
     'new': 'NEW',
     'null': 'NULL',
     'sbyte': 'SBYTE',
     'short': 'SHORT',
-    'sizeof': 'SIZEOF',
-    'string': 'STRING',
-    'typeof': 'TYPEOF',
     'uint': 'UINT',
     'ulong': 'ULONG',
     'ushort': 'USHORT',
     'while': 'WHILE',
     'false': 'FALSE',
     'true': 'TRUE',
-    'console': 'CONSOLE',
-    'writeline': 'WRITELINE',
-    'write': 'WRITE',
     'List': 'LIST',
     'Tuple': 'TUPLE',
     'add': 'ADD',
@@ -110,7 +100,7 @@ def t_VARIABLE(t):
 
 # A regular expression rule with some action code
 def t_NUMBER(t):
-    r'\d+'
+    r'[0-9]+'
     t.value = int(t.value)
     return t
 

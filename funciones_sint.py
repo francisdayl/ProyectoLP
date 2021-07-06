@@ -1,158 +1,209 @@
 from funciones import tokens
 import ply.yacc as yacc
 
-
-
-#EXPRESIONES MATEMATICAS
-
-def p_factor_var(p):
-    'factor : ID'
-
-
-def p_term_factor(p):
-    'term : factor'
-    p[0] = p[1]
-
-def p_term_plus(p):
-    'term : term PLUS factor'
-
-
-def p_term_minus(p):
-    'term : term MINUS factor'
-
-
-def p_term_times(p):
-    'term : term TIMES factor'
-
-
-def p_term_div(p):
-    'term : term DIVIDE factor'
-
-
-def p_term_mod(p):
-    'term : term MOD factor'
-
-
+list_tok = []
+list_sintax = []
+flag=0
 def p_expression_term(p):
     'expression : term'
+
+def p_expression_opermat(p):
+    '''expression : expresionmate
+    | LPAREN expresionmate RPAREN
+    | expression opmat expresionmate
+    | expresionmate opmat expression
+    | expression opmat LPAREN expresionmate RPAREN
+    | LPAREN expresionmate RPAREN opmat expression'''
+    if (len(p)>2):
+        if (p[1]!="Semantic error in input!" and p[3]!="Semantic error in input!" ):
+            if p[2] == '+':
+                p[0] = (p[1] + p[3])
+            elif p[2] == '-':
+                p[0] = (p[1] - p[3])
+            elif p[2] == '*':
+                p[0] = (p[1] * p[3])
+            elif p[2] == '/':
+                p[0] = (p[1] / p[3])
+            elif p[2] == '%':
+                p[0] = (p[1] % p[3])
+        else:
+            p[0] = "Semantic error in input!"
+    else:
+        if (p[1] == "Semantic error in input!"):
+            p[0] = "Semantic error in input!"
+        else:
+            print(p[1])
+            p[0] = "Operacion Matematica Valida"
+
+    list_sintax.append("Operacion Matematica")
+
+def p_expresionmate_rel(p):
+    'expresionmate : term opmat term'
+    if (str(p[1]).isdigit() and str(p[3]).isdigit()):
+        if p[2] == '+':
+            p[0] = (p[1] + p[3])
+        elif p[2] == '-':
+            p[0] = (p[1] - p[3])
+        elif p[2] == '*':
+            p[0] = (p[1] * p[3])
+        elif p[2] == '/':
+            p[0] = (p[1] / p[3])
+        elif p[2] == '%':
+            p[0] = (p[1] % p[3])
+    else:
+        p[0] = "Semantic error in input!"
+
+def p_expression_logic(p):
+    '''expression : expresionlogic
+    | LPAREN expresionlogic RPAREN
+    | expression oplog expresionlogic
+    | expresionlogic oplog expression
+    | expression connectlog expresionlogic
+    | expresionlogic connectlog expression
+    | expression oplog LPAREN expresionlogic RPAREN
+    | LPAREN expresionlogic RPAREN oplog expression
+    | expression connectlog LPAREN expresionlogic RPAREN
+    | LPAREN expresionlogic RPAREN connectlog expression'''
+
+    if (len(p)>2):
+        if (p[1]!="Semantic error in input!" and p[3]!="Semantic error in input!" ):
+            if p[2] == '==':
+                p[0] = bool(p[1] == p[3])
+            elif p[2] == '!=':
+                p[0] = bool(p[1] != p[3])
+            elif p[2] == '>':
+                p[0] = bool(p[1] > p[3])
+            elif p[2] == '>=':
+                p[0] = bool(p[1] >= p[3])
+            elif p[2] == '<':
+                p[0] = bool(p[1] < p[3])
+            elif p[2] == '<=':
+                p[0] = bool(p[1] <= p[3])
+            elif p[2] == '\&':
+                p[0] = bool(p[1] and p[3])
+            elif p[2] == '\^':
+                p[0] = bool(p[1] or p[3])
+
+        else:
+            p[0] = "Semantic error in input!"
+
+    else:
+        if (p[1] == "Semantic error in input!"):
+            p[0] = "Semantic error in input!"
+        else:
+            print(p[1])
+            p[0]= "Operacion Logica Valida"
+    list_sintax.append("Operacion Logica")
+
+
+def p_expresionlogic_rel(p):
+    'expresionlogic : term oplog term'
+    if (type(p[1])==type(p[3])):
+        if p[2] == '==':
+            p[0] = bool(p[1] == p[3])
+        elif p[2] == '!=':
+            p[0] = bool(p[1] != p[3])
+        elif p[2] == '>':
+            p[0] = bool(p[1] > p[3])
+        elif p[2] == '>=':
+            p[0] = bool(p[1] >= p[3])
+        elif p[2] == '<':
+            p[0] = bool(p[1] < p[3])
+        elif p[2] == '<=':
+            p[0] = bool(p[1] <= p[3])
+    else:
+        p[0] = "Semantic error in input!"
+
+
+
+def p_expresionlogic_bool(p):
+    'expresionlogic : boolean connectlog boolean'
+    if p[2] == '\&':
+        p[0] = bool(p[1] and p[3])
+
+    elif p[2] == '\^':
+        p[0] = bool (p[1] or p[3])
+
+def p_bool_true(p):
+    '''boolean : TRUE
+    | FALSE'''
+    list_tok.append(p[1])
+    p[0]=bool(p[1]=='true')
+
+
+def p_connectlog(p):
+    '''connectlog : AND
+    | OR'''
+    list_tok.append(p[1])
+    p[0]=p[1]
+
+def p_oplog(p):
+    '''oplog : EQUAL
+    | NOTEQUAL
+    | GREATERTHAN
+    | GREATERTHANEQUAL
+    | LESSERTHAN
+    | LESSERTHANEQUAL'''
+    list_tok.append(p[1])
+    p[0] = p[1]
+
+def p_opmat(p):
+    '''opmat : PLUS
+    | MINUS
+    | TIMES
+    | DIVIDE
+    | MOD'''
+    list_tok.append(p[1])
+    p[0] = p[1]
+
+def p_assignacion(p):
+    '''assignacion : INCREMENT
+    | DECREMENT
+    | COMPASSIGPLUS
+    | COMPASSIGMINUS
+    | COMPASSIGTIMES
+    | COMPASSIGDIVIDE'''
+    list_tok.append(p[1])
+    p[0] = p[1]
+
+def p_term(p):
+    '''term : NUMBER
+    | VARIABLE'''
     p[0] = p[1]
 
 
-def p_expression_plus(p):
-    'expression : expression PLUS term'
+def p_expression_preop(p):
+    'expression : VARIABLE assignacion SEMICOLON'
+    p[0] = "Operacion de post-incremento/decremento valida"
+    list_sintax.append("Operacion de post-incremento/decremento")
+
+def p_expression_postop(p):
+    'expression : assignacion VARIABLE SEMICOLON'
+    p[0] = "Operacion de pre-incremento/decremento valida"
+    list_sintax.append("Operacion de pre-incremento/decremento")
+
+def p_preop(p):
+    'oper : VARIABLE assignacion'
+
+def p_postop(p):
+    'oper : assignacion VARIABLE'
 
 
-def p_expression_minus(p):
-    'expression : expression MINUS term'
+def p_expression_while(p):
+    'expression : WHILE LPAREN expresionlogic RPAREN LBRACKET expression RBRACKET'
+    p[0] = "Bucle while valido"
+    list_sintax.append("Bucle While")
 
+def p_expression_for(p):
+    'expression : FOR LPAREN datos declaracion expresionlogic SEMICOLON oper RPAREN LBRACKET expression RBRACKET'
+    p[0] = "Bucle for valido"
+    list_sintax.append("Bucle FOR")
 
-def p_expression_times(p):
-    'expression : expression TIMES term'
-
-
-def p_expression_divide(p):
-    'expression : expression DIVIDE term'
-
-
-def p_expression_mod(p):
-    'expression : expression MOD term'
-
-#EXPRESIONES LOGICAS
-
-def p_term_equal(p):
-    'term : term EQUAL factor'
-
-
-def p_term_notequal(p):
-    'term : term NOTEQUAL factor'
-
-
-def p_term_greaterthan(p):
-    'term : term GREATERTHAN factor'
-
-
-def p_term_greaterthanequal(p):
-    'term : term GREATERTHANEQUAL factor'
-
-
-def p_term_lesserthan(p):
-    'term : term LESSERTHAN factor'
-
-
-def p_term_lesserthanequal(p):
-    'term : term LESSERTHANEQUAL factor'
-
-
-def p_expression_equal(p):
-    'expression : expression EQUAL term'
-
-
-def p_expression_notequal(p):
-    'expression : expression NOTEQUAL term'
-
-
-def p_expression_greaterthan(p):
-    'expression : expression GREATERTHAN term'
-
-
-def p_expression_greaterthanequal(p):
-    'expression : expression GREATERTHANEQUAL term'
-
-
-def p_expression_lesserthan(p):
-    'expression : expression LESSERTHAN term'
-
-
-def p_expression_lesserthanequal(p):
-    'expression : expression LESSERTHANEQUAL term'
-
-#OPERACIONES DE INCREMENTO
-def p_term_increment(p):
-    'term : factor INCREMENT'
-
-
-def p_term_decrement(p):
-    'term : factor DECREMENT'
-
-
-def p_term_compassigplus(p):
-    'term : term COMPASSIGPLUS factor'
-
-
-def p_term_compassigminus(p):
-    'term : term COMPASSIGMINUS factor'
-
-
-def p_term_compassigtimes(p):
-    'term : term COMPASSIGTIMES factor'
-
-
-def p_term_compassigdivide(p):
-    'term : term COMPASSIGDIVIDE factor'
-
-
-def p_expression_increment(p):
-    'expression : term INCREMENT'
-
-
-def p_expression_decrement(p):
-    'expression : term DECREMENT'
-
-
-def p_expression_compassigplus(p):
-    'expression : expression COMPASSIGPLUS term'
-
-
-def p_expression_compassigminus(p):
-    'expression : expression COMPASSIGMINUS term'
-
-
-def p_expression_compassigtimes(p):
-    'expression : expression COMPASSIGTIMES term'
-
-
-def p_expression_compassigdivide(p):
-    'expression : expression COMPASSIGDIVIDE term'
+def p_expression_if(p):
+    '''expression : IF LPAREN expresionlogic RPAREN LBRACKET expression RBRACKET
+    | IF LPAREN expresionlogic RPAREN LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET'''
+    p[0] = "Estructura if valida"
+    list_sintax.append("Sentencia IF")
 
 
 def p_datos(p):
@@ -169,57 +220,76 @@ def p_datos(p):
     | UINT
     | ULONG
     | USHORT'''
-
-def p_factor_num(p):
-    '''factor : datos VARIABLE SEMICOLON
-    | datos VARIABLE ASSIGNMENT VARIABLE SEMICOLON
-    | VARIABLE ASSIGNMENT VARIABLE SEMICOLON
-    | NUMBER'''
+    list_tok.append(p[1])
 
 
-def p_factor_expr(p):
-    'factor : LPAREN expression RPAREN'
+def p_declaracion(p):
+    'declaracion : VARIABLE ASSIGNMENT expression SEMICOLON'
 
+def p_expression_decl(p):
+    '''expression : datos declaracion
+    | declaracion'''
+    p[0] = "Declaracion valida"
+    list_sintax.append("Declaracion de variable")
 
 def p_if(p):
-    'expression : IF LPAREN expression RPAREN LBRACKET expression RBRACKET'
-
-
-def p_else(p):
-    'expression : ELSE LBRACKET expression RBRACKET'
+    '''expression : IF LPAREN expression RPAREN LBRACKET expression RBRACKET
+    | IF LPAREN expression RPAREN LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET'''
+    list_tok.append(p[1])
+    p[0] = "Bucle IF valido"
+    list_sintax.append("Bucle IF valido")
 
 
 def p_while(p):
     'expression : WHILE LPAREN expression RPAREN LBRACKET expression RBRACKET'
+    list_tok.append(p[1])
+    p[0] = "Bucle WHILE valido"
+    list_sintax.append("Bucle WHILE valido")
 
 
 def p_for(p):
-    'expression : FOR LPAREN expression SEMICOLON expression SEMICOLON RPAREN LBRACKET expression RBRACKET'
+    'expression : FOR LPAREN declaracion expression SEMICOLON RPAREN LBRACKET expression RBRACKET'
+    list_tok.append(p[1])
+    p[0] = "Bucle FOR valido"
+    list_sintax.append("Bucle FOR valido")
 
 
 def p_listas(p):
-    'expression: LIST LESSERTHAN datos BIGGERTHAN term ASSIGMENT NEW LIST LESSERTHAN datos BIGGERTHAN LPAREN RPAREN LBRACKET expression RBRACKET SEMICOLON'
+    'expression : LIST LESSERTHAN datos GREATERTHAN term ASSIGNMENT NEW LIST LESSERTHAN datos GREATERTHAN LPAREN RPAREN LBRACKET expression RBRACKET SEMICOLON'
+    list_tok.append(p[1])
+    p[0] = "Declaracion de lista valida"
+    list_sintax.append("Declaracion de lista valida")
+
 
 def p_listas_add(p):
-    'expression: term POINT ADD LPAREN factor RPAREN SEMICOLON'
+    'expression : term POINT ADD LPAREN term RPAREN SEMICOLON'
+
 
 def p_listas_remove(p):
-    'expression: term POINT REMOVE LPAREN factor RPAREN SEMICOLON'
+    'expression : term POINT REMOVE LPAREN term RPAREN SEMICOLON'
+
 
 def p_listas_removeAt(p):
-    'expression: term POINT REMOVEAT LPAREN NUMBER RPAREN SEMICOLON'
+    'expression : term POINT REMOVEAT LPAREN term RPAREN SEMICOLON'
+
 
 def p_tuplas(p):
-    'expression: TUPLE LESSERTHAN LPAREN datos COMMA datos RPAREN BIGGERTHAN term ASSIGMENT NEW TUPLE LPAREN datos COMMA datos RPAREN LPAREN factor COMMA factor RPAREN SEMICOLON'
+    'expression : TUPLE LESSERTHAN LPAREN datos COMMA datos RPAREN GREATERTHAN term ASSIGNMENT NEW TUPLE LPAREN datos COMMA datos RPAREN LPAREN term COMMA term RPAREN SEMICOLON'
+    list_tok.append(p[1])
+    p[0] = "Declaracion de tupla valida"
+    list_sintax.append("Declaracion de tupla valida")
+
 
 def p_tuplas_equals(p):
-    'expression: term POINT EQUALS LPAREN expression RPAREN SEMICOLON'
+    'expression : term POINT EQUALS LPAREN expression RPAREN SEMICOLON'
+
 
 def p_tuplas_compareTo(p):
-    'expression: term POINT COMPARETO LPAREN expression RPAREN SEMICOLON'
+    'expression : term POINT COMPARETO LPAREN expression RPAREN SEMICOLON'
+
 
 def p_tuplas_item(p):
-    'expression: term POINT ITEM SEMICOLON'
+    'expression : term POINT ITEM SEMICOLON'
 
 def p_error(p):
     if p:
@@ -229,15 +299,15 @@ def p_error(p):
         print("Syntax error at EOF")
 
 
-
 # Build the parser
 parser = yacc.yacc()
-
-while True:
-    try:
-        s = input('calc > ')
-    except EOFError:
-        break
-    if not s: continue
-    result = parser.parse(s)
-    print(result)
+# while True:
+#     list_tok.clear()
+#     try:
+#         s = input('calc > ')
+#     except EOFError:
+#         break
+#     if not s: continue
+#     result = parser.parse(s)
+#     print(list_tok)
+#     print(result)

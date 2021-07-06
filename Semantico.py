@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import funciones as fc
-import funciones_sintact as pr
+import funciones_sint as pr
 import random as rd
 
 class Semantico(QtWidgets.QMainWindow):
