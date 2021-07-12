@@ -1,141 +1,73 @@
-from funciones import tokens
+from funciones import tokens, OperandosInvalidosException, CondicionInvalidaException, SemiColonException, TipoDatoException
 import ply.yacc as yacc
+from PyQt5 import QtWidgets
 
 list_tok = []
 list_sintax = []
 flag=0
+
+def msj_error(msj):
+    boton = QtWidgets.QMessageBox()
+    boton.setWindowTitle("Error")
+    boton.setIcon(QtWidgets.QMessageBox.Critical)
+    boton.setText(msj)
+    x = boton.exec_() 
+
 def p_expression_term(p):
     'expression : term'
+    p[0] = p[1]
 
-def p_expression_opermat(p):
-    '''expression : expresionmate
-    | LPAREN expresionmate RPAREN
-    | expression opmat expresionmate
-    | expresionmate opmat expression
-    | expression opmat LPAREN expresionmate RPAREN
-    | LPAREN expresionmate RPAREN opmat expression'''
-    if (len(p)>2):
-        if (p[1]!="Semantic error in input!" and p[3]!="Semantic error in input!" ):
-            if p[2] == '+':
-                p[0] = (p[1] + p[3])
-            elif p[2] == '-':
-                p[0] = (p[1] - p[3])
-            elif p[2] == '*':
-                p[0] = (p[1] * p[3])
-            elif p[2] == '/':
-                p[0] = (p[1] / p[3])
-            elif p[2] == '%':
-                p[0] = (p[1] % p[3])
-        else:
-            p[0] = "Semantic error in input!"
+
+def p_expression_aritme(p):
+    '''expression : term opmat term
+    | term opmat term expression'''
+    if (type(p[1])==int or type(p[1])==float) and (type(p[3])==int or type(p[3])==float):
+        p[0] = "Expresion aritmética válida"
+        list_sintax.append("Expresion aritmética")
     else:
-        if (p[1] == "Semantic error in input!"):
-            p[0] = "Semantic error in input!"
-        else:
-            print(p[1])
-            p[0] = "Operacion Matematica Valida"
+        try:
+            raise OperandosInvalidosException
+        except OperandosInvalidosException as ex:
+            msj_error(ex.mensaje)
 
-    list_sintax.append("Operacion Matematica")
 
-def p_expresionmate_rel(p):
-    'expresionmate : term opmat term'
-    if (str(p[1]).isdigit() and str(p[3]).isdigit()):
-        if p[2] == '+':
-            p[0] = (p[1] + p[3])
-        elif p[2] == '-':
-            p[0] = (p[1] - p[3])
-        elif p[2] == '*':
-            p[0] = (p[1] * p[3])
-        elif p[2] == '/':
-            p[0] = (p[1] / p[3])
-        elif p[2] == '%':
-            p[0] = (p[1] % p[3])
-    else:
-        p[0] = "Semantic error in input!"
-
+#Validacion de  expresiones logicas
 def p_expression_logic(p):
     '''expression : expresionlogic
-    | LPAREN expresionlogic RPAREN
-    | expression oplog expresionlogic
-    | expresionlogic oplog expression
-    | expression connectlog expresionlogic
-    | expresionlogic connectlog expression
-    | expression oplog LPAREN expresionlogic RPAREN
-    | LPAREN expresionlogic RPAREN oplog expression
-    | expression connectlog LPAREN expresionlogic RPAREN
-    | LPAREN expresionlogic RPAREN connectlog expression'''
-
-    if (len(p)>2):
-        if (p[1]!="Semantic error in input!" and p[3]!="Semantic error in input!" ):
-            if p[2] == '==':
-                p[0] = bool(p[1] == p[3])
-            elif p[2] == '!=':
-                p[0] = bool(p[1] != p[3])
-            elif p[2] == '>':
-                p[0] = bool(p[1] > p[3])
-            elif p[2] == '>=':
-                p[0] = bool(p[1] >= p[3])
-            elif p[2] == '<':
-                p[0] = bool(p[1] < p[3])
-            elif p[2] == '<=':
-                p[0] = bool(p[1] <= p[3])
-            elif p[2] == '\&':
-                p[0] = bool(p[1] and p[3])
-            elif p[2] == '\^':
-                p[0] = bool(p[1] or p[3])
-
-        else:
-            p[0] = "Semantic error in input!"
-
-    else:
-        if (p[1] == "Semantic error in input!"):
-            p[0] = "Semantic error in input!"
-        else:
-            print(p[1])
-            p[0]= "Operacion Logica Valida"
+    | expresionlogic connectlog expresionlogic'''
+    p[0]= "Operacion Logica Valida"
     list_sintax.append("Operacion Logica")
 
-
+#Validar que los operandos de expresiones logicas sean del mismo tipo
 def p_expresionlogic_rel(p):
     'expresionlogic : term oplog term'
-    if (type(p[1])==type(p[3])):
-        if p[2] == '==':
-            p[0] = bool(p[1] == p[3])
-        elif p[2] == '!=':
-            p[0] = bool(p[1] != p[3])
-        elif p[2] == '>':
-            p[0] = bool(p[1] > p[3])
-        elif p[2] == '>=':
-            p[0] = bool(p[1] >= p[3])
-        elif p[2] == '<':
-            p[0] = bool(p[1] < p[3])
-        elif p[2] == '<=':
-            p[0] = bool(p[1] <= p[3])
+    if (type(p[1])!=type(p[3])):
+        try:
+            raise CondicionInvalidaException
+        except CondicionInvalidaException as ex:
+            p[0] = "Operación Lógica inválida"
+            msj_error(ex.mensaje)
     else:
-        p[0] = "Semantic error in input!"
+        p[0] = "Operación Lógica Válida"
 
 
 
 def p_expresionlogic_bool(p):
-    'expresionlogic : boolean connectlog boolean'
-    if p[2] == '\&':
-        p[0] = bool(p[1] and p[3])
+    'expresionlogic : booleano connectlog booleano'
+    p[0] = "Expresion Logica Valida"
+    list_sintax.append("Expresion Logica Valida")
 
-    elif p[2] == '\^':
-        p[0] = bool (p[1] or p[3])
 
-def p_bool_true(p):
-    '''boolean : TRUE
+def p_booleano_val(p):
+    '''booleano : TRUE
     | FALSE'''
-    list_tok.append(p[1])
-    p[0]=bool(p[1]=='true')
+    p[0] = p[1]
 
 
 def p_connectlog(p):
     '''connectlog : AND
     | OR'''
-    list_tok.append(p[1])
-    p[0]=p[1]
+    p[0] = p[1]
 
 def p_oplog(p):
     '''oplog : EQUAL
@@ -144,7 +76,6 @@ def p_oplog(p):
     | GREATERTHANEQUAL
     | LESSERTHAN
     | LESSERTHANEQUAL'''
-    list_tok.append(p[1])
     p[0] = p[1]
 
 def p_opmat(p):
@@ -153,7 +84,6 @@ def p_opmat(p):
     | TIMES
     | DIVIDE
     | MOD'''
-    list_tok.append(p[1])
     p[0] = p[1]
 
 def p_assignacion(p):
@@ -163,12 +93,13 @@ def p_assignacion(p):
     | COMPASSIGMINUS
     | COMPASSIGTIMES
     | COMPASSIGDIVIDE'''
-    list_tok.append(p[1])
     p[0] = p[1]
 
 def p_term(p):
     '''term : NUMBER
-    | VARIABLE'''
+    | VARIABLE
+    | TEXT
+    | NUMDEC'''
     p[0] = p[1]
 
 
@@ -181,13 +112,6 @@ def p_expression_postop(p):
     'expression : assignacion VARIABLE SEMICOLON'
     p[0] = "Operacion de pre-incremento/decremento valida"
     list_sintax.append("Operacion de pre-incremento/decremento")
-
-def p_preop(p):
-    'oper : VARIABLE assignacion'
-
-def p_postop(p):
-    'oper : assignacion VARIABLE'
-
 
 def p_expression_while(p):
     'expression : WHILE LPAREN expresionlogic RPAREN LBRACKET expression RBRACKET'
@@ -205,6 +129,12 @@ def p_expression_if(p):
     p[0] = "Estructura if valida"
     list_sintax.append("Sentencia IF")
 
+def p_preop(p):
+    'oper : VARIABLE assignacion'
+
+def p_postop(p):
+    'oper : assignacion VARIABLE'
+
 
 def p_datos(p):
     '''datos : BOOL
@@ -219,44 +149,98 @@ def p_datos(p):
     | SHORT
     | UINT
     | ULONG
-    | USHORT'''
-    list_tok.append(p[1])
+    | USHORT
+    | STRING'''
+    p[0] = p[1]
 
 
-def p_declaracion(p):
+#Asignacion de valor a variable creada
+def p_expression_declsimp(p):
     'declaracion : VARIABLE ASSIGNMENT expression SEMICOLON'
+    p[0] = "Asignacion de dato valida"
 
-def p_expression_decl(p):
-    '''expression : datos declaracion
-    | declaracion'''
-    p[0] = "Declaracion valida"
-    list_sintax.append("Declaracion de variable")
-
-def p_if(p):
-    '''expression : IF LPAREN expression RPAREN LBRACKET expression RBRACKET
-    | IF LPAREN expression RPAREN LBRACKET expression RBRACKET ELSE LBRACKET expression RBRACKET'''
-    list_tok.append(p[1])
-    p[0] = "Bucle IF valido"
-    list_sintax.append("Bucle IF valido")
-
+#DECLAracion de valor a variable 
+def p_expression_decldato(p):
+    '''expression : datos VARIABLE ASSIGNMENT term SEMICOLON'''
+    if p[1].upper() in  ["INT", "LONG", "BYTE", "SHORT","SBYTE", "BYTE","UINT","ULONG","USHORT"]:
+        if type(p[4])!=int:
+            try:
+                raise TipoDatoException
+            except TipoDatoException as ex:
+                msj_error(ex.mensaje)
+        elif p[4]<0 and p[1].upper() in ["BYTE","UINT","ULONG","USHORT"]:
+            try:
+                raise TipoDatoException
+            except TipoDatoException as ex:
+                msj_error(ex.mensaje) 
+        else:
+            dic_rang = {"BYTE": [0,255], "SHORT":[-32768 , 32767],"SBYTE": [-128 , 127],
+             "BYTE": [0 , 255],"USHORT":[ 0, 65535]}
+            if p[1].upper() not in dic_rang:
+                p[0] = "Declaracion de " + p[1].upper()+" Valida"
+                list_sintax.append("Declaracion de " + p[1].upper()+" Valida")
+            else:
+                if p[4]>=dic_rang[p[1].upper()][0] and p[4]<=dic_rang[p[1].upper()][1]:
+                    p[0] = "Declaracion de " + p[1].upper()+" Valida"
+                    list_sintax.append("Declaracion de " + p[1].upper()+" Valida")
+                else:
+                    try:
+                        raise TipoDatoException
+                    except TipoDatoException as ex:
+                        msj_error(ex.mensaje) 
+    elif p[1].upper() in ["DECIMAL","DOUBLE","FLOAT"]:
+        if type(p[4])!=float:
+            try:
+                raise TipoDatoException
+            except TipoDatoException as ex:
+                msj_error(ex.mensaje)
+        else:
+            p[0] = "Declaracion de " + p[1].upper()+" Valida"
+            list_sintax.append("Declaracion de " + p[1].upper()+" Valida")
+    elif p[1].upper() in ["STRING","CHAR"]:
+        if type(p[4])!=str:
+            try:
+                raise TipoDatoException
+            except TipoDatoException as ex:
+                msj_error(ex.mensaje)
+        elif len(p[4])>1 and p[1].upper() == "CHAR":
+            try:
+                raise TipoDatoException
+            except TipoDatoException as ex:
+                msj_error(ex.mensaje)
+        else:
+            p[0] = "Declaracion de " + p[1].upper()+" Valida"
+            list_sintax.append("Declaracion de " + p[1].upper()+" Valida")
+    elif p[1].upper() == "BOOL":
+        if type(p[4])!=str:
+            try:
+                raise TipoDatoException
+            except TipoDatoException as ex:
+                msj_error(ex.mensaje)
+        elif p[4].lower() in ["true","false"]:
+            p[0] = "Declaracion de " + p[1].upper()+" Valida"
+            list_sintax.append("Declaracion de " + p[1].upper()+" Valida")
+        else:
+            try:
+                raise TipoDatoException
+            except TipoDatoException as ex:
+                msj_error(ex.mensaje)
+    
 
 def p_while(p):
     'expression : WHILE LPAREN expression RPAREN LBRACKET expression RBRACKET'
-    list_tok.append(p[1])
     p[0] = "Bucle WHILE valido"
     list_sintax.append("Bucle WHILE valido")
 
 
 def p_for(p):
     'expression : FOR LPAREN declaracion expression SEMICOLON RPAREN LBRACKET expression RBRACKET'
-    list_tok.append(p[1])
     p[0] = "Bucle FOR valido"
     list_sintax.append("Bucle FOR valido")
 
 
 def p_listas(p):
     'expression : LIST LESSERTHAN datos GREATERTHAN term ASSIGNMENT NEW LIST LESSERTHAN datos GREATERTHAN LPAREN RPAREN LBRACKET expression RBRACKET SEMICOLON'
-    list_tok.append(p[1])
     p[0] = "Declaracion de lista valida"
     list_sintax.append("Declaracion de lista valida")
 
@@ -275,7 +259,6 @@ def p_listas_removeAt(p):
 
 def p_tuplas(p):
     'expression : TUPLE LESSERTHAN LPAREN datos COMMA datos RPAREN GREATERTHAN term ASSIGNMENT NEW TUPLE LPAREN datos COMMA datos RPAREN LPAREN term COMMA term RPAREN SEMICOLON'
-    list_tok.append(p[1])
     p[0] = "Declaracion de tupla valida"
     list_sintax.append("Declaracion de tupla valida")
 
@@ -294,20 +277,11 @@ def p_tuplas_item(p):
 def p_error(p):
     if p:
         print("Syntax error at token", p.type)
-        # Just discard the token and tell the parser it's okay.
     else:
         print("Syntax error at EOF")
 
 
-# Build the parser
 parser = yacc.yacc()
-# while True:
-#     list_tok.clear()
-#     try:
-#         s = input('calc > ')
-#     except EOFError:
-#         break
-#     if not s: continue
-#     result = parser.parse(s)
-#     print(list_tok)
-#     print(result)
+
+
+

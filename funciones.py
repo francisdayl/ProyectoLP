@@ -1,4 +1,17 @@
 import ply.lex as lex
+
+class OperandosInvalidosException(Exception):
+    def __init__(self):
+        self.mensaje = "Operadores incompatibles para realizar operación artimética"
+
+class CondicionInvalidaException(Exception):
+    def __init__(self):
+        self.mensaje = "Operadores incompatibles para realizar operación lógica"
+
+class TipoDatoException(Exception):
+    def __init__(self):
+        self.mensaje = "Valor de dato incompatible con el tipo de dato asignado"
+
 # List of token names.   This is always required
 reserved = {
     'bool': 'BOOL',
@@ -13,7 +26,6 @@ reserved = {
     'int': 'INT',
     'long': 'LONG',
     'new': 'NEW',
-    'null': 'NULL',
     'sbyte': 'SBYTE',
     'short': 'SHORT',
     'uint': 'UINT',
@@ -29,7 +41,8 @@ reserved = {
     'removeAt': 'REMOVEAT',
     'Equals': 'EQUALS',
     'CompareTo': 'COMPARETO',
-    'Item': 'ITEM'
+    'Item': 'ITEM',
+    'string' : 'STRING'
 }
 tokens = (
              'SEMICOLON',
@@ -61,6 +74,8 @@ tokens = (
              'RBRACKET',
              'AND',
              'OR',
+             'TEXT',
+             'NUMDEC',
          ) + tuple(reserved.values())
 # Regular expression rules for simple tokens
 t_SEMICOLON = r'\;'
@@ -88,8 +103,10 @@ t_COMPASSIGTIMES = r'\*\='
 t_COMPASSIGDIVIDE= r'\/\='
 t_LBRACKET= r'\{'
 t_RBRACKET= r'\}'
-t_AND=r'\&'
-t_OR=r'\^'
+t_AND=r'\&\&'
+t_OR=r'\|\|'
+t_TEXT=r'\".*\"'
+
 
 
 def t_VARIABLE(t):
@@ -98,9 +115,13 @@ def t_VARIABLE(t):
     return t
 
 
-# A regular expression rule with some action code
+def t_NUMDEC(t):
+    r'-{0,1}[0-9]+\.[0-9]+'
+    t.value = float(t.value)
+    return t
+
 def t_NUMBER(t):
-    r'[0-9]+'
+    r'\-{0,1}[0-9]+'
     t.value = int(t.value)
     return t
 
@@ -109,10 +130,6 @@ def t_NUMBER(t):
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
-
-
-# A string containing ignored characters (spaces and tabs)
-t_ignore = ' \t'
 
 
 def t_comment(t):
@@ -137,10 +154,3 @@ def getTokens(lexer):
 
 # Build the lexer
 lexer = lex.lex()
-linea = " a"
-"""while linea!="":
-    linea=input(">>")
-    lexer.input(linea)
-    getTokens(lexer)
-# Tokenize
-print("Succesfull")"""
