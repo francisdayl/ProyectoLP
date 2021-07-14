@@ -12,8 +12,8 @@ class Semantico(QtWidgets.QMainWindow):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.sizePolicy().hasHeightForWidth())
 
-        self.ejemplos = ["i++;","if(a==b){a++;}","while(cont>0){if(cont==0){--cont;}}",
-        "for(int i=0;i<n;i++){suma++;}"]
+        self.ejemplos = ["i++;","if(a==b){a++;}","while(5>0){if(2==0){--cont;}}",
+        "short var_s= 165165132;","int num=-2.65;",'string cade="Hola Mundo";',"a+3","a>3","3==3"]
 
         self.setSizePolicy(sizePolicy)
         self.setMinimumSize(QtCore.QSize(500, 250))

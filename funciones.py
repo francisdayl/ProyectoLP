@@ -107,13 +107,10 @@ t_AND=r'\&\&'
 t_OR=r'\|\|'
 t_TEXT=r'\".*\"'
 
-
-
 def t_VARIABLE(t):
     r'([a-zA-Z]|\_)([a-zA-Z0-9]|\_)*'
     t.type = reserved.get(t.value, 'VARIABLE')  # Check for reserved words
     return t
-
 
 def t_NUMDEC(t):
     r'-{0,1}[0-9]+\.[0-9]+'

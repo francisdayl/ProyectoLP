@@ -1,4 +1,4 @@
-from funciones import tokens, OperandosInvalidosException, CondicionInvalidaException, SemiColonException, TipoDatoException
+from funciones import tokens, OperandosInvalidosException, CondicionInvalidaException, TipoDatoException
 import ply.yacc as yacc
 from PyQt5 import QtWidgets
 
@@ -99,7 +99,9 @@ def p_term(p):
     '''term : NUMBER
     | VARIABLE
     | TEXT
-    | NUMDEC'''
+    | NUMDEC
+    | booleano'''
+
     p[0] = p[1]
 
 
